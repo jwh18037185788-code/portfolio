@@ -126,5 +126,5 @@
   }
 
   reducedMotion.addEventListener('change', init);
-  init();
+  window.portfolioTitlesReady = init();
 })();

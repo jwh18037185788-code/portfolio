@@ -1,0 +1,332 @@
+{
+  "date": "2026-11-05",
+  "scope": "MutationObserver diagnosis only; no runtime source modifications",
+  "conclusion": {
+    "sourceLayer": "In-app browser / automation environment; reproduced without project JavaScript",
+    "exactInjectedScript": "Not identified: error log API did not expose source URL, filename, line, column, or stack. Registration stacks below are not failure stacks.",
+    "ordinaryAccess": "Clean native Chrome Guest GUI tests passed with no observed MutationObserver or uncaught application errors.",
+    "releaseBlocker": false
+  },
+  "errorEvidence": {
+    "uninstrumentedFixture": {
+      "provenance": "Exact log returned by dev.logs before REPL restart; the log did not survive later reattachment.",
+      "entry": {
+        "level": "error",
+        "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+        "timestamp": "2026-11-04T15:46:52.325Z"
+      },
+      "missingFields": [
+        "url",
+        "filename",
+        "line",
+        "column",
+        "stack"
+      ]
+    },
+    "instrumentedFixture": {
+      "url": "http://127.0.0.1:4198/fixture/iframe",
+      "logs": [
+        {
+          "level": "error",
+          "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+          "timestamp": "2026-11-04T15:54:43.885Z"
+        }
+      ],
+      "exposedFields": [
+        [
+          "level",
+          "message",
+          "timestamp"
+        ]
+      ]
+    }
+  },
+  "fixtures": [
+    {
+      "url": "http://127.0.0.1:4197/fixture/iframe",
+      "body": "<!doctype html><html><head><meta charset=\"utf-8\"><title>Observer isolated fixture</title></head><body><h1>No project JavaScript</h1><iframe src=\"/fixture/empty\"></iframe></body></html>",
+      "bytes": 184,
+      "sha256": "e40a57abfb79ee16b1c96d5c002bb6610e698e78d2b25c039f283a9ba35b5dca",
+      "scriptTagCount": 0
+    },
+    {
+      "url": "http://127.0.0.1:4197/fixture/empty",
+      "body": "<!doctype html><html><head><meta charset=\"utf-8\"><title>Observer isolated fixture</title></head><body><h1>No project JavaScript</h1></body></html>",
+      "bytes": 146,
+      "sha256": "4c68dbebdf4cf0745db97c10f7edaa09816bd4a9abd973a93b64740f42546e1a",
+      "scriptTagCount": 0
+    }
+  ],
+  "cleanBrowserTests": {
+    "browser": "Native Google Chrome Guest window",
+    "method": "OS accessibility/mouse/keyboard + visible DevTools; no Playwright page injection, no project diagnostic hooks",
+    "preserveConsoleLog": true,
+    "tested": [
+      "Home load and embedded Agent Demo render",
+      "Collection navigation and cover images",
+      "Raccoon full-resolution lightbox image, view-mode toggle, close",
+      "Top navigation back to design thinking",
+      "CatDesk / Codex / Figma Make preview changes",
+      "UI consistency text panel switch and restore Demo image",
+      "Same zero-script iframe fixture navigation and reload"
+    ],
+    "observedConsole": "Only navigation info messages: 2 after project navigation tests; 3 after iframe fixture visit. No target error observed."
+  },
+  "pageAndIframeProbeReports": [
+    {
+      "url": "http://127.0.0.1:4197/probe/#work",
+      "frame": false,
+      "reason": "pagehide",
+      "ready": "complete",
+      "errors": [],
+      "observers": [
+        {
+          "id": 1,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:22:50)\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:72:18\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:78:3",
+          "calls": 1,
+          "callbacks": 21,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:31:68)\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:77:12\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:78:3",
+          "target": {
+            "type": 1,
+            "name": "BODY",
+            "id": "",
+            "connected": true
+          }
+        },
+        {
+          "id": 2,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:22:50)\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:21:3\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:22:3",
+          "calls": 1,
+          "callbacks": 12,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:31:68)\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:21:94\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:22:3",
+          "target": {
+            "type": 1,
+            "name": "BODY",
+            "id": "",
+            "connected": true
+          }
+        },
+        {
+          "id": 3,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:22:50)\n    at HTMLDocument.<anonymous> (http://127.0.0.1:4197/probe/image-loading.js?v=3ec671ce0b:309:3)",
+          "calls": 1,
+          "callbacks": 9,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:31:68)\n    at HTMLDocument.<anonymous> (http://127.0.0.1:4197/probe/image-loading.js?v=3ec671ce0b:311:6)",
+          "target": {
+            "type": 1,
+            "name": "MAIN",
+            "id": "main",
+            "connected": true
+          }
+        },
+        {
+          "id": 4,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:22:50)\n    at to._setupGlobalListenersRemovalDetection (<anonymous>:24:2182)\n    at new to (<anonymous>:13:6801)\n    at <anonymous>:26:40\n    at <anonymous>:39:3",
+          "calls": 1,
+          "callbacks": 0,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:31:68)\n    at to._setupGlobalListenersRemovalDetection (<anonymous>:24:2430)\n    at new to (<anonymous>:13:6801)\n    at <anonymous>:26:40\n    at <anonymous>:39:3",
+          "target": {
+            "type": 9,
+            "name": "#document",
+            "id": "",
+            "connected": true
+          }
+        }
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:4197/probe/visual/",
+      "frame": false,
+      "reason": "pagehide",
+      "ready": "complete",
+      "errors": [],
+      "observers": [
+        {
+          "id": 1,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:22:50)\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:72:18\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:78:3",
+          "calls": 1,
+          "callbacks": 5,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:31:68)\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:77:12\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:78:3",
+          "target": {
+            "type": 1,
+            "name": "BODY",
+            "id": "",
+            "connected": true
+          }
+        },
+        {
+          "id": 2,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:22:50)\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:21:3\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:22:3",
+          "calls": 1,
+          "callbacks": 4,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:31:68)\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:21:94\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:22:3",
+          "target": {
+            "type": 1,
+            "name": "BODY",
+            "id": "",
+            "connected": true
+          }
+        },
+        {
+          "id": 3,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:22:50)\n    at to._setupGlobalListenersRemovalDetection (<anonymous>:24:2182)\n    at new to (<anonymous>:13:6801)\n    at <anonymous>:26:40\n    at <anonymous>:39:3",
+          "calls": 1,
+          "callbacks": 0,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:31:68)\n    at to._setupGlobalListenersRemovalDetection (<anonymous>:24:2430)\n    at new to (<anonymous>:13:6801)\n    at <anonymous>:26:40\n    at <anonymous>:39:3",
+          "target": {
+            "type": 9,
+            "name": "#document",
+            "id": "",
+            "connected": true
+          }
+        }
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:4197/probe/demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task",
+      "frame": true,
+      "reason": "pagehide",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    },
+    {
+      "url": "http://127.0.0.1:4197/probe/#work",
+      "frame": false,
+      "reason": "pagehide",
+      "ready": "complete",
+      "errors": [],
+      "observers": [
+        {
+          "id": 1,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:26:50)\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:72:18\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:78:3",
+          "calls": 1,
+          "callbacks": 5,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:35:68)\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:77:12\n    at http://127.0.0.1:4197/probe/text-actions.js?v=7480d58b1c:78:3",
+          "target": {
+            "type": 1,
+            "name": "BODY",
+            "id": "",
+            "connected": true
+          }
+        },
+        {
+          "id": 2,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:26:50)\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:21:3\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:22:3",
+          "calls": 1,
+          "callbacks": 4,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:35:68)\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:21:94\n    at http://127.0.0.1:4197/probe/text-balance.js?v=5a4db515f5:22:3",
+          "target": {
+            "type": 1,
+            "name": "BODY",
+            "id": "",
+            "connected": true
+          }
+        },
+        {
+          "id": 3,
+          "created": "Error: Observer created\n    at Object.construct (http://127.0.0.1:4197/__diagnostic/probe.js:26:50)\n    at HTMLDocument.<anonymous> (http://127.0.0.1:4197/probe/image-loading.js?v=3ec671ce0b:309:3)",
+          "calls": 1,
+          "callbacks": 1,
+          "disconnects": 0,
+          "observedFrom": "Error: Observer observe\n    at instance.observe (http://127.0.0.1:4197/__diagnostic/probe.js:35:68)\n    at HTMLDocument.<anonymous> (http://127.0.0.1:4197/probe/image-loading.js?v=3ec671ce0b:311:6)",
+          "target": {
+            "type": 1,
+            "name": "MAIN",
+            "id": "main",
+            "connected": true
+          }
+        }
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:4198/fixture/empty",
+      "frame": true,
+      "reason": "pagehide",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    },
+    {
+      "url": "http://127.0.0.1:4198/fixture/iframe",
+      "frame": false,
+      "reason": "pagehide",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    }
+  ],
+  "fixtureProbeReports": [
+    {
+      "url": "http://127.0.0.1:4198/fixture/iframe",
+      "frame": false,
+      "reason": "dom+2s",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    },
+    {
+      "url": "http://127.0.0.1:4198/fixture/empty",
+      "frame": true,
+      "reason": "dom+2s",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    },
+    {
+      "url": "http://127.0.0.1:4198/fixture/iframe",
+      "frame": false,
+      "reason": "10s",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    },
+    {
+      "url": "http://127.0.0.1:4198/fixture/empty",
+      "frame": true,
+      "reason": "10s",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    },
+    {
+      "url": "http://127.0.0.1:4198/fixture/empty",
+      "frame": true,
+      "reason": "pagehide",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    },
+    {
+      "url": "http://127.0.0.1:4198/fixture/iframe",
+      "frame": false,
+      "reason": "pagehide",
+      "ready": "complete",
+      "errors": [],
+      "observers": []
+    }
+  ],
+  "runtimeSha256": {
+    "index.html": "f08e549e53c831a7d0f62f547446ec9feef418df8b3ac87ed5c2be4076c8b754",
+    "visual/index.html": "06743e266f541001167b0be99094a8d5f54c8a022f52a71f5fe75cd6bf5efc75",
+    "app.js": "83a0b58c109c7486f74637b759cda2a1485c0a4a256c0176c32a2157ab120300",
+    "navigation.js": "2b124decd2b83d14d90724b6c5b86cb6d5c93b7d2e1e96e6423f019314ef5c84",
+    "style.css": "8c26756ab358b8abaf1af7fb914484b1616734f71c37bd46a23c6b8996f8da11",
+    "home-split-text.js": "a30495d4801d5cc9991ecea6884c75ddcb2539085199d8b465f77d1539e200f8",
+    "sprint-case.js": "10fd5fcfed134b52427b2a2ed4da57ad4a05a7c9830bc2db64db22a10e3f67af",
+    "image-loading.js": "3ec671ce0b6c99af4a7901808b0758f4f226cd434384222cc8d184ea6726f871",
+    "image-loading.css": "3cb4e3ef460b13c446aa6453bf2326f0905879cdd6a79662b67d896d874918fe",
+    "text-actions.js": "7480d58b1ce9330d4baef29297a5751b3235e7b485915db665c534a58a748575",
+    "text-balance.js": "5a4db515f51cb9c20626d3b087f608a139affd5fdbb4b5362735f3b5ce9c823d"
+  },
+  "temporaryFiles": "All servers, fixture pages, monkey patches, and screenshots were outside the repository at /private/tmp/portfolio-mutation-qa; no diagnostic scripts added to production HTML/JS."
+}

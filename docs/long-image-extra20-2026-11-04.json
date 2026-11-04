@@ -1,0 +1,500 @@
+[
+  {
+    "id": "food",
+    "title": "浣熊经营分",
+    "original": "assets/food-score-long.png?v=38a48414d3",
+    "originalSHA256": "38a48414d3a57abbc3b450c476468c0f90be2438219eb1929f5f577a389b5523",
+    "baseline": "assets/food-score-long-web.jpg?v=ae552a1349",
+    "baselineSHA256": "ae552a13497dab936b57c27e85b2665a877cb8e9f53843837d017b306008cb86",
+    "baselineBytes": 13897430,
+    "optimized": "assets/food-score-long-web-v2.jpg?v=325e038647",
+    "optimizedSHA256": "325e038647d5edb33be1de2026eb3b5e41f4d70a29633ed221b0237ac332ab68",
+    "optimizedBytes": 11266859,
+    "width": 3840,
+    "height": 20858,
+    "options": {
+      "quality": 96,
+      "quantisationTable": 4,
+      "trellisQuantisation": false,
+      "chromaSubsampling": "4:4:4",
+      "mozjpeg": true,
+      "progressive": true
+    },
+    "acceptedTrial": true,
+    "extraReduction": 0.18928470947506126,
+    "regions": {
+      "text": [
+        450,
+        15350
+      ],
+      "detail": [
+        2450,
+        17800
+      ]
+    },
+    "cropMetrics": [],
+    "baselineCommit": "4a989e79ad0e8df810b717962a8175802ab3fd6a"
+  },
+  {
+    "id": "kangaroo",
+    "title": "袋鼠参谋",
+    "original": "assets/kangaroo-long-513c5d7d6a.jpg?v=513c5d7d6a",
+    "originalSHA256": "513c5d7d6a40980b69b2948d897e6915b487ea506baf4d4bebce3c1869b2343e",
+    "baseline": "assets/kangaroo-long-web.jpg?v=9d3c9be6ee",
+    "baselineSHA256": "9d3c9be6ee08a91248980eed7308930b166e578a1dcd0ff86228ee157275185d",
+    "baselineBytes": 9812804,
+    "optimized": "assets/kangaroo-long-web-v2.jpg?v=9164a372fe",
+    "optimizedSHA256": "9164a372fe29f84bdae3624c53b192417b32bfcbc89afd579b5bd5b473b71f77",
+    "optimizedBytes": 7859899,
+    "width": 3840,
+    "height": 30584,
+    "options": {
+      "quality": 95,
+      "quantisationTable": 4,
+      "trellisQuantisation": false,
+      "chromaSubsampling": "4:4:4",
+      "mozjpeg": true,
+      "progressive": true
+    },
+    "acceptedTrial": false,
+    "extraReduction": 0.19901599991195174,
+    "regions": {
+      "text": [
+        300,
+        11000
+      ],
+      "detail": [
+        2400,
+        500
+      ]
+    },
+    "cropMetrics": [
+      {
+        "name": "text",
+        "rect": {
+          "left": 300,
+          "top": 11000,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 47.3258793614254,
+          "mae": 0.4555641975308642
+        },
+        "vsBaseline": {
+          "psnr": 46.84127725760699,
+          "mae": 0.47630617283950616
+        }
+      },
+      {
+        "name": "detail",
+        "rect": {
+          "left": 2400,
+          "top": 500,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 49.12122839428308,
+          "mae": 0.3393851851851852
+        },
+        "vsBaseline": {
+          "psnr": 48.68229839682468,
+          "mae": 0.3505333333333333
+        }
+      }
+    ],
+    "baselineCommit": "4a989e79ad0e8df810b717962a8175802ab3fd6a"
+  },
+  {
+    "id": "compliance",
+    "title": "时空轨迹共现分析",
+    "original": "assets/compliance-long.jpg?v=2281831677",
+    "originalSHA256": "228183167774c2c98bdea7896006a276e79194fb4f28e7c2c2568d01764814dd",
+    "baseline": "assets/compliance-long-web.jpg?v=59bdee4645",
+    "baselineSHA256": "59bdee464541465999a508cf299c53d30bf047dea2437d7cbbe8d4de3f522be4",
+    "baselineBytes": 12791858,
+    "optimized": "assets/compliance-long-web-v2.jpg?v=63efcc817a",
+    "optimizedSHA256": "63efcc817aa4c0c0b5fe3d12357d9f51127d291b26637ffc4d36945116057438",
+    "optimizedBytes": 10244971,
+    "width": 3840,
+    "height": 25512,
+    "options": {
+      "quality": 93,
+      "quantisationTable": 4,
+      "trellisQuantisation": false,
+      "chromaSubsampling": "4:4:4",
+      "mozjpeg": true,
+      "progressive": true
+    },
+    "acceptedTrial": false,
+    "extraReduction": 0.19910219453655598,
+    "regions": {
+      "text": [
+        500,
+        8200
+      ],
+      "detail": [
+        1100,
+        15600
+      ]
+    },
+    "cropMetrics": [
+      {
+        "name": "text",
+        "rect": {
+          "left": 500,
+          "top": 8200,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 47.79276491057014,
+          "mae": 0.29875802469135804
+        },
+        "vsBaseline": {
+          "psnr": 46.60742556097499,
+          "mae": 0.34455925925925923
+        }
+      },
+      {
+        "name": "detail",
+        "rect": {
+          "left": 1100,
+          "top": 15600,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 44.95407726368146,
+          "mae": 0.4138358024691358
+        },
+        "vsBaseline": {
+          "psnr": 43.506916073091865,
+          "mae": 0.49677037037037036
+        }
+      }
+    ],
+    "baselineCommit": "4a989e79ad0e8df810b717962a8175802ab3fd6a"
+  },
+  {
+    "id": "camera",
+    "title": "摄像头绑定及基础操作",
+    "original": "assets/camera-long.jpg?v=57e19e3689",
+    "originalSHA256": "57e19e368960caf61f6ad37cfca5a6e7810554fccdd5aa79fe9b9e509ea0d2ca",
+    "baseline": "assets/camera-long-web.jpg?v=efbd481dc3",
+    "baselineSHA256": "efbd481dc363d1a70fdd39113f53cfe844c48e0aafa19e8463fb9f351c5836ec",
+    "baselineBytes": 14564664,
+    "optimized": "assets/camera-long-web-v2.jpg?v=9647a0e6b3",
+    "optimizedSHA256": "9647a0e6b3d86312422cb5fac20da8ad48898777a32bd993c2d3e34d78e98771",
+    "optimizedBytes": 11755461,
+    "width": 3840,
+    "height": 29376,
+    "options": {
+      "quality": 96,
+      "quantisationTable": 0,
+      "trellisQuantisation": false,
+      "chromaSubsampling": "4:4:4",
+      "mozjpeg": true,
+      "progressive": true
+    },
+    "acceptedTrial": false,
+    "extraReduction": 0.19287798194314676,
+    "regions": {
+      "text": [
+        1000,
+        4400
+      ],
+      "detail": [
+        1200,
+        17800
+      ]
+    },
+    "cropMetrics": [
+      {
+        "name": "text",
+        "rect": {
+          "left": 1000,
+          "top": 4400,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 47.103854269431515,
+          "mae": 0.566174074074074
+        },
+        "vsBaseline": {
+          "psnr": 45.91578541971589,
+          "mae": 0.6550987654320988
+        }
+      },
+      {
+        "name": "detail",
+        "rect": {
+          "left": 1200,
+          "top": 17800,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 46.08446298311339,
+          "mae": 0.6664012345679012
+        },
+        "vsBaseline": {
+          "psnr": 44.90340276200037,
+          "mae": 0.7557395061728395
+        }
+      }
+    ],
+    "baselineCommit": "4a989e79ad0e8df810b717962a8175802ab3fd6a"
+  },
+  {
+    "id": "traffic",
+    "title": "交通信号控制平台",
+    "original": "assets/traffic-long.jpg?v=3330829f55",
+    "originalSHA256": "3330829f55d931affc15f497e72d23735d23cb3d7f328de3800ce8b9660b8b61",
+    "baseline": "assets/traffic-long-web.jpg?v=a4155fd7b2",
+    "baselineSHA256": "a4155fd7b267b6b69894a19bbcde7634e6b4e7c48d2ad18e94366644799a49c2",
+    "baselineBytes": 16101752,
+    "optimized": "assets/traffic-long-web-v2.jpg?v=d52ec57514",
+    "optimizedSHA256": "d52ec575147a5db6322d489031a8f6a9152c6333ea0926c5819b8f0908ba23b4",
+    "optimizedBytes": 12713224,
+    "width": 3840,
+    "height": 21708,
+    "options": {
+      "quality": 96,
+      "quantisationTable": 0,
+      "trellisQuantisation": false,
+      "chromaSubsampling": "4:4:4",
+      "mozjpeg": true,
+      "progressive": true
+    },
+    "acceptedTrial": true,
+    "extraReduction": 0.21044467707613435,
+    "regions": {
+      "text": [
+        1000,
+        13900
+      ],
+      "detail": [
+        1900,
+        17800
+      ]
+    },
+    "cropMetrics": [],
+    "baselineCommit": "4a989e79ad0e8df810b717962a8175802ab3fd6a"
+  },
+  {
+    "id": "nearby",
+    "title": "附近在吃",
+    "original": "assets/nearby-long.jpg?v=7b4add38c2",
+    "originalSHA256": "7b4add38c22d7b65a7f5fd10a116449de305bae4620ed68374e6874ebda07cd3",
+    "baseline": "assets/nearby-long-web.jpg?v=ab2667855b",
+    "baselineSHA256": "ab2667855b513496afde1e2b4b9a0a1daa95a9729054f93683a9a422919159c9",
+    "baselineBytes": 13985567,
+    "optimized": "assets/nearby-long-web-v2.jpg?v=b1fc52419b",
+    "optimizedSHA256": "b1fc52419b342ffe6acc4c69865f9918a256ab8058dcd025862b4e2e6179bea9",
+    "optimizedBytes": 11329293,
+    "width": 3840,
+    "height": 14926,
+    "options": {
+      "quality": 95,
+      "quantisationTable": 4,
+      "trellisQuantisation": false,
+      "chromaSubsampling": "4:4:4",
+      "mozjpeg": true,
+      "progressive": true
+    },
+    "acceptedTrial": false,
+    "extraReduction": 0.1899296610570026,
+    "regions": {
+      "text": [
+        1200,
+        9500
+      ],
+      "detail": [
+        2200,
+        5300
+      ]
+    },
+    "cropMetrics": [
+      {
+        "name": "text",
+        "rect": {
+          "left": 1200,
+          "top": 9500,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 44.805072568706485,
+          "mae": 0.7668024691358025
+        },
+        "vsBaseline": {
+          "psnr": 43.759615242888856,
+          "mae": 0.8307481481481481
+        }
+      },
+      {
+        "name": "detail",
+        "rect": {
+          "left": 2200,
+          "top": 5300,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 45.72372140724643,
+          "mae": 0.6138716049382716
+        },
+        "vsBaseline": {
+          "psnr": 44.811838913851105,
+          "mae": 0.6338370370370371
+        }
+      }
+    ],
+    "baselineCommit": "4a989e79ad0e8df810b717962a8175802ab3fd6a"
+  },
+  {
+    "id": "anxin",
+    "title": "安心严选频道页",
+    "original": "assets/anxin-long.jpg?v=ddf0cbaf2a",
+    "originalSHA256": "ddf0cbaf2a7550a805c5f8b6df04712b867e0b7eb0c07c8141b20f1a6817790c",
+    "baseline": "assets/anxin-long-web.jpg?v=d9f1cb90c3",
+    "baselineSHA256": "d9f1cb90c315a5e375fa5057190334f4ed0b38a019b6506ed7e72a5309123c55",
+    "baselineBytes": 7931900,
+    "optimized": "assets/anxin-long-web-v2.jpg?v=bb73fbf776",
+    "optimizedSHA256": "bb73fbf776e212f2f6218a31159c96560100ceb6a4a9b0e77d69263c8e3c701d",
+    "optimizedBytes": 6317011,
+    "width": 3840,
+    "height": 16031,
+    "options": {
+      "quality": 96,
+      "quantisationTable": 0,
+      "trellisQuantisation": false,
+      "chromaSubsampling": "4:4:4",
+      "mozjpeg": true,
+      "progressive": true
+    },
+    "acceptedTrial": false,
+    "extraReduction": 0.2035942208045991,
+    "regions": {
+      "text": [
+        1200,
+        7800
+      ],
+      "detail": [
+        2300,
+        11000
+      ]
+    },
+    "cropMetrics": [
+      {
+        "name": "text",
+        "rect": {
+          "left": 1200,
+          "top": 7800,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 48.515245137352316,
+          "mae": 0.42005185185185184
+        },
+        "vsBaseline": {
+          "psnr": 47.48144245412973,
+          "mae": 0.45751975308641973
+        }
+      },
+      {
+        "name": "detail",
+        "rect": {
+          "left": 2300,
+          "top": 11000,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 55.215744752829174,
+          "mae": 0.09681481481481481
+        },
+        "vsBaseline": {
+          "psnr": 54.05509023127385,
+          "mae": 0.11240123456790123
+        }
+      }
+    ],
+    "baselineCommit": "4a989e79ad0e8df810b717962a8175802ab3fd6a"
+  },
+  {
+    "id": "wechat",
+    "title": "微信 AI 日程管理助手",
+    "original": "assets/wechat-long.jpg?v=a3dcec993f",
+    "originalSHA256": "a3dcec993f594f6e61ab0d94b29776887403941f19d89be6995a4b80d3325b26",
+    "baseline": "assets/wechat-long-web.jpg?v=7a9388e78b",
+    "baselineSHA256": "7a9388e78b09231cb933a2d627bbae13bf7db9f276ffbe713da7781d7cdd4007",
+    "baselineBytes": 3442223,
+    "optimized": "assets/wechat-long-web-v2.jpg?v=f60fd85e53",
+    "optimizedSHA256": "f60fd85e53895d4d996c7bb9cab9eea514a7676910920dfb11255ffa231d29a9",
+    "optimizedBytes": 2700179,
+    "width": 3840,
+    "height": 10246,
+    "options": {
+      "quality": 95,
+      "quantisationTable": 4,
+      "trellisQuantisation": false,
+      "chromaSubsampling": "4:4:4",
+      "mozjpeg": true,
+      "progressive": true
+    },
+    "acceptedTrial": false,
+    "extraReduction": 0.21557115852168784,
+    "regions": {
+      "text": [
+        500,
+        5600
+      ],
+      "detail": [
+        1700,
+        7600
+      ]
+    },
+    "cropMetrics": [
+      {
+        "name": "text",
+        "rect": {
+          "left": 500,
+          "top": 5600,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 50.02406518689778,
+          "mae": 0.18659506172839507
+        },
+        "vsBaseline": {
+          "psnr": 49.2015892538096,
+          "mae": 0.20460246913580246
+        }
+      },
+      {
+        "name": "detail",
+        "rect": {
+          "left": 1700,
+          "top": 7600,
+          "width": 600,
+          "height": 450
+        },
+        "vsOriginal": {
+          "psnr": 50.2559627119591,
+          "mae": 0.23988518518518517
+        },
+        "vsBaseline": {
+          "psnr": 49.84371146222458,
+          "mae": 0.2497358024691358
+        }
+      }
+    ],
+    "baselineCommit": "4a989e79ad0e8df810b717962a8175802ab3fd6a"
+  }
+]

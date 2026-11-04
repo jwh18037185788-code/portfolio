@@ -15,14 +15,14 @@ const imageButton = (src,alt,cls='') => `<button class="image-expand ${cls}" dat
 const sectionLabel=(num,text)=>`<div class="section-kicker"><span>(${num})</span><span>${text}</span></div>`;
 
 const galleryItems=[
-{id:'food',type:'visual',title:'浣熊经营分',description:'围绕食安管控，梳理经营等级、权益与整改路径，并以 AIGC 延展品牌形象。',tag:'移动端 / 食安管控',asset:'food-score.jpg',cover:'cover1.png?v=8445e3cb66',detail:'food-score-long-web.jpg?v=ae552a1349',surface:'brown',note:'完整项目长图 · 上下滚动浏览'},
-{id:'kangaroo',type:'product',title:'袋鼠参谋',description:'通过意图厘清、场景输入与 GUI 卡片规范，优化 AI 经营咨询的对话体验。',tag:'AI 产品 / 对话体验',asset:'kangaroo-panel.jpg',cover:'cover5.png',detail:'kangaroo-long-web.jpg?v=9d3c9be6ee',surface:'lavender',note:'袋鼠参谋 · AI 对话体验优化 / 完整项目长图 · 上下滚动浏览'},
-{id:'compliance',type:'product',title:'时空轨迹共现分析',description:'面向 CLC 业务合规服务台，组织查询条件、共现结果与轨迹明细。',tag:'PC / 风控分析',asset:'cover3.png',cover:'cover3.png',detail:'compliance-long-web.jpg?v=59bdee4645',surface:'sage',note:'美团 · CLC 业务合规服务台 / 完整项目长图 · 上下滚动浏览'},
-{id:'camera',type:'product',title:'摄像头绑定及基础操作',description:'从设备绑定到实时查看与录像回放，建设商家端后厨监控操作链路。',tag:'移动端 / 硬件接入',asset:'cover2.png',cover:'cover2.png',detail:'camera-long-web.jpg?v=efbd481dc3',surface:'brown',note:'美团 · 摄像头 / 完整项目长图 · 上下滚动浏览'},
-{id:'traffic',type:'product',title:'交通信号控制平台',description:'围绕地图、路口与信号参数，完成复杂交通控制系统的设计改版。',tag:'PC / 复杂系统',asset:'traffic.jpg',cover:'cover4.png',detail:'traffic-long-web.jpg?v=a4155fd7b2',surface:'blue',note:'航天大为 × 江南大学 · 2.0 设计改版 / 完整项目长图 · 上下滚动浏览'},
-{id:'nearby',type:'visual',title:'附近在吃',description:'升级社区内容与交互链路，强化美食发现的场景感知并衔接转化路径。',tag:'移动端 / 社区体验',asset:'cover6.png',cover:'cover6.png',detail:'nearby-long-web.jpg?v=ab2667855b',surface:'sage',note:'美团 · 附近在吃 / 完整项目长图 · 上下滚动浏览'},
-{id:'anxin',type:'visual',title:'安心严选频道页',description:'重构频道页的信息秩序，通过内容层级与视觉表达传达差异化心智。',tag:'移动端 / 界面探索',asset:'anxin.jpg',cover:'cover7.png',detail:'anxin-long-web.jpg?v=d9f1cb90c3',surface:'peach',note:'个人探索 · 源自字节跳动抖音校招笔试题 / 完整项目长图 · 上下滚动浏览'},
-{id:'wechat',type:'product',title:'微信 AI 日程管理助手',description:'探索从聊天内容中识别并创建日程，以 AI 建议衔接日常行程管理。',tag:'AI 产品 / 日程探索',asset:'cover8.png',cover:'cover8.png',detail:'wechat-long-web.jpg?v=7a9388e78b',surface:'sage',note:'个人探索 · 源自腾讯 WXG 校招笔试题 / 完整项目长图 · 上下滚动浏览'}
+{id:'food',type:'visual',title:'浣熊经营分',description:'围绕食安管控，梳理经营等级、权益与整改路径，并以 AIGC 延展品牌形象。',tag:'移动端 / 食安管控',asset:'food-score.jpg',cover:'cover1.png?v=8445e3cb66',detail:'food-score-long-web-v2.jpg?v=325e038647',surface:'brown',note:'完整项目长图 · 上下滚动浏览'},
+{id:'kangaroo',type:'product',title:'袋鼠参谋',description:'通过意图厘清、场景输入与 GUI 卡片规范，优化 AI 经营咨询的对话体验。',tag:'AI 产品 / 对话体验',asset:'kangaroo-panel.jpg',cover:'cover5.png',detail:'kangaroo-long-web-v2.jpg?v=9164a372fe',surface:'lavender',note:'袋鼠参谋 · AI 对话体验优化 / 完整项目长图 · 上下滚动浏览'},
+{id:'compliance',type:'product',title:'时空轨迹共现分析',description:'面向 CLC 业务合规服务台，组织查询条件、共现结果与轨迹明细。',tag:'PC / 风控分析',asset:'cover3.png',cover:'cover3.png',detail:'compliance-long-web-v2.jpg?v=63efcc817a',surface:'sage',note:'美团 · CLC 业务合规服务台 / 完整项目长图 · 上下滚动浏览'},
+{id:'camera',type:'product',title:'摄像头绑定及基础操作',description:'从设备绑定到实时查看与录像回放，建设商家端后厨监控操作链路。',tag:'移动端 / 硬件接入',asset:'cover2.png',cover:'cover2.png',detail:'camera-long-web-v2.jpg?v=9647a0e6b3',surface:'brown',note:'美团 · 摄像头 / 完整项目长图 · 上下滚动浏览'},
+{id:'traffic',type:'product',title:'交通信号控制平台',description:'围绕地图、路口与信号参数，完成复杂交通控制系统的设计改版。',tag:'PC / 复杂系统',asset:'traffic.jpg',cover:'cover4.png',detail:'traffic-long-web-v2.jpg?v=d52ec57514',surface:'blue',note:'航天大为 × 江南大学 · 2.0 设计改版 / 完整项目长图 · 上下滚动浏览'},
+{id:'nearby',type:'visual',title:'附近在吃',description:'升级社区内容与交互链路，强化美食发现的场景感知并衔接转化路径。',tag:'移动端 / 社区体验',asset:'cover6.png',cover:'cover6.png',detail:'nearby-long-web-v2.jpg?v=b1fc52419b',surface:'sage',note:'美团 · 附近在吃 / 完整项目长图 · 上下滚动浏览'},
+{id:'anxin',type:'visual',title:'安心严选频道页',description:'重构频道页的信息秩序，通过内容层级与视觉表达传达差异化心智。',tag:'移动端 / 界面探索',asset:'anxin.jpg',cover:'cover7.png',detail:'anxin-long-web-v2.jpg?v=bb73fbf776',surface:'peach',note:'个人探索 · 源自字节跳动抖音校招笔试题 / 完整项目长图 · 上下滚动浏览'},
+{id:'wechat',type:'product',title:'微信 AI 日程管理助手',description:'探索从聊天内容中识别并创建日程，以 AI 建议衔接日常行程管理。',tag:'AI 产品 / 日程探索',asset:'cover8.png',cover:'cover8.png',detail:'wechat-long-web-v2.jpg?v=f60fd85e53',surface:'sage',note:'个人探索 · 源自腾讯 WXG 校招笔试题 / 完整项目长图 · 上下滚动浏览'}
 ];
 const galleryCard=(item,index)=>`<article class="gallery-card reveal" data-type="${item.type}"><button class="gallery-image ${item.surface} has-cover" data-image="${base}assets/${item.detail||item.cover||item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="放大查看${item.title}">${portfolioCover(`${base}assets/${item.cover||item.asset}`,`${item.title}设计画面`,index)}<span class="gallery-no">${String(index+1).padStart(2,'0')}</span></button><div class="gallery-card-title"><h3>${item.title}</h3><span>${item.tag}</span></div><p>${item.description}</p></article>`;
 const orbitGallery=()=>`<div class="orbit-gallery" aria-label="8 个作品的环形画廊"><div class="orbit-stage" role="region" aria-label="旋转作品环，可左右拖动，点击封面查看完整项目" tabindex="0"><div class="orbit-core"><div class="orbit-current"><span class="orbit-current-index" aria-label="第 01 个作品，共 08 个"><span class="orbit-index-flip" aria-hidden="true"><span class="orbit-index-value">01</span></span><span class="orbit-index-total" aria-hidden="true"> / 08</span></span><span class="orbit-current-title orbit-title-flip"><span class="orbit-title-value">${galleryItems[0].title}</span></span></div><div class="orbit-controls"><button type="button" data-orbit-step="-1" aria-label="上一个作品">←</button><button type="button" data-orbit-play aria-label="暂停自动旋转" aria-pressed="false">Ⅱ</button><button type="button" data-orbit-step="1" aria-label="下一个作品">→</button></div></div><div class="orbit-rotor">${galleryItems.map((item,i)=>`<button type="button" class="orbit-tile home-image media-pending" aria-busy="true" data-image="${base}assets/${item.detail||item.cover||item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="查看完整项目：${item.title}" style="--orbit-index:${i}">${portfolioImagePlaceholder(`<img src="${base}assets/orbit/${item.cover.split('?')[0].replace('.png','.jpg')}" alt="${item.title}作品封面" loading="lazy" decoding="async" draggable="false">`)}<span class="orbit-tile-label">${item.title}<i aria-hidden="true">↗</i></span></button>`).join('')}</div></div></div>`;
@@ -52,7 +52,10 @@ ${sprintReflection()}
 
 function visual(){document.title='作品选集 — 蒋雯蕙';return `<section class="visual-page-header" id="top"><h1><span>作品选集</span><span class="gallery-count">${String(galleryItems.length).padStart(2,'0')}</span></h1><div class="visual-page-bottom"><div class="gallery-filters" role="group" aria-label="筛选作品"><button data-filter="all" class="is-active" aria-pressed="true">全部 <small>${String(galleryItems.length).padStart(2,'0')}</small></button><button data-filter="product" aria-pressed="false">交互设计</button><button data-filter="visual" aria-pressed="false">视觉表达</button></div><p>一些界面与视觉表达。点击画面，看看细节。</p></div></section><section class="gallery-grid" aria-label="视觉作品">${galleryItems.map(galleryCard).join('')}</section><div class="gallery-return"><a href="../#work" class="text-link">← 回到设计思考</a><span>更多细节，存在于每一次具体判断里。</span></div>`;}
 
-document.querySelector('#main').innerHTML=isVisual?visual():home();
+// Hydrate the static document without replacing its nodes or changing its height.
+// After template/image metadata edits, run node scripts/render-static-pages.cjs.
+const main=document.querySelector('#main');
+if(!main.hasChildNodes())main.innerHTML=isVisual?visual():home();
 document.body.classList.toggle('is-visual-page',isVisual);
 const demoViewport=document.querySelector('.agent-demo-viewport');
 if(demoViewport){
@@ -63,7 +66,9 @@ if(demoViewport){
  sizeDemo();
 }
 
-const footerContact=document.createElement('span');footerContact.className='footer-email';footerContact.textContent='联系方式 - 18037185788';document.querySelector('.site-footer .footer-name').after(footerContact);
+if(!document.querySelector('.footer-email')){
+ const footerContact=document.createElement('span');footerContact.className='footer-email';footerContact.textContent='联系方式 - 18037185788';document.querySelector('.site-footer .footer-name').after(footerContact);
+}
 if(isVisual){document.querySelectorAll('a[href="./"]').forEach(a=>a.href='../');document.querySelectorAll('nav a').forEach(a=>{const key=a.dataset.nav;a.href=key==='visual'?'./':`../#${key==='work'?'work':'about'}`;});document.querySelector('[data-nav="visual"]').setAttribute('aria-current','page');}
 const dialog=document.querySelector('#image-dialog'); let lastFocus;
 const dialogTitle=dialog.querySelector('#dialog-title');
@@ -239,7 +244,7 @@ async function openArtwork(source){
   if(version!==artworkVersion||controller.signal.aborted)return;
   console.warn('Unable to prepare original artwork',error);
   dialog.dataset.imageState='error';dialogBody.setAttribute('aria-busy','false');
-  spinner.remove();message.textContent='原图加载失败，请重试。';
+  spinner.remove();message.textContent='原图加载失败，请重试';
   const retry=document.createElement('button');retry.type='button';retry.className='image-load-retry';
   retry.textContent='重新加载';retry.setAttribute('aria-label','重新加载高清原图');
   retry.addEventListener('click',()=>openArtwork(source));status.append(retry);

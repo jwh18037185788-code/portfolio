@@ -1,0 +1,2533 @@
+{
+  "date": "2026-11-04",
+  "environment": {
+    "browser": "Chromium via Codex in-app browser",
+    "cache": "HTTP Cache-Control: no-store",
+    "delaysMs": {
+      "cssAndJs": 400,
+      "appJs": 1300,
+      "font": 2500,
+      "images": 2000
+    },
+    "cpuPressure": "?cpu=busy: 80ms busy task followed by 100ms timer, for approximately 8s; not DevTools CPU multiplier",
+    "notes": "Before sampled for at least 7 seconds, final after samples approximately 12 seconds. Background tab scheduling changes timings; measurements are individual runs, not percentiles. Explicit navigation scrolls and intended transforms are separate from layout shifts."
+  },
+  "cases": [
+    {
+      "case": "before-direct-work",
+      "url": "http://127.0.0.1:4195/before/slow/?case=direct-work#work",
+      "navigationType": "navigate",
+      "viewport": [
+        1440,
+        960
+      ],
+      "observationMs": 7042,
+      "firstFrame": {
+        "t": 1028,
+        "y": 0,
+        "h": 960,
+        "main": 0,
+        "font": "loading",
+        "target": null,
+        "targetY": null,
+        "footerY": 70,
+        "footerVisible": true,
+        "split": 0,
+        "ready": null
+      },
+      "final": {
+        "t": 7042,
+        "y": 707,
+        "h": 12504,
+        "main": 12,
+        "font": "loaded",
+        "target": 894.4,
+        "targetY": 187.4,
+        "footerY": 11482.93,
+        "footerVisible": false,
+        "split": 11,
+        "ready": null
+      },
+      "layoutShiftTotalWithoutRecentInput": 0.3002613304093567,
+      "unexpectedEmptyMainFooterFrames": 1,
+      "scrollYAfterReadyRange": [
+        null,
+        null
+      ],
+      "navigationPositioningCalls": [],
+      "layoutShifts": [
+        {
+          "t": 2241.899999976158,
+          "value": 0.3002613304093567,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "FOOTER",
+                "id": "",
+                "classes": "site-footer"
+              },
+              "previous": {
+                "x": 0,
+                "y": 70,
+                "width": 1425,
+                "height": 281.671875,
+                "top": 70,
+                "right": 1425,
+                "bottom": 351.671875,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            },
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 603.6640625,
+                "y": 23.796875,
+                "width": 232.6640625,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 836.328125,
+                "bottom": 46.1953125,
+                "left": 603.6640625
+              },
+              "current": {
+                "x": 592.8984375,
+                "y": 25.203125,
+                "width": 239.1953125,
+                "height": 19.59375,
+                "top": 25.203125,
+                "right": 832.09375,
+                "bottom": 44.796875,
+                "left": 592.8984375
+              }
+            },
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": "header-note"
+              },
+              "previous": {
+                "x": 1219.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1382.3984375,
+                "bottom": 47,
+                "left": 1219.1796875
+              },
+              "current": {
+                "x": 1204.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1204.1796875
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 1028,
+          "y": 0,
+          "h": 960,
+          "main": 0,
+          "font": "loading",
+          "target": null,
+          "targetY": null,
+          "footerY": 70,
+          "footerVisible": true,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 2233,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loading",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 2598,
+          "y": 707,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 897.1,
+          "targetY": 190.1,
+          "footerY": 11482.93,
+          "footerVisible": false,
+          "split": 11,
+          "ready": null
+        }
+      ],
+      "originalRequests": null,
+      "events": [
+        {
+          "event": "scroll",
+          "y": 0.5,
+          "t": 2255.100000023842
+        },
+        {
+          "event": "scroll",
+          "y": 1,
+          "t": 2263.100000023842
+        },
+        {
+          "event": "scroll",
+          "y": 2.5,
+          "t": 2271.100000023842
+        },
+        {
+          "event": "scroll",
+          "y": 5,
+          "t": 2279.1999999284744
+        },
+        {
+          "event": "scroll",
+          "y": 8,
+          "t": 2287.6999999284744
+        },
+        {
+          "event": "scroll",
+          "y": 11.5,
+          "t": 2295
+        }
+      ],
+      "clsMaxSessionWindow": 0.3002613304093567
+    },
+    {
+      "case": "before-top-nav",
+      "url": "http://127.0.0.1:4195/before/slow/#work",
+      "navigationType": "navigate",
+      "viewport": [
+        1440,
+        960
+      ],
+      "observationMs": 7625,
+      "firstFrame": {
+        "t": 1503,
+        "y": 0,
+        "h": 960,
+        "main": 0,
+        "font": "loading",
+        "target": null,
+        "targetY": null,
+        "footerY": 70,
+        "footerVisible": true,
+        "split": 0,
+        "ready": null
+      },
+      "final": {
+        "t": 7625,
+        "y": 827,
+        "h": 12504,
+        "main": 12,
+        "font": "loaded",
+        "target": 894.4,
+        "targetY": 67.4,
+        "footerY": 11362.93,
+        "footerVisible": false,
+        "split": 11,
+        "ready": null
+      },
+      "layoutShiftTotalWithoutRecentInput": 0.30041950537665435,
+      "unexpectedEmptyMainFooterFrames": 1,
+      "scrollYAfterReadyRange": [
+        null,
+        null
+      ],
+      "navigationPositioningCalls": [],
+      "layoutShifts": [
+        {
+          "t": 2362.5999999046326,
+          "value": 0.3002613304093567,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "FOOTER",
+                "id": "",
+                "classes": "site-footer"
+              },
+              "previous": {
+                "x": 0,
+                "y": 70,
+                "width": 1425,
+                "height": 281.671875,
+                "top": 70,
+                "right": 1425,
+                "bottom": 351.671875,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            },
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 603.6640625,
+                "y": 23.796875,
+                "width": 232.6640625,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 836.328125,
+                "bottom": 46.1953125,
+                "left": 603.6640625
+              },
+              "current": {
+                "x": 592.8984375,
+                "y": 25.203125,
+                "width": 239.1953125,
+                "height": 19.59375,
+                "top": 25.203125,
+                "right": 832.09375,
+                "bottom": 44.796875,
+                "left": 592.8984375
+              }
+            },
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": "header-note"
+              },
+              "previous": {
+                "x": 1219.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1382.3984375,
+                "bottom": 47,
+                "left": 1219.1796875
+              },
+              "current": {
+                "x": 1204.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1204.1796875
+              }
+            }
+          ]
+        },
+        {
+          "t": 3580.6999999284744,
+          "value": 0.00015817496729763006,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "classes": ""
+              },
+              "previous": {
+                "x": 57.59375,
+                "y": 210.9140625,
+                "width": 231.6015625,
+                "height": 78,
+                "top": 210.9140625,
+                "right": 289.1953125,
+                "bottom": 288.9140625,
+                "left": 57.59375
+              },
+              "current": {
+                "x": 57.59375,
+                "y": 213.9140625,
+                "width": 231.6015625,
+                "height": 78,
+                "top": 213.9140625,
+                "right": 289.1953125,
+                "bottom": 291.9140625,
+                "left": 57.59375
+              }
+            },
+            {
+              "node": {
+                "classes": ""
+              },
+              "previous": {
+                "x": 57.59375,
+                "y": 284.109375,
+                "width": 231.6015625,
+                "height": 78,
+                "top": 284.109375,
+                "right": 289.1953125,
+                "bottom": 362.109375,
+                "left": 57.59375
+              },
+              "current": {
+                "x": 57.59375,
+                "y": 287.109375,
+                "width": 231.6015625,
+                "height": 78,
+                "top": 287.109375,
+                "right": 289.1953125,
+                "bottom": 365.109375,
+                "left": 57.59375
+              }
+            },
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 1234.3125,
+                "y": 343.609375,
+                "width": 133.09375,
+                "height": 19.1953125,
+                "top": 343.609375,
+                "right": 1367.40625,
+                "bottom": 362.8046875,
+                "left": 1234.3125
+              },
+              "current": {
+                "x": 1242.375,
+                "y": 343.609375,
+                "width": 125.03125,
+                "height": 19.1953125,
+                "top": 343.609375,
+                "right": 1367.40625,
+                "bottom": 362.8046875,
+                "left": 1242.375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 1503,
+          "y": 0,
+          "h": 960,
+          "main": 0,
+          "font": "loading",
+          "target": null,
+          "targetY": null,
+          "footerY": 70,
+          "footerVisible": true,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 2358,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loading",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 3663,
+          "y": 827,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 894.4,
+          "targetY": 67.4,
+          "footerY": 11362.93,
+          "footerVisible": false,
+          "split": 11,
+          "ready": null
+        }
+      ],
+      "originalRequests": null,
+      "events": [
+        {
+          "event": "scroll",
+          "y": 0.5,
+          "t": 2676.5
+        },
+        {
+          "event": "scroll",
+          "y": 1,
+          "t": 2684.899999976158
+        },
+        {
+          "event": "scroll",
+          "y": 2.5,
+          "t": 2693.0999999046326
+        },
+        {
+          "event": "scroll",
+          "y": 5,
+          "t": 2701.5
+        },
+        {
+          "event": "scroll",
+          "y": 8,
+          "t": 2709.899999976158
+        },
+        {
+          "event": "scroll",
+          "y": 12,
+          "t": 2718.0999999046326
+        }
+      ],
+      "clsMaxSessionWindow": 0.3002613304093567
+    },
+    {
+      "case": "before-about",
+      "url": "http://127.0.0.1:4195/before/slow/?case=direct-about#about",
+      "navigationType": "navigate",
+      "viewport": [
+        1440,
+        960
+      ],
+      "observationMs": 8431,
+      "firstFrame": {
+        "t": 1585,
+        "y": 0,
+        "h": 960,
+        "main": 0,
+        "font": "loading",
+        "target": null,
+        "targetY": null,
+        "footerY": 70,
+        "footerVisible": true,
+        "split": 0,
+        "ready": null
+      },
+      "final": {
+        "t": 8431,
+        "y": 11224,
+        "h": 12504,
+        "main": 12,
+        "font": "loaded",
+        "target": 11313.76,
+        "targetY": 89.76,
+        "footerY": 965.93,
+        "footerVisible": false,
+        "split": 11,
+        "ready": null
+      },
+      "layoutShiftTotalWithoutRecentInput": 0.3007106330192944,
+      "unexpectedEmptyMainFooterFrames": 1,
+      "scrollYAfterReadyRange": [
+        null,
+        null
+      ],
+      "navigationPositioningCalls": [],
+      "layoutShifts": [
+        {
+          "t": 3214.4000000953674,
+          "value": 0.3002284356725146,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "FOOTER",
+                "id": "",
+                "classes": "site-footer"
+              },
+              "previous": {
+                "x": 0,
+                "y": 70,
+                "width": 1425,
+                "height": 281.671875,
+                "top": 70,
+                "right": 1425,
+                "bottom": 351.671875,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            },
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 603.6640625,
+                "y": 23.796875,
+                "width": 232.6640625,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 836.328125,
+                "bottom": 46.1953125,
+                "left": 603.6640625
+              },
+              "current": {
+                "x": 596.1640625,
+                "y": 23.796875,
+                "width": 232.6640625,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 828.828125,
+                "bottom": 46.1953125,
+                "left": 596.1640625
+              }
+            },
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": "header-note"
+              },
+              "previous": {
+                "x": 1219.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1382.3984375,
+                "bottom": 47,
+                "left": 1219.1796875
+              },
+              "current": {
+                "x": 1204.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1204.1796875
+              }
+            }
+          ]
+        },
+        {
+          "t": 3984.600000023842,
+          "value": 2.196921168051708e-05,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": "header-note"
+              },
+              "previous": {
+                "x": 1204.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1204.1796875
+              },
+              "current": {
+                "x": 1215.09375,
+                "y": 23,
+                "width": 152.3046875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1215.09375
+              }
+            }
+          ]
+        },
+        {
+          "t": 4838.600000023842,
+          "value": 0.0004602281350992613,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "A",
+                "id": "",
+                "classes": "text-link text-action"
+              },
+              "previous": {
+                "x": 57.59375,
+                "y": 806.5,
+                "width": 224,
+                "height": 64.8984375,
+                "top": 806.5,
+                "right": 281.59375,
+                "bottom": 871.3984375,
+                "left": 57.59375
+              },
+              "current": {
+                "x": 57.59375,
+                "y": 851.8046875,
+                "width": 219.796875,
+                "height": 19.59375,
+                "top": 851.8046875,
+                "right": 277.390625,
+                "bottom": 871.3984375,
+                "left": 57.59375
+              }
+            },
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 596.75,
+                "y": 23.796875,
+                "width": 231.5,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 828.25,
+                "bottom": 46.1953125,
+                "left": 596.75
+              },
+              "current": {
+                "x": 592.8984375,
+                "y": 25.203125,
+                "width": 239.1953125,
+                "height": 19.59375,
+                "top": 25.203125,
+                "right": 832.09375,
+                "bottom": 44.796875,
+                "left": 592.8984375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 1585,
+          "y": 0,
+          "h": 960,
+          "main": 0,
+          "font": "loading",
+          "target": null,
+          "targetY": null,
+          "footerY": 70,
+          "footerVisible": true,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 3207,
+          "y": 0,
+          "h": 12524,
+          "main": 12,
+          "font": "loading",
+          "target": 11341.73,
+          "targetY": 11341.73,
+          "footerY": 12209.91,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 3981,
+          "y": 0,
+          "h": 12524,
+          "main": 12,
+          "font": "loaded",
+          "target": 11341.73,
+          "targetY": 11341.73,
+          "footerY": 12209.91,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 4837,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 11335.76,
+          "targetY": 11335.76,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        }
+      ],
+      "originalRequests": null,
+      "events": [
+        {
+          "event": "scroll",
+          "y": 11246,
+          "t": 5219.900000095367
+        },
+        {
+          "event": "scroll",
+          "y": 11245.5,
+          "t": 5857
+        },
+        {
+          "event": "scroll",
+          "y": 11244,
+          "t": 5865.200000047684
+        },
+        {
+          "event": "scroll",
+          "y": 11239.5,
+          "t": 5873.600000023842
+        },
+        {
+          "event": "scroll",
+          "y": 11233,
+          "t": 5881.900000095367
+        },
+        {
+          "event": "scroll",
+          "y": 11230,
+          "t": 5890.300000071526
+        }
+      ],
+      "clsMaxSessionWindow": 0.3007106330192944
+    },
+    {
+      "case": "before-mobile-work",
+      "url": "http://127.0.0.1:4195/before/slow/?case=mobile-work#work",
+      "navigationType": "navigate",
+      "viewport": [
+        390,
+        844
+      ],
+      "observationMs": 8521,
+      "firstFrame": {
+        "t": 1656,
+        "y": 0,
+        "h": 844,
+        "main": 0,
+        "font": "loading",
+        "target": null,
+        "targetY": null,
+        "footerY": 64,
+        "footerVisible": true,
+        "split": 0,
+        "ready": null
+      },
+      "final": {
+        "t": 8521,
+        "y": 708,
+        "h": 14289,
+        "main": 12,
+        "font": "loaded",
+        "target": 783.36,
+        "targetY": 75.36,
+        "footerY": 13363.55,
+        "footerVisible": false,
+        "split": 11,
+        "ready": null
+      },
+      "layoutShiftTotalWithoutRecentInput": 0.25847594760194287,
+      "unexpectedEmptyMainFooterFrames": 2,
+      "scrollYAfterReadyRange": [
+        null,
+        null
+      ],
+      "navigationPositioningCalls": [],
+      "layoutShifts": [
+        {
+          "t": 4057.600000023842,
+          "value": 6.343212469616038e-05,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 256.28125,
+                "y": 203.8125,
+                "width": 111.71875,
+                "height": 17.59375,
+                "top": 203.8125,
+                "right": 368,
+                "bottom": 221.40625,
+                "left": 256.28125
+              },
+              "current": {
+                "x": 261.171875,
+                "y": 203.8125,
+                "width": 106.828125,
+                "height": 17.59375,
+                "top": 203.8125,
+                "right": 368,
+                "bottom": 221.40625,
+                "left": 261.171875
+              }
+            },
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 166.7578125,
+                "y": 101,
+                "width": 28,
+                "height": 52,
+                "top": 101,
+                "right": 194.7578125,
+                "bottom": 153,
+                "left": 166.7578125
+              },
+              "current": {
+                "x": 162.875,
+                "y": 102.5,
+                "width": 27.5,
+                "height": 49,
+                "top": 102.5,
+                "right": 190.375,
+                "bottom": 151.5,
+                "left": 162.875
+              }
+            }
+          ]
+        },
+        {
+          "t": 4164,
+          "value": 0.23167298578199053,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "FOOTER",
+                "id": "",
+                "classes": "site-footer"
+              },
+              "previous": {
+                "x": 0,
+                "y": 64,
+                "width": 375,
+                "height": 185.40625,
+                "top": 64,
+                "right": 375,
+                "bottom": 249.40625,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            },
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 185,
+                "y": 22.3984375,
+                "width": 183,
+                "height": 19.1953125,
+                "top": 22.3984375,
+                "right": 368,
+                "bottom": 41.59375,
+                "left": 185
+              },
+              "current": {
+                "x": 170,
+                "y": 22.3984375,
+                "width": 183,
+                "height": 19.1953125,
+                "top": 22.3984375,
+                "right": 353,
+                "bottom": 41.59375,
+                "left": 170
+              }
+            }
+          ]
+        },
+        {
+          "t": 4400.399999976158,
+          "value": 0.02673952969525617,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "DIV",
+                "id": "",
+                "classes": "hero-main"
+              },
+              "previous": {
+                "x": 22,
+                "y": 187.109375,
+                "width": 331,
+                "height": 315.1640625,
+                "top": 187.109375,
+                "right": 353,
+                "bottom": 502.2734375,
+                "left": 22
+              },
+              "current": {
+                "x": 22,
+                "y": 208.4609375,
+                "width": 331,
+                "height": 315.1640625,
+                "top": 208.4609375,
+                "right": 353,
+                "bottom": 523.625,
+                "left": 22
+              }
+            },
+            {
+              "node": {
+                "tag": "DIV",
+                "id": "",
+                "classes": "hero-bottom"
+              },
+              "previous": {
+                "x": 22,
+                "y": 605.375,
+                "width": 331,
+                "height": 157.984375,
+                "top": 605.375,
+                "right": 353,
+                "bottom": 763.359375,
+                "left": 22
+              },
+              "current": {
+                "x": 22,
+                "y": 648.078125,
+                "width": 331,
+                "height": 115.28125,
+                "top": 648.078125,
+                "right": 353,
+                "bottom": 763.359375,
+                "left": 22
+              }
+            },
+            {
+              "node": {
+                "tag": "H1",
+                "id": "",
+                "classes": "hero-brand"
+              },
+              "previous": {
+                "x": 150.609375,
+                "y": 247.109375,
+                "width": 202.5,
+                "height": 159.3828125,
+                "top": 247.109375,
+                "right": 353.109375,
+                "bottom": 406.4921875,
+                "left": 150.609375
+              },
+              "current": {
+                "x": 150.609375,
+                "y": 268.4609375,
+                "width": 202.5,
+                "height": 159.3828125,
+                "top": 268.4609375,
+                "right": 353.109375,
+                "bottom": 427.84375,
+                "left": 150.609375
+              }
+            },
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 170,
+                "y": 22.3984375,
+                "width": 183,
+                "height": 19.1953125,
+                "top": 22.3984375,
+                "right": 353,
+                "bottom": 41.59375,
+                "left": 170
+              },
+              "current": {
+                "x": 163.3984375,
+                "y": 23.6015625,
+                "width": 189.6015625,
+                "height": 16.796875,
+                "top": 23.6015625,
+                "right": 353,
+                "bottom": 40.3984375,
+                "left": 163.3984375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 1656,
+          "y": 0,
+          "h": 844,
+          "main": 0,
+          "font": "loading",
+          "target": null,
+          "targetY": null,
+          "footerY": 64,
+          "footerVisible": true,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 4057,
+          "y": 0,
+          "h": 844,
+          "main": 0,
+          "font": "loaded",
+          "target": null,
+          "targetY": null,
+          "footerY": 64,
+          "footerVisible": true,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 4160,
+          "y": 0,
+          "h": 14326,
+          "main": 12,
+          "font": "loaded",
+          "target": 797.36,
+          "targetY": 797.36,
+          "footerY": 14108.92,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 4400,
+          "y": 0,
+          "h": 14289,
+          "main": 12,
+          "font": "loaded",
+          "target": 797.36,
+          "targetY": 797.36,
+          "footerY": 14071.55,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        }
+      ],
+      "originalRequests": null,
+      "events": [
+        {
+          "event": "pageshow",
+          "persisted": false,
+          "t": 4874.799999952316
+        },
+        {
+          "event": "scroll",
+          "y": 708,
+          "t": 4877.200000047684
+        }
+      ],
+      "clsMaxSessionWindow": 0.25847594760194287
+    },
+    {
+      "case": "after-direct-work",
+      "url": "http://127.0.0.1:4195/after/slow/?case=direct-work#work",
+      "navigationType": "navigate",
+      "viewport": [
+        1440,
+        960
+      ],
+      "observationMs": 7047,
+      "firstFrame": {
+        "t": 997,
+        "y": 0,
+        "h": 12524,
+        "main": 12,
+        "font": "loading",
+        "target": 916.4,
+        "targetY": 916.4,
+        "footerY": 12209.91,
+        "footerVisible": false,
+        "split": 0,
+        "ready": null
+      },
+      "final": {
+        "t": 7047,
+        "y": 804,
+        "h": 12504,
+        "main": 12,
+        "font": "loaded",
+        "target": 894.4,
+        "targetY": 90.4,
+        "footerY": 11385.93,
+        "footerVisible": false,
+        "split": 11,
+        "ready": "true"
+      },
+      "layoutShiftTotalWithoutRecentInput": 3.075728429260285e-05,
+      "unexpectedEmptyMainFooterFrames": 0,
+      "scrollYAfterReadyRange": [
+        804,
+        804
+      ],
+      "navigationPositioningCalls": [
+        {
+          "t": 3757.5,
+          "name": "scrollTo",
+          "args": [
+            {
+              "top": 804,
+              "behavior": "instant"
+            }
+          ]
+        }
+      ],
+      "layoutShifts": [
+        {
+          "t": 2184.7000000476837,
+          "value": 8.78807261208577e-06,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 596.1640625,
+                "y": 23.796875,
+                "width": 232.6640625,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 828.828125,
+                "bottom": 46.1953125,
+                "left": 596.1640625
+              },
+              "current": {
+                "x": 592.8984375,
+                "y": 25.203125,
+                "width": 239.1953125,
+                "height": 19.59375,
+                "top": 25.203125,
+                "right": 832.09375,
+                "bottom": 44.796875,
+                "left": 592.8984375
+              }
+            }
+          ]
+        },
+        {
+          "t": 2595.7000000476837,
+          "value": 2.196921168051708e-05,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": "header-note"
+              },
+              "previous": {
+                "x": 1204.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1204.1796875
+              },
+              "current": {
+                "x": 1215.09375,
+                "y": 23,
+                "width": 152.3046875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1215.09375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 997,
+          "y": 0,
+          "h": 12524,
+          "main": 12,
+          "font": "loading",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12209.91,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 2183,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loading",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 2592,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 3783,
+          "y": 804,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 916.4,
+          "targetY": 112.4,
+          "footerY": 11385.93,
+          "footerVisible": false,
+          "split": 11,
+          "ready": "true"
+        }
+      ],
+      "originalRequests": null,
+      "events": [
+        {
+          "event": "scroll",
+          "y": 804,
+          "t": 3771.600000023842
+        },
+        {
+          "event": "pageshow",
+          "persisted": false,
+          "t": 4580.800000071526
+        },
+        {
+          "event": "scroll",
+          "y": 804,
+          "t": 4586.700000047684
+        }
+      ],
+      "clsMaxSessionWindow": 3.075728429260285e-05
+    },
+    {
+      "case": "after-top-or-bottom-nav",
+      "url": "http://127.0.0.1:4195/after/slow/#work",
+      "navigationType": "navigate",
+      "viewport": [
+        1440,
+        960
+      ],
+      "observationMs": 12440,
+      "firstFrame": {
+        "t": 966,
+        "y": 0,
+        "h": 12524,
+        "main": 12,
+        "font": "loading",
+        "target": 916.4,
+        "targetY": 916.4,
+        "footerY": 12209.91,
+        "footerVisible": false,
+        "split": 0,
+        "ready": null
+      },
+      "final": {
+        "t": 12440,
+        "y": 804,
+        "h": 12504,
+        "main": 12,
+        "font": "loaded",
+        "target": 894.4,
+        "targetY": 90.4,
+        "footerY": 11385.93,
+        "footerVisible": false,
+        "split": 11,
+        "ready": "true"
+      },
+      "layoutShiftTotalWithoutRecentInput": 8.78807261208577e-06,
+      "unexpectedEmptyMainFooterFrames": 0,
+      "scrollYAfterReadyRange": [
+        804,
+        804
+      ],
+      "navigationPositioningCalls": [
+        {
+          "t": 2990.600000023842,
+          "name": "scrollTo",
+          "args": [
+            {
+              "top": 804,
+              "behavior": "instant"
+            }
+          ],
+          "stack": [
+            "    at window.<computed> (http://127.0.0.1:4195/__qa/observer.js:5:146)",
+            "    at document.addEventListener.once (http://127.0.0.1:4195/after/slow/navigation.js?v=2e97e18111:48:16)"
+          ]
+        }
+      ],
+      "layoutShifts": [
+        {
+          "t": 2225.5,
+          "value": 8.78807261208577e-06,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 596.1640625,
+                "y": 23.796875,
+                "width": 232.6640625,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 828.828125,
+                "bottom": 46.1953125,
+                "left": 596.1640625
+              },
+              "current": {
+                "x": 592.8984375,
+                "y": 25.203125,
+                "width": 239.1953125,
+                "height": 19.59375,
+                "top": 25.203125,
+                "right": 832.09375,
+                "bottom": 44.796875,
+                "left": 592.8984375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 966,
+          "y": 0,
+          "h": 12524,
+          "main": 12,
+          "font": "loading",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12209.91,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 2224,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loading",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 2990,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 11,
+          "ready": null
+        },
+        {
+          "t": 3009,
+          "y": 804,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 916.4,
+          "targetY": 112.4,
+          "footerY": 11385.93,
+          "footerVisible": false,
+          "split": 11,
+          "ready": "true"
+        }
+      ],
+      "originalRequests": null,
+      "events": [
+        {
+          "event": "scroll",
+          "y": 804,
+          "t": 3000.100000023842
+        },
+        {
+          "event": "pageshow",
+          "persisted": false,
+          "t": 4536
+        },
+        {
+          "event": "scroll",
+          "y": 804,
+          "t": 4536.299999952316
+        }
+      ],
+      "clsMaxSessionWindow": 8.78807261208577e-06
+    },
+    {
+      "case": "after-mobile-work",
+      "url": "http://127.0.0.1:4195/after/slow/?case=mobile-final#work",
+      "navigationType": "navigate",
+      "viewport": [
+        390,
+        844
+      ],
+      "observationMs": 14166,
+      "firstFrame": {
+        "t": 2645,
+        "y": 0,
+        "h": 14353,
+        "main": 12,
+        "font": "loading",
+        "target": 797.36,
+        "targetY": 797.36,
+        "footerY": 14135.52,
+        "footerVisible": false,
+        "split": 0,
+        "ready": null,
+        "saved": null
+      },
+      "final": {
+        "t": 14166,
+        "y": 693,
+        "h": 14289,
+        "main": 12,
+        "font": "loaded",
+        "target": 783.36,
+        "targetY": 90.36,
+        "footerY": 13378.55,
+        "footerVisible": false,
+        "split": 11,
+        "ready": "true",
+        "saved": {
+          "x": 0,
+          "y": 693,
+          "hash": "#work"
+        }
+      },
+      "layoutShiftTotalWithoutRecentInput": 7.527087813896813e-05,
+      "unexpectedEmptyMainFooterFrames": 0,
+      "scrollYAfterReadyRange": [
+        693,
+        693
+      ],
+      "navigationPositioningCalls": [
+        {
+          "t": 4738.100000023842,
+          "name": "scrollTo",
+          "args": [
+            {
+              "left": 0,
+              "top": 693,
+              "behavior": "instant"
+            }
+          ],
+          "stack": [
+            "    at window.<computed> (http://127.0.0.1:4195/__qa/observer.js:5:146)",
+            "    at document.addEventListener.once (http://127.0.0.1:4195/after/slow/navigation.js?v=9f5cd74fc8:53:16)"
+          ]
+        }
+      ],
+      "layoutShifts": [
+        {
+          "t": 3923.600000023842,
+          "value": 7.527087813896813e-05,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 169,
+                "y": 22.3984375,
+                "width": 184,
+                "height": 19.1953125,
+                "top": 22.3984375,
+                "right": 353,
+                "bottom": 41.59375,
+                "left": 169
+              },
+              "current": {
+                "x": 163.3984375,
+                "y": 23.6015625,
+                "width": 189.6015625,
+                "height": 16.796875,
+                "top": 23.6015625,
+                "right": 353,
+                "bottom": 40.3984375,
+                "left": 163.3984375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 2645,
+          "y": 0,
+          "h": 14353,
+          "main": 12,
+          "font": "loading",
+          "target": 797.36,
+          "targetY": 797.36,
+          "footerY": 14135.52,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null,
+          "saved": null
+        },
+        {
+          "t": 3922,
+          "y": 0,
+          "h": 14316,
+          "main": 12,
+          "font": "loading",
+          "target": 797.36,
+          "targetY": 797.36,
+          "footerY": 14098.15,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null,
+          "saved": null
+        },
+        {
+          "t": 4718,
+          "y": 0,
+          "h": 14289,
+          "main": 12,
+          "font": "loading",
+          "target": 797.36,
+          "targetY": 797.36,
+          "footerY": 14071.55,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null,
+          "saved": null
+        },
+        {
+          "t": 4738,
+          "y": 0,
+          "h": 14289,
+          "main": 12,
+          "font": "loaded",
+          "target": 797.36,
+          "targetY": 797.36,
+          "footerY": 14071.55,
+          "footerVisible": false,
+          "split": 11,
+          "ready": null,
+          "saved": null
+        },
+        {
+          "t": 4748,
+          "y": 693,
+          "h": 14289,
+          "main": 12,
+          "font": "loaded",
+          "target": 797.36,
+          "targetY": 104.36,
+          "footerY": 13378.55,
+          "footerVisible": false,
+          "split": 11,
+          "ready": "true",
+          "saved": {
+            "x": 0,
+            "y": 693,
+            "hash": "#work"
+          }
+        }
+      ],
+      "originalRequests": [],
+      "events": [
+        {
+          "event": "pageshow",
+          "persisted": false,
+          "t": 4717.5
+        },
+        {
+          "event": "scroll",
+          "y": 693,
+          "t": 4740.300000071526
+        }
+      ],
+      "clsMaxSessionWindow": 7.527087813896813e-05
+    },
+    {
+      "case": "after-desktop-about-pressure",
+      "url": "http://127.0.0.1:4195/after/slow/?case=desktop-about-final&cpu=busy#about",
+      "navigationType": "navigate",
+      "viewport": [
+        1440,
+        960
+      ],
+      "observationMs": 12028,
+      "firstFrame": {
+        "t": 1031,
+        "y": 0,
+        "h": 12524,
+        "main": 12,
+        "font": "loading",
+        "target": 11341.73,
+        "targetY": 11341.73,
+        "footerY": 12209.91,
+        "footerVisible": false,
+        "split": 0,
+        "ready": null,
+        "saved": null
+      },
+      "final": {
+        "t": 12028,
+        "y": 11224,
+        "h": 12504,
+        "main": 12,
+        "font": "loaded",
+        "target": 11313.76,
+        "targetY": 89.76,
+        "footerY": 965.93,
+        "footerVisible": false,
+        "split": 11,
+        "ready": "true",
+        "saved": {
+          "x": 0,
+          "y": 11224,
+          "hash": "#about"
+        }
+      },
+      "layoutShiftTotalWithoutRecentInput": 3.075728429260285e-05,
+      "unexpectedEmptyMainFooterFrames": 0,
+      "scrollYAfterReadyRange": [
+        11224,
+        11224
+      ],
+      "navigationPositioningCalls": [
+        {
+          "t": 3555.8000000715256,
+          "name": "scrollTo",
+          "args": [
+            {
+              "left": 0,
+              "top": 11224,
+              "behavior": "instant"
+            }
+          ],
+          "stack": [
+            "    at window.<computed> (http://127.0.0.1:4195/__qa/observer.js:5:146)",
+            "    at document.addEventListener.once (http://127.0.0.1:4195/after/slow/navigation.js?v=9f5cd74fc8:53:16)"
+          ]
+        }
+      ],
+      "layoutShifts": [
+        {
+          "t": 2621.2000000476837,
+          "value": 8.78807261208577e-06,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 596.1640625,
+                "y": 23.796875,
+                "width": 232.6640625,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 828.828125,
+                "bottom": 46.1953125,
+                "left": 596.1640625
+              },
+              "current": {
+                "x": 592.8984375,
+                "y": 25.203125,
+                "width": 239.1953125,
+                "height": 19.59375,
+                "top": 25.203125,
+                "right": 832.09375,
+                "bottom": 44.796875,
+                "left": 592.8984375
+              }
+            }
+          ]
+        },
+        {
+          "t": 3159.5,
+          "value": 2.196921168051708e-05,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": "header-note"
+              },
+              "previous": {
+                "x": 1204.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1204.1796875
+              },
+              "current": {
+                "x": 1215.09375,
+                "y": 23,
+                "width": 152.3046875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1215.09375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 1031,
+          "y": 0,
+          "h": 12524,
+          "main": 12,
+          "font": "loading",
+          "target": 11341.73,
+          "targetY": 11341.73,
+          "footerY": 12209.91,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null,
+          "saved": null
+        },
+        {
+          "t": 2583,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loading",
+          "target": 11335.76,
+          "targetY": 11335.76,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null,
+          "saved": null
+        },
+        {
+          "t": 3156,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 11335.76,
+          "targetY": 11335.76,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null,
+          "saved": null
+        },
+        {
+          "t": 3654,
+          "y": 11224,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 11335.76,
+          "targetY": 111.76,
+          "footerY": 965.93,
+          "footerVisible": false,
+          "split": 11,
+          "ready": "true",
+          "saved": {
+            "x": 0,
+            "y": 11224,
+            "hash": "#about"
+          }
+        }
+      ],
+      "originalRequests": [],
+      "events": [
+        {
+          "event": "scroll",
+          "y": 11224,
+          "t": 3567.4000000953674
+        },
+        {
+          "event": "pageshow",
+          "persisted": false,
+          "t": 4477.900000095367
+        },
+        {
+          "event": "scroll",
+          "y": 11224,
+          "t": 4560.900000095367
+        }
+      ],
+      "clsMaxSessionWindow": 3.075728429260285e-05
+    },
+    {
+      "case": "after-mobile-about-pressure",
+      "url": "http://127.0.0.1:4195/after/slow/?case=mobile-about&cpu=busy#about",
+      "navigationType": "navigate",
+      "viewport": [
+        390,
+        844
+      ],
+      "observationMs": 13219,
+      "firstFrame": {
+        "t": 2087,
+        "y": 0,
+        "h": 14353,
+        "main": 12,
+        "font": "loading",
+        "target": 13283.54,
+        "targetY": 13283.54,
+        "footerY": 14135.52,
+        "footerVisible": false,
+        "split": 0,
+        "ready": null
+      },
+      "final": {
+        "t": 13219,
+        "y": 13130,
+        "h": 14289,
+        "main": 12,
+        "font": "loaded",
+        "target": 13219.58,
+        "targetY": 89.58,
+        "footerY": 941.55,
+        "footerVisible": false,
+        "split": 11,
+        "ready": "true"
+      },
+      "layoutShiftTotalWithoutRecentInput": 8.865893050002621e-05,
+      "unexpectedEmptyMainFooterFrames": 0,
+      "scrollYAfterReadyRange": [
+        13130,
+        13130
+      ],
+      "navigationPositioningCalls": [
+        {
+          "t": 6074.899999976158,
+          "name": "scrollTo",
+          "args": [
+            {
+              "left": 0,
+              "top": 13130,
+              "behavior": "instant"
+            }
+          ],
+          "stack": [
+            "    at window.<computed> (http://127.0.0.1:4195/__qa/observer.js:5:146)",
+            "    at document.addEventListener.once (http://127.0.0.1:4195/after/slow/navigation.js?v=9f5cd74fc8:53:16)"
+          ]
+        }
+      ],
+      "layoutShifts": [
+        {
+          "t": 4936.5,
+          "value": 8.865893050002621e-05,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 170,
+                "y": 22.3984375,
+                "width": 183,
+                "height": 19.1953125,
+                "top": 22.3984375,
+                "right": 353,
+                "bottom": 41.59375,
+                "left": 170
+              },
+              "current": {
+                "x": 163.3984375,
+                "y": 23.6015625,
+                "width": 189.6015625,
+                "height": 16.796875,
+                "top": 23.6015625,
+                "right": 353,
+                "bottom": 40.3984375,
+                "left": 163.3984375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 2087,
+          "y": 0,
+          "h": 14353,
+          "main": 12,
+          "font": "loading",
+          "target": 13283.54,
+          "targetY": 13283.54,
+          "footerY": 14135.52,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 4576,
+          "y": 0,
+          "h": 14326,
+          "main": 12,
+          "font": "loading",
+          "target": 13256.95,
+          "targetY": 13256.95,
+          "footerY": 14108.92,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 4583,
+          "y": 0,
+          "h": 14326,
+          "main": 12,
+          "font": "loaded",
+          "target": 13256.95,
+          "targetY": 13256.95,
+          "footerY": 14108.92,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 4936,
+          "y": 0,
+          "h": 14289,
+          "main": 12,
+          "font": "loaded",
+          "target": 13233.58,
+          "targetY": 13233.58,
+          "footerY": 14071.55,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 6094,
+          "y": 13130,
+          "h": 14289,
+          "main": 12,
+          "font": "loaded",
+          "target": 13233.58,
+          "targetY": 103.58,
+          "footerY": 941.55,
+          "footerVisible": false,
+          "split": 11,
+          "ready": "true"
+        }
+      ],
+      "originalRequests": null,
+      "events": [
+        {
+          "event": "pageshow",
+          "persisted": false,
+          "t": 6080.899999976158
+        },
+        {
+          "event": "scroll",
+          "y": 13130,
+          "t": 6083.200000047684
+        }
+      ],
+      "clsMaxSessionWindow": 8.865893050002621e-05
+    },
+    {
+      "case": "after-mobile-about-refresh",
+      "url": "http://127.0.0.1:4195/after/slow/?case=mobile-about&cpu=busy#about",
+      "navigationType": "reload",
+      "viewport": [
+        390,
+        844
+      ],
+      "observationMs": 12852,
+      "firstFrame": {
+        "t": 1484,
+        "y": 0,
+        "h": 14353,
+        "main": 12,
+        "font": "loading",
+        "target": 13283.54,
+        "targetY": 13283.54,
+        "footerY": 14135.52,
+        "footerVisible": false,
+        "split": 0,
+        "ready": null
+      },
+      "final": {
+        "t": 12852,
+        "y": 13130,
+        "h": 14289,
+        "main": 12,
+        "font": "loaded",
+        "target": 13219.58,
+        "targetY": 89.58,
+        "footerY": 941.55,
+        "footerVisible": false,
+        "split": 11,
+        "ready": "true"
+      },
+      "layoutShiftTotalWithoutRecentInput": 7.527087813896813e-05,
+      "unexpectedEmptyMainFooterFrames": 0,
+      "scrollYAfterReadyRange": [
+        13130,
+        13130
+      ],
+      "navigationPositioningCalls": [
+        {
+          "t": 3862.899999976158,
+          "name": "scrollTo",
+          "args": [
+            {
+              "left": 0,
+              "top": 13130,
+              "behavior": "instant"
+            }
+          ],
+          "stack": [
+            "    at window.<computed> (http://127.0.0.1:4195/__qa/observer.js:5:146)",
+            "    at document.addEventListener.once (http://127.0.0.1:4195/after/slow/navigation.js?v=9f5cd74fc8:53:16)"
+          ]
+        }
+      ],
+      "layoutShifts": [
+        {
+          "t": 3035.5,
+          "value": 7.527087813896813e-05,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 169,
+                "y": 22.3984375,
+                "width": 184,
+                "height": 19.1953125,
+                "top": 22.3984375,
+                "right": 353,
+                "bottom": 41.59375,
+                "left": 169
+              },
+              "current": {
+                "x": 163.3984375,
+                "y": 23.6015625,
+                "width": 189.6015625,
+                "height": 16.796875,
+                "top": 23.6015625,
+                "right": 353,
+                "bottom": 40.3984375,
+                "left": 163.3984375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 1484,
+          "y": 0,
+          "h": 14353,
+          "main": 12,
+          "font": "loading",
+          "target": 13283.54,
+          "targetY": 13283.54,
+          "footerY": 14135.52,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 3034,
+          "y": 0,
+          "h": 14316,
+          "main": 12,
+          "font": "loading",
+          "target": 13260.17,
+          "targetY": 13260.17,
+          "footerY": 14098.15,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 3848,
+          "y": 0,
+          "h": 14289,
+          "main": 12,
+          "font": "loading",
+          "target": 13233.58,
+          "targetY": 13233.58,
+          "footerY": 14071.55,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null
+        },
+        {
+          "t": 3863,
+          "y": 0,
+          "h": 14289,
+          "main": 12,
+          "font": "loaded",
+          "target": 13233.58,
+          "targetY": 13233.58,
+          "footerY": 14071.55,
+          "footerVisible": false,
+          "split": 11,
+          "ready": null
+        },
+        {
+          "t": 3877,
+          "y": 13130,
+          "h": 14289,
+          "main": 12,
+          "font": "loaded",
+          "target": 13233.58,
+          "targetY": 103.58,
+          "footerY": 941.55,
+          "footerVisible": false,
+          "split": 11,
+          "ready": "true"
+        }
+      ],
+      "originalRequests": [],
+      "events": [
+        {
+          "event": "pageshow",
+          "persisted": false,
+          "t": 3848
+        },
+        {
+          "event": "scroll",
+          "y": 13130,
+          "t": 3868.899999976158
+        }
+      ],
+      "clsMaxSessionWindow": 7.527087813896813e-05
+    },
+    {
+      "case": "after-reading-back",
+      "url": "http://127.0.0.1:4195/after/slow/?case=reading#work",
+      "navigationType": "back_forward",
+      "viewport": [
+        1440,
+        960
+      ],
+      "observationMs": 12157,
+      "firstFrame": {
+        "t": 1093,
+        "y": 0,
+        "h": 12524,
+        "main": 12,
+        "font": "loading",
+        "target": 916.4,
+        "targetY": 916.4,
+        "footerY": 12209.91,
+        "footerVisible": false,
+        "split": 0,
+        "ready": null,
+        "saved": {
+          "x": 0,
+          "y": 10024,
+          "hash": "#work"
+        }
+      },
+      "final": {
+        "t": 12157,
+        "y": 10024,
+        "h": 12504,
+        "main": 12,
+        "font": "loaded",
+        "target": 916.4,
+        "targetY": -9107.6,
+        "footerY": 2165.93,
+        "footerVisible": false,
+        "split": 11,
+        "ready": "true",
+        "saved": {
+          "x": 0,
+          "y": 10024,
+          "hash": "#work"
+        }
+      },
+      "layoutShiftTotalWithoutRecentInput": 3.075728429260285e-05,
+      "unexpectedEmptyMainFooterFrames": 0,
+      "scrollYAfterReadyRange": [
+        10024,
+        10024
+      ],
+      "navigationPositioningCalls": [
+        {
+          "t": 3105.2999999523163,
+          "name": "scrollTo",
+          "args": [
+            {
+              "left": 0,
+              "top": 10024,
+              "behavior": "instant"
+            }
+          ],
+          "stack": [
+            "    at window.<computed> (http://127.0.0.1:4195/__qa/observer.js:5:146)",
+            "    at document.addEventListener.once (http://127.0.0.1:4195/after/slow/navigation.js?v=9f5cd74fc8:53:16)"
+          ]
+        }
+      ],
+      "layoutShifts": [
+        {
+          "t": 2353.7000000476837,
+          "value": 8.78807261208577e-06,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "NAV",
+                "id": "",
+                "classes": ""
+              },
+              "previous": {
+                "x": 596.1640625,
+                "y": 23.796875,
+                "width": 232.6640625,
+                "height": 22.3984375,
+                "top": 23.796875,
+                "right": 828.828125,
+                "bottom": 46.1953125,
+                "left": 596.1640625
+              },
+              "current": {
+                "x": 592.8984375,
+                "y": 25.203125,
+                "width": 239.1953125,
+                "height": 19.59375,
+                "top": 25.203125,
+                "right": 832.09375,
+                "bottom": 44.796875,
+                "left": 592.8984375
+              }
+            }
+          ]
+        },
+        {
+          "t": 3095.2000000476837,
+          "value": 2.196921168051708e-05,
+          "input": false,
+          "sources": [
+            {
+              "node": {
+                "tag": "SPAN",
+                "id": "",
+                "classes": "header-note"
+              },
+              "previous": {
+                "x": 1204.1796875,
+                "y": 23,
+                "width": 163.21875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1204.1796875
+              },
+              "current": {
+                "x": 1215.09375,
+                "y": 23,
+                "width": 152.3046875,
+                "height": 24,
+                "top": 23,
+                "right": 1367.3984375,
+                "bottom": 47,
+                "left": 1215.09375
+              }
+            }
+          ]
+        }
+      ],
+      "layoutTimeline": [
+        {
+          "t": 1093,
+          "y": 0,
+          "h": 12524,
+          "main": 12,
+          "font": "loading",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12209.91,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null,
+          "saved": {
+            "x": 0,
+            "y": 10024,
+            "hash": "#work"
+          }
+        },
+        {
+          "t": 2352,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loading",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 0,
+          "ready": null,
+          "saved": {
+            "x": 0,
+            "y": 10024,
+            "hash": "#work"
+          }
+        },
+        {
+          "t": 3105,
+          "y": 0,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 916.4,
+          "targetY": 916.4,
+          "footerY": 12189.93,
+          "footerVisible": false,
+          "split": 11,
+          "ready": null,
+          "saved": {
+            "x": 0,
+            "y": 10024,
+            "hash": "#work"
+          }
+        },
+        {
+          "t": 3116,
+          "y": 10024,
+          "h": 12504,
+          "main": 12,
+          "font": "loaded",
+          "target": 916.4,
+          "targetY": -9107.6,
+          "footerY": 2165.93,
+          "footerVisible": false,
+          "split": 11,
+          "ready": "true",
+          "saved": {
+            "x": 0,
+            "y": 10024,
+            "hash": "#work"
+          }
+        }
+      ],
+      "originalRequests": [],
+      "events": [
+        {
+          "event": "pageshow",
+          "persisted": false,
+          "t": 3091.399999976158
+        },
+        {
+          "event": "scroll",
+          "y": 10024,
+          "t": 3109.399999976158
+        }
+      ],
+      "clsMaxSessionWindow": 3.075728429260285e-05
+    }
+  ]
+}
