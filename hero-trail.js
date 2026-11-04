@@ -51,25 +51,33 @@
   let pending = null;
   let bounds = null;
   let frameId = 0;
+  let loading = false;
+  const assetVersion = '90e3ff4df9';
 
   function enabled() {
     return desktop.matches && !reducedMotion.matches;
   }
 
   function prepare() {
-    if (!enabled() || assets.length) return;
+    if (!enabled() || loading || (assets.length && assets.every(asset => asset.ready || asset.failed))) return;
+    loading = true;
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = 16;
     const context = canvas.getContext('2d', {willReadFrequently: true});
-    for (let number = 1; number <= 12; number += 1) {
+    for (let number = assets.length + 1; number <= 12; number += 1) {
       const image = new Image();
-      const version = {6: '00d000a1b4', 9: 'dbfeb3e11f'}[number];
-      const url = `./assets/hero-trail/${number}.png${version ? `?v=${version}` : ''}`;
+      const url = `./assets/hero-trail/optimized/${number}-2x.webp?v=${assetVersion}`;
       const asset = {image, url, ready: false, failed: false, tone: '#777777', number};
       assets.push(asset);
+    }
+    async function load(asset) {
+      const {image, number, url} = asset;
       image.decoding = 'async';
+      image.fetchPriority = number <= 3 ? 'high' : 'low';
+      image.srcset = `${url} 2x, ./assets/hero-trail/optimized/${number}-3x.webp?v=${assetVersion} 3x`;
       image.src = url;
-      image.decode().then(() => {
+      try {
+        await image.decode();
         // Match the tiny final image with its own average color, not a generic overlay.
         if (context) {
           try {
@@ -84,8 +92,18 @@
           } catch { /* The local image still works if canvas sampling is unavailable. */ }
         }
         asset.ready = true;
-      }).catch(() => { asset.failed = true; });
+      } catch { asset.failed = true; }
+      if (pending && enabled() && !frameId) frameId = requestAnimationFrame(flush);
     }
+    // Prepare the beginning of the existing sequence first, then decode two at a time.
+    // Keeping all entries in place preserves the 1 → 12 order as loading completes.
+    const remaining = assets.filter(asset => !asset.ready && !asset.failed);
+    Promise.all(remaining.splice(0, 3).map(load)).then(async () => {
+      const worker = async () => {
+        while (remaining.length && enabled()) await load(remaining.shift());
+      };
+      await Promise.all([worker(), worker()]);
+    }).finally(() => { loading = false; });
   }
 
   function clear() {
@@ -136,6 +154,7 @@
     pending = null;
     if (lastPoint && Math.hypot(point.x - lastPoint.x, point.y - lastPoint.y) <= spacing) return;
     if (reveal(point.x, point.y)) lastPoint = point;
+    else pending = point;
   }
 
   hero.addEventListener('pointerenter', () => { bounds = hero.getBoundingClientRect(); });
@@ -153,7 +172,9 @@
   }, {passive: true});
 
   hero.addEventListener('pointerleave', clear);
-  window.addEventListener('scroll', clear, {passive: true});
+  window.addEventListener('scroll', () => {
+    if (active.size || pending || frameId || bounds) clear();
+  }, {passive: true});
   window.addEventListener('resize', clear, {passive: true});
   window.addEventListener('blur', clear);
   document.addEventListener('visibilitychange', () => { if (document.hidden) clear(); });

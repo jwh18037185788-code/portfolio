@@ -10,10 +10,10 @@ import type { WorkbenchConclusionDto } from '@/types/workbench';
 import { isEmptyWorkbenchData } from '../hooks/useWorkbenchData';
 import PressableButton from '../../components/PressableButton';
 import { MT } from '../../theme';
-import riskSafeShieldImg from '@/assets/workbench/risk-safe-shield.png';
-import riskLowShieldImg from '@/assets/workbench/risk-low-shield.png';
-import riskMediumShieldImg from '@/assets/workbench/risk-medium-shield.png';
-import riskHighShieldImg from '@/assets/workbench/risk-high-shield.png';
+import riskSafeShieldImg from '@/assets/workbench/optimized/risk-safe-shield.webp';
+import riskLowShieldImg from '@/assets/workbench/optimized/risk-low-shield.webp';
+import riskMediumShieldImg from '@/assets/workbench/optimized/risk-medium-shield.webp';
+import riskHighShieldImg from '@/assets/workbench/optimized/risk-high-shield.webp';
 import riskItemDiamondImg from '@/assets/workbench/risk-item-diamond.png';
 
 const { Text } = Typography;
@@ -79,7 +79,7 @@ function normalizeMixedTextSpacing(text: string): string {
     .replace(/([A-Za-z0-9])([\u4e00-\u9fff])/g, '$1 $2');
 }
 
-/** riskLevel → 对应盾牌插图（绿/黄/橙/红 四张独立 PNG） */
+/** riskLevel → 对应盾牌插图（绿/黄/橙/红，保留透明度的 3 倍展示素材） */
 const RISK_SHIELD_IMG: Record<number, string> = {
   0: riskSafeShieldImg,
   1: riskLowShieldImg,

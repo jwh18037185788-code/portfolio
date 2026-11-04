@@ -15,6 +15,7 @@
   const step=Math.PI*2/tiles.length;
   let phase=0,target=null,playing=!reduced.matches,visible=false,hovered=false,focused=false;
   let width=0,height=0,cardWidth=0,raf=0,lastTime=0,holdUntil=0,impulse=0;
+  let resumeTimer=0;
   let tiltX=-3,tiltY=0,aimX=-3,aimY=0,drag=null,suppressUntil=0,opening=null,resumeAfterDrag=false;
   const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
   function syncPlay(){
@@ -75,7 +76,15 @@
     rotor.style.transform=`rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
     updateCurrent(front);
   }
-  function wake(){if(!raf&&visible&&!document.hidden){lastTime=0;raf=requestAnimationFrame(frame);}}
+  function canRotate(){return playing&&!hovered&&!focused&&!drag&&!viewer.open;}
+  function sleep(){
+    cancelAnimationFrame(raf);raf=0;lastTime=0;
+    clearTimeout(resumeTimer);resumeTimer=0;
+  }
+  function wake(){
+    clearTimeout(resumeTimer);resumeTimer=0;
+    if(!raf&&visible&&!document.hidden){lastTime=0;raf=requestAnimationFrame(frame);}
+  }
   function frame(time){
     raf=0;
     if(!visible||document.hidden)return;
@@ -83,7 +92,7 @@
     lastTime=time;
     const easing=1-Math.exp(-dt*9);
     tiltX+=(aimX-tiltX)*easing;tiltY+=(aimY-tiltY)*easing;
-    const running=playing&&!hovered&&!focused&&!drag&&!viewer.open&&time>holdUntil;
+    const running=canRotate()&&time>holdUntil;
     if(target!==null){
       phase+=(target-phase)*(reduced.matches?1:easing);
       if(Math.abs(target-phase)<.0005){phase=target;target=null;}
@@ -94,7 +103,12 @@
       impulse*=Math.exp(-dt*5);
     }
     draw();
-    if(playing||target!==null||Math.abs(impulse)>.001||Math.abs(aimX-tiltX)+Math.abs(aimY-tiltY)>.002)raf=requestAnimationFrame(frame);
+    if(running||target!==null||Math.abs(impulse)>.001||Math.abs(aimX-tiltX)+Math.abs(aimY-tiltY)>.002){
+      raf=requestAnimationFrame(frame);
+    }else if(canRotate()&&holdUntil>time){
+      // Preserve the original hold duration without redrawing a stationary gallery.
+      resumeTimer=setTimeout(()=>{resumeTimer=0;wake();},Math.max(0,holdUntil-performance.now())+1);
+    }
   }
   function resize(){
     width=stage.clientWidth;height=stage.clientHeight;
@@ -105,9 +119,9 @@
   new ResizeObserver(resize).observe(stage);
   new IntersectionObserver(entries=>{
     visible=entries[0].isIntersecting;
-    if(visible)wake();else if(raf){cancelAnimationFrame(raf);raf=0;}
+    if(visible)wake();else sleep();
   },{rootMargin:'120px 0px',threshold:0}).observe(stage);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else wake();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)sleep();else wake();});
   play.addEventListener('click',()=>{playing=!playing;syncPlay();wake();});
   function turn(direction){const anchor=target===null?Math.round(phase/step)*step:target;target=anchor+direction*step;holdUntil=performance.now()+2500;impulse=0;wake();}
   gallery.querySelectorAll('[data-orbit-step]').forEach(button=>button.addEventListener('click',()=>turn(Number(button.dataset.orbitStep))));

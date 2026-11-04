@@ -15,12 +15,12 @@ const imageButton = (src,alt,cls='') => `<button class="image-expand ${cls}" dat
 const sectionLabel=(num,text)=>`<div class="section-kicker"><span>(${num})</span><span>${text}</span></div>`;
 
 const galleryItems=[
-{id:'food',type:'visual',title:'浣熊经营分',description:'围绕食安管控，梳理经营等级、权益与整改路径，并以 AIGC 延展品牌形象。',tag:'移动端 / 食安管控',asset:'food-score.jpg',cover:'cover1.png?v=8445e3cb66',detail:'food-score-long.png?v=15ae4ffa00',surface:'brown',note:'完整项目长图 · 上下滚动浏览'},
+{id:'food',type:'visual',title:'浣熊经营分',description:'围绕食安管控，梳理经营等级、权益与整改路径，并以 AIGC 延展品牌形象。',tag:'移动端 / 食安管控',asset:'food-score.jpg',cover:'cover1.png?v=8445e3cb66',detail:'food-score-long.png?v=38a48414d3',surface:'brown',note:'完整项目长图 · 上下滚动浏览'},
 {id:'kangaroo',type:'product',title:'袋鼠参谋',description:'通过意图厘清、场景输入与 GUI 卡片规范，优化 AI 经营咨询的对话体验。',tag:'AI 产品 / 对话体验',asset:'kangaroo-panel.jpg',cover:'cover5.png',detail:'kangaroo-long-513c5d7d6a.jpg',surface:'lavender',note:'袋鼠参谋 · AI 对话体验优化 / 完整项目长图 · 上下滚动浏览'},
-{id:'compliance',type:'product',title:'时空轨迹共现分析',description:'面向 CLC 业务合规服务台，组织查询条件、共现结果与轨迹明细。',tag:'PC / 风控分析',asset:'cover3.png',cover:'cover3.png',detail:'compliance-long.jpg',surface:'sage',note:'美团 · CLC 业务合规服务台 / 完整项目长图 · 上下滚动浏览'},
+{id:'compliance',type:'product',title:'时空轨迹共现分析',description:'面向 CLC 业务合规服务台，组织查询条件、共现结果与轨迹明细。',tag:'PC / 风控分析',asset:'cover3.png',cover:'cover3.png',detail:'compliance-long.jpg?v=2281831677',surface:'sage',note:'美团 · CLC 业务合规服务台 / 完整项目长图 · 上下滚动浏览'},
 {id:'camera',type:'product',title:'摄像头绑定及基础操作',description:'从设备绑定到实时查看与录像回放，建设商家端后厨监控操作链路。',tag:'移动端 / 硬件接入',asset:'cover2.png',cover:'cover2.png',detail:'camera-long.jpg',surface:'brown',note:'美团 · 摄像头 / 完整项目长图 · 上下滚动浏览'},
 {id:'traffic',type:'product',title:'交通信号控制平台',description:'围绕地图、路口与信号参数，完成复杂交通控制系统的设计改版。',tag:'PC / 复杂系统',asset:'traffic.jpg',cover:'cover4.png',detail:'traffic-long.jpg',surface:'blue',note:'航天大为 × 江南大学 · 2.0 设计改版 / 完整项目长图 · 上下滚动浏览'},
-{id:'nearby',type:'visual',title:'附近在吃',description:'升级社区内容与交互链路，强化美食发现的场景感知并衔接转化路径。',tag:'移动端 / 社区体验',asset:'cover6.png',cover:'cover6.png',detail:'nearby-long.jpg',surface:'sage',note:'美团 · 附近在吃 / 完整项目长图 · 上下滚动浏览'},
+{id:'nearby',type:'visual',title:'附近在吃',description:'升级社区内容与交互链路，强化美食发现的场景感知并衔接转化路径。',tag:'移动端 / 社区体验',asset:'cover6.png',cover:'cover6.png',detail:'nearby-long.jpg?v=7b4add38c2',surface:'sage',note:'美团 · 附近在吃 / 完整项目长图 · 上下滚动浏览'},
 {id:'anxin',type:'visual',title:'安心严选频道页',description:'重构频道页的信息秩序，通过内容层级与视觉表达传达差异化心智。',tag:'移动端 / 界面探索',asset:'anxin.jpg',cover:'cover7.png',detail:'anxin-long.jpg',surface:'peach',note:'个人探索 · 源自字节跳动抖音校招笔试题 / 完整项目长图 · 上下滚动浏览'},
 {id:'wechat',type:'product',title:'微信 AI 日程管理助手',description:'探索从聊天内容中识别并创建日程，以 AI 建议衔接日常行程管理。',tag:'AI 产品 / 日程探索',asset:'cover8.png',cover:'cover8.png',detail:'wechat-long.jpg',surface:'sage',note:'个人探索 · 源自腾讯 WXG 校招笔试题 / 完整项目长图 · 上下滚动浏览'}
 ];
@@ -32,7 +32,7 @@ function home(){return `<section class="hero" id="top"><div class="hero-main"><h
 ${sprintOverview()}
 
 <div class="sprint-demo-heading"><p class="sprint-kicker">02 / Live Demo</p><h3>可交互系统体验</h3></div>
-<section class="agent-feature reveal" aria-label="任务管理 Agent 交互演示"><div class="feature-stage sage agent-demo"><div class="stage-title"><span>任务管理 Agent</span><a class="agent-demo-open" href="${base}demos/task-agent/index.html?v=093244f680#/bd-task" target="_blank" rel="noopener">展开体验 ${arrow}</a></div><div class="agent-demo-viewport"><iframe src="${base}demos/task-agent/index.html?v=093244f680#/bd-task" title="任务管理 Agent 交互演示" width="1440" height="960" loading="lazy"></iframe></div><a class="agent-demo-mobile" href="${base}demos/task-agent/index.html?v=093244f680#/bd-task" target="_blank" rel="noopener" aria-label="打开任务管理 Agent 交互演示"><img src="${base}assets/task-agent-preview.png?v=6954e567a4" alt="任务管理 Agent 工作台预览" loading="lazy"><span>打开交互演示 ${arrow}</span></a><div class="stage-bottom"><span>在复杂信息里，找到今天的重点。</span><span>交互演示 · 示例数据</span></div></div></section>
+<section class="agent-feature reveal" aria-label="任务管理 Agent 交互演示"><div class="feature-stage sage agent-demo"><div class="stage-title"><span>任务管理 Agent</span><a class="agent-demo-open" href="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" target="_blank" rel="noopener">展开体验 ${arrow}</a></div><div class="agent-demo-viewport"><iframe src="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" title="任务管理 Agent 交互演示" width="1440" height="960" loading="lazy"></iframe></div><a class="agent-demo-mobile" href="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" target="_blank" rel="noopener" aria-label="打开任务管理 Agent 交互演示"><img src="${base}assets/task-agent-preview.png?v=6954e567a4" alt="任务管理 Agent 工作台预览" loading="lazy"><span>打开交互演示 ${arrow}</span></a><div class="stage-bottom"><span>在复杂信息里，找到今天的重点。</span><span>交互演示 · 示例数据</span></div></div></section>
 
 ${sprintGoals()}
 
@@ -197,5 +197,8 @@ dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
 dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');lastFocus?.focus({preventScroll:true});});
 const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if('IntersectionObserver'in window&&!prefersReduced){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-visible'));
-function progress(){const max=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress-line').style.transform=`scaleX(${max>0?scrollY/max:0})`;document.querySelector('.site-header').classList.toggle('scrolled',scrollY>30);}
-addEventListener('scroll',progress,{passive:true});progress();
+const progressLine=document.querySelector('.progress-line');
+const progressHeader=document.querySelector('.site-header');
+let progressFrame=0;
+function progress(){progressFrame=0;const max=document.documentElement.scrollHeight-innerHeight;progressLine.style.transform=`scaleX(${max>0?scrollY/max:0})`;progressHeader.classList.toggle('scrolled',scrollY>30);}
+addEventListener('scroll',()=>{if(!progressFrame)progressFrame=requestAnimationFrame(progress);},{passive:true});progress();
