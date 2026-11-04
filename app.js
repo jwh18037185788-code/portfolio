@@ -92,6 +92,7 @@ viewToggle.type='button';
 viewToggle.className='dialog-view-toggle';
 dialog.querySelector('.dialog-close').before(viewToggle);
 function labelImageView(view){
+ viewToggle.classList.remove('is-view-reset');
  viewToggle.textContent=view==='scroll'?'适应窗口':'按宽度浏览';
  viewToggle.setAttribute('aria-label',view==='scroll'?'切换至适应窗口':'切换至按宽度上下滚动浏览');
  delete viewToggle.dataset.textActionReady;
@@ -134,7 +135,21 @@ function setImageView(view){
  dialogBody.scrollTop=0;
  dialogBody.scrollLeft=0;
 }
-viewToggle.addEventListener('click',()=>{imageViewChosen=true;setImageView(dialog.dataset.view==='scroll'?'fit':'scroll');});
+viewToggle.addEventListener('click',event=>{
+ imageViewChosen=true;
+ setImageView(dialog.dataset.view==='scroll'?'fit':'scroll');
+ if(isGalleryArtwork){
+  // A new label starts neutral even while the pointer remains over the button.
+  viewToggle.classList.add('is-view-reset');
+  if(event.detail>0)viewToggle.blur();
+ }
+});
+viewToggle.addEventListener('focus',()=>viewToggle.classList.remove('is-view-reset'));
+for(const type of ['pointerenter','pointerleave']){
+ viewToggle.addEventListener(type,event=>{
+  if(event.pointerType!=='touch')viewToggle.classList.remove('is-view-reset');
+ });
+}
 dialogBody.addEventListener('wheel',e=>{
  if(dialog.dataset.view!=='fit'||!dialog.open)return;
  const img=dialogBody.querySelector('img');
@@ -183,7 +198,7 @@ async function openArtwork(source){
  const controller=new AbortController();
  artworkTask={controller};
  lastFocus=source;
- isGalleryArtwork=Boolean(source.closest('.gallery-card'));
+ isGalleryArtwork=Boolean(source.closest('.gallery-card, .orbit-tile'));
  imageCaption=isGalleryArtwork?'完整项目长图':source.dataset.caption||'';
  imageViewChosen=false;
  imageDrag=null;

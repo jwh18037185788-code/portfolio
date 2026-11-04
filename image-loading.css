@@ -40,6 +40,9 @@
 #image-dialog .dialog-close:focus .action-track,#image-dialog .dialog-view-toggle:enabled:focus .action-track{transform:translateY(-50%)}
 #image-dialog .dialog-close .action-symbol{position:static;top:auto;align-self:center;display:inline-flex;align-items:center;justify-content:center;flex:0 0 16px;width:16px;height:16px;padding:0;font-size:16px;line-height:1}
 #image-dialog .dialog-close:is(:hover,:focus) .action-symbol{color:var(--accent);transform:translateX(4px)}
+/* Each alternate project-view label starts white; a fresh hover/focus re-arms it. */
+#image-dialog .dialog-view-toggle.is-view-reset:enabled{color:#fff;transition:none}
+#image-dialog .dialog-view-toggle.is-view-reset:enabled .action-track{transform:translateY(0);transition:none}
 #image-dialog .dialog-view-toggle:disabled{color:#777;opacity:1;cursor:not-allowed}
 #image-dialog .dialog-view-toggle:disabled .action-track{transform:none}
 #image-dialog #dialog-title:focus{outline:none}
