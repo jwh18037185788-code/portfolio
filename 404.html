@@ -1,1 +1,18 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>回到作品集 — 蒋雯蕙</title><link rel="icon" href="/portfolio/assets/favicon.svg"><link rel="stylesheet" href="/portfolio/style.css?v=26b42c2dbc"><link rel="stylesheet" href="/portfolio/dark.css?v=a82c0562ae"><main style="min-height:90dvh;display:flex;flex-direction:column;justify-content:center;padding:8vw"><p style="color:var(--muted);margin-bottom:25px">404 / 页面没有找到</p><h1 style="font-size:clamp(40px,7vw,100px);line-height:1.2;margin-bottom:40px">换个方向，<br>继续看看。</h1><a class="text-link" href="/portfolio/">回到作品集首页 ↗</a></main></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>回到作品集 — 蒋雯蕙</title>
+<base href="/">
+<script>
+// Resolve the existing GitHub project path or Cloudflare root, including nested 404 URLs.
+const localPreview = ['localhost', '127.0.0.1', '::1'].includes(location.hostname);
+document.querySelector('base').href = location.hostname.endsWith('.github.io') || (localPreview && location.pathname.startsWith('/portfolio/')) ? '/portfolio/' : '/';
+</script>
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css?v=1a2ae3c7ed">
+<link rel="stylesheet" href="dark.css?v=1b61a5f01f">
+</head>
+<body><main style="min-height:90dvh;display:flex;flex-direction:column;justify-content:center;padding:8vw"><p style="color:var(--muted);margin-bottom:25px">404 / 页面没有找到</p><h1 style="font-size:clamp(40px,7vw,100px);line-height:1.2;margin-bottom:40px">换个方向，<br>继续看看。</h1><a class="text-link" href="./">回到作品集首页 ↗</a></main></body>
+</html>

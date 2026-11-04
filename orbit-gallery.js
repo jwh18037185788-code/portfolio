@@ -178,6 +178,7 @@
     if(!tile||!opening||opening.tile!==tile||!viewer.open||reduced.matches)return;
     const body=viewer.querySelector('.dialog-body'),box=body.getBoundingClientRect();
     const start=opening.rect;opening=null;
+    if(tile.classList.contains('media-pending')||tile.classList.contains('media-failed'))return;
     const ghost=tile.querySelector('img').cloneNode();
     const finalWidth=Math.min(box.width,box.height*16/9);
     const finalHeight=finalWidth*9/16;

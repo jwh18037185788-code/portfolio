@@ -1,5 +1,5 @@
 (()=>{
-  const selector='.site-header nav a,.text-link,.agent-demo-open,.case-media-toolbar button,.case-media-toolbar a,.to-top,.dialog-close,.sprint-document-link,.agent-demo-mobile>span,summary';
+  const selector='.site-header nav a,.text-link,.agent-demo-open,.case-media-toolbar button,.case-media-toolbar a,.to-top,.dialog-close,.dialog-view-toggle,.image-load-retry,.sprint-document-link,.agent-demo-mobile>span:not(.home-image-frame),summary';
   const symbolPattern=/^[↗↖↘↙↑↓←→×＋+]+$/;
   const suffixPattern=/\s*([↗↖↘↙↑↓←→×＋+]+)\s*$/;
   const prefixPattern=/^\s*([↗↖↘↙↑↓←→×＋+]+)\s*/;
@@ -47,7 +47,7 @@
       decorations.push(icon);
     }
     if(!label)return;
-    const icons=[...leading,...decorations].filter(node=>symbolPattern.test(node.textContent.trim()));
+    const icons=[...leading,...decorations].filter(node=>node.hasAttribute('data-action-icon')||symbolPattern.test(node.textContent.trim()));
     // Some summary labels have no direct text or icon; leave those structures intact.
     if(element.tagName==='SUMMARY'&&!icons.length)return;
     if(!host.hasAttribute('aria-label'))host.setAttribute('aria-label',label);
@@ -66,6 +66,7 @@
     if(root.matches(selector))decorate(root);
     root.querySelectorAll(selector).forEach(decorate);
   }
+  window.portfolioTextActions = {decorate};
   enhance(document.body);
   // Evidence/document panels are replaced in place, so decorate their new actions too.
   const observer=new MutationObserver(records=>{

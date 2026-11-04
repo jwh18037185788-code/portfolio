@@ -15,24 +15,24 @@ const imageButton = (src,alt,cls='') => `<button class="image-expand ${cls}" dat
 const sectionLabel=(num,text)=>`<div class="section-kicker"><span>(${num})</span><span>${text}</span></div>`;
 
 const galleryItems=[
-{id:'food',type:'visual',title:'浣熊经营分',description:'围绕食安管控，梳理经营等级、权益与整改路径，并以 AIGC 延展品牌形象。',tag:'移动端 / 食安管控',asset:'food-score.jpg',cover:'cover1.png?v=8445e3cb66',detail:'food-score-long.png?v=38a48414d3',surface:'brown',note:'完整项目长图 · 上下滚动浏览'},
-{id:'kangaroo',type:'product',title:'袋鼠参谋',description:'通过意图厘清、场景输入与 GUI 卡片规范，优化 AI 经营咨询的对话体验。',tag:'AI 产品 / 对话体验',asset:'kangaroo-panel.jpg',cover:'cover5.png',detail:'kangaroo-long-513c5d7d6a.jpg',surface:'lavender',note:'袋鼠参谋 · AI 对话体验优化 / 完整项目长图 · 上下滚动浏览'},
-{id:'compliance',type:'product',title:'时空轨迹共现分析',description:'面向 CLC 业务合规服务台，组织查询条件、共现结果与轨迹明细。',tag:'PC / 风控分析',asset:'cover3.png',cover:'cover3.png',detail:'compliance-long.jpg?v=2281831677',surface:'sage',note:'美团 · CLC 业务合规服务台 / 完整项目长图 · 上下滚动浏览'},
-{id:'camera',type:'product',title:'摄像头绑定及基础操作',description:'从设备绑定到实时查看与录像回放，建设商家端后厨监控操作链路。',tag:'移动端 / 硬件接入',asset:'cover2.png',cover:'cover2.png',detail:'camera-long.jpg',surface:'brown',note:'美团 · 摄像头 / 完整项目长图 · 上下滚动浏览'},
-{id:'traffic',type:'product',title:'交通信号控制平台',description:'围绕地图、路口与信号参数，完成复杂交通控制系统的设计改版。',tag:'PC / 复杂系统',asset:'traffic.jpg',cover:'cover4.png',detail:'traffic-long.jpg',surface:'blue',note:'航天大为 × 江南大学 · 2.0 设计改版 / 完整项目长图 · 上下滚动浏览'},
-{id:'nearby',type:'visual',title:'附近在吃',description:'升级社区内容与交互链路，强化美食发现的场景感知并衔接转化路径。',tag:'移动端 / 社区体验',asset:'cover6.png',cover:'cover6.png',detail:'nearby-long.jpg?v=7b4add38c2',surface:'sage',note:'美团 · 附近在吃 / 完整项目长图 · 上下滚动浏览'},
-{id:'anxin',type:'visual',title:'安心严选频道页',description:'重构频道页的信息秩序，通过内容层级与视觉表达传达差异化心智。',tag:'移动端 / 界面探索',asset:'anxin.jpg',cover:'cover7.png',detail:'anxin-long.jpg',surface:'peach',note:'个人探索 · 源自字节跳动抖音校招笔试题 / 完整项目长图 · 上下滚动浏览'},
-{id:'wechat',type:'product',title:'微信 AI 日程管理助手',description:'探索从聊天内容中识别并创建日程，以 AI 建议衔接日常行程管理。',tag:'AI 产品 / 日程探索',asset:'cover8.png',cover:'cover8.png',detail:'wechat-long.jpg',surface:'sage',note:'个人探索 · 源自腾讯 WXG 校招笔试题 / 完整项目长图 · 上下滚动浏览'}
+{id:'food',type:'visual',title:'浣熊经营分',description:'围绕食安管控，梳理经营等级、权益与整改路径，并以 AIGC 延展品牌形象。',tag:'移动端 / 食安管控',asset:'food-score.jpg',cover:'cover1.png?v=8445e3cb66',detail:'food-score-long-web.jpg?v=ae552a1349',surface:'brown',note:'完整项目长图 · 上下滚动浏览'},
+{id:'kangaroo',type:'product',title:'袋鼠参谋',description:'通过意图厘清、场景输入与 GUI 卡片规范，优化 AI 经营咨询的对话体验。',tag:'AI 产品 / 对话体验',asset:'kangaroo-panel.jpg',cover:'cover5.png',detail:'kangaroo-long-web.jpg?v=9d3c9be6ee',surface:'lavender',note:'袋鼠参谋 · AI 对话体验优化 / 完整项目长图 · 上下滚动浏览'},
+{id:'compliance',type:'product',title:'时空轨迹共现分析',description:'面向 CLC 业务合规服务台，组织查询条件、共现结果与轨迹明细。',tag:'PC / 风控分析',asset:'cover3.png',cover:'cover3.png',detail:'compliance-long-web.jpg?v=59bdee4645',surface:'sage',note:'美团 · CLC 业务合规服务台 / 完整项目长图 · 上下滚动浏览'},
+{id:'camera',type:'product',title:'摄像头绑定及基础操作',description:'从设备绑定到实时查看与录像回放，建设商家端后厨监控操作链路。',tag:'移动端 / 硬件接入',asset:'cover2.png',cover:'cover2.png',detail:'camera-long-web.jpg?v=efbd481dc3',surface:'brown',note:'美团 · 摄像头 / 完整项目长图 · 上下滚动浏览'},
+{id:'traffic',type:'product',title:'交通信号控制平台',description:'围绕地图、路口与信号参数，完成复杂交通控制系统的设计改版。',tag:'PC / 复杂系统',asset:'traffic.jpg',cover:'cover4.png',detail:'traffic-long-web.jpg?v=a4155fd7b2',surface:'blue',note:'航天大为 × 江南大学 · 2.0 设计改版 / 完整项目长图 · 上下滚动浏览'},
+{id:'nearby',type:'visual',title:'附近在吃',description:'升级社区内容与交互链路，强化美食发现的场景感知并衔接转化路径。',tag:'移动端 / 社区体验',asset:'cover6.png',cover:'cover6.png',detail:'nearby-long-web.jpg?v=ab2667855b',surface:'sage',note:'美团 · 附近在吃 / 完整项目长图 · 上下滚动浏览'},
+{id:'anxin',type:'visual',title:'安心严选频道页',description:'重构频道页的信息秩序，通过内容层级与视觉表达传达差异化心智。',tag:'移动端 / 界面探索',asset:'anxin.jpg',cover:'cover7.png',detail:'anxin-long-web.jpg?v=d9f1cb90c3',surface:'peach',note:'个人探索 · 源自字节跳动抖音校招笔试题 / 完整项目长图 · 上下滚动浏览'},
+{id:'wechat',type:'product',title:'微信 AI 日程管理助手',description:'探索从聊天内容中识别并创建日程，以 AI 建议衔接日常行程管理。',tag:'AI 产品 / 日程探索',asset:'cover8.png',cover:'cover8.png',detail:'wechat-long-web.jpg?v=7a9388e78b',surface:'sage',note:'个人探索 · 源自腾讯 WXG 校招笔试题 / 完整项目长图 · 上下滚动浏览'}
 ];
-const galleryCard=(item,index)=>`<article class="gallery-card reveal" data-type="${item.type}"><button class="gallery-image ${item.surface} has-cover" data-image="${base}assets/${item.detail||item.cover||item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="放大查看${item.title}"><span class="gallery-tilt-frame"><img src="${base}assets/${item.cover||item.asset}" alt="${item.title}设计画面" loading="lazy" decoding="async" draggable="false"></span><span class="gallery-no">${String(index+1).padStart(2,'0')}</span></button><div class="gallery-card-title"><h3>${item.title}</h3><span>${item.tag}</span></div><p>${item.description}</p></article>`;
-const orbitGallery=()=>`<div class="orbit-gallery" aria-label="8 个作品的环形画廊"><div class="orbit-stage" role="region" aria-label="旋转作品环，可左右拖动，点击封面查看完整项目" tabindex="0"><div class="orbit-core"><div class="orbit-current"><span class="orbit-current-index" aria-label="第 01 个作品，共 08 个"><span class="orbit-index-flip" aria-hidden="true"><span class="orbit-index-value">01</span></span><span class="orbit-index-total" aria-hidden="true"> / 08</span></span><span class="orbit-current-title orbit-title-flip"><span class="orbit-title-value">${galleryItems[0].title}</span></span></div><div class="orbit-controls"><button type="button" data-orbit-step="-1" aria-label="上一个作品">←</button><button type="button" data-orbit-play aria-label="暂停自动旋转" aria-pressed="false">Ⅱ</button><button type="button" data-orbit-step="1" aria-label="下一个作品">→</button></div></div><div class="orbit-rotor">${galleryItems.map((item,i)=>`<button type="button" class="orbit-tile" data-image="${base}assets/${item.detail||item.cover||item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="查看完整项目：${item.title}" style="--orbit-index:${i}"><img src="${base}assets/orbit/${item.cover.split('?')[0].replace('.png','.jpg')}" alt="${item.title}作品封面" loading="lazy" decoding="async" draggable="false"><span class="orbit-tile-label">${item.title}<i aria-hidden="true">↗</i></span></button>`).join('')}</div></div></div>`;
+const galleryCard=(item,index)=>`<article class="gallery-card reveal" data-type="${item.type}"><button class="gallery-image ${item.surface} has-cover" data-image="${base}assets/${item.detail||item.cover||item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="放大查看${item.title}">${portfolioCover(`${base}assets/${item.cover||item.asset}`,`${item.title}设计画面`,index)}<span class="gallery-no">${String(index+1).padStart(2,'0')}</span></button><div class="gallery-card-title"><h3>${item.title}</h3><span>${item.tag}</span></div><p>${item.description}</p></article>`;
+const orbitGallery=()=>`<div class="orbit-gallery" aria-label="8 个作品的环形画廊"><div class="orbit-stage" role="region" aria-label="旋转作品环，可左右拖动，点击封面查看完整项目" tabindex="0"><div class="orbit-core"><div class="orbit-current"><span class="orbit-current-index" aria-label="第 01 个作品，共 08 个"><span class="orbit-index-flip" aria-hidden="true"><span class="orbit-index-value">01</span></span><span class="orbit-index-total" aria-hidden="true"> / 08</span></span><span class="orbit-current-title orbit-title-flip"><span class="orbit-title-value">${galleryItems[0].title}</span></span></div><div class="orbit-controls"><button type="button" data-orbit-step="-1" aria-label="上一个作品">←</button><button type="button" data-orbit-play aria-label="暂停自动旋转" aria-pressed="false">Ⅱ</button><button type="button" data-orbit-step="1" aria-label="下一个作品">→</button></div></div><div class="orbit-rotor">${galleryItems.map((item,i)=>`<button type="button" class="orbit-tile home-image media-pending" aria-busy="true" data-image="${base}assets/${item.detail||item.cover||item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="查看完整项目：${item.title}" style="--orbit-index:${i}">${portfolioImagePlaceholder(`<img src="${base}assets/orbit/${item.cover.split('?')[0].replace('.png','.jpg')}" alt="${item.title}作品封面" loading="lazy" decoding="async" draggable="false">`)}<span class="orbit-tile-label">${item.title}<i aria-hidden="true">↗</i></span></button>`).join('')}</div></div></div>`;
 
 function home(){return `<section class="hero" id="top"><div class="hero-main"><h1 class="hero-brand"><span>Jhuen.</span> <span>Design</span></h1><p class="hero-subtitle">把复杂业务，做成清晰好用的体验</p></div><div class="hero-bottom"><a href="#work" class="text-link">往下看，了解我的设计思考 <span>↓</span></a><p>目前在美团从事B端AI产品体验设计<br>从信息与交互出发也走进代码里<br>让设计在真实产品中发生</p></div></section>
 
 ${sprintOverview()}
 
-<div class="sprint-demo-heading"><p class="sprint-kicker">02 / Live Demo</p><h3>可交互系统体验</h3></div>
-<section class="agent-feature reveal" aria-label="任务管理 Agent 交互演示"><div class="feature-stage sage agent-demo"><div class="stage-title"><span>任务管理 Agent</span><a class="agent-demo-open" href="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" target="_blank" rel="noopener">展开体验 ${arrow}</a></div><div class="agent-demo-viewport"><iframe src="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" title="任务管理 Agent 交互演示" width="1440" height="960" loading="lazy"></iframe></div><a class="agent-demo-mobile" href="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" target="_blank" rel="noopener" aria-label="打开任务管理 Agent 交互演示"><img src="${base}assets/task-agent-preview.png?v=6954e567a4" alt="任务管理 Agent 工作台预览" loading="lazy"><span>打开交互演示 ${arrow}</span></a><div class="stage-bottom"><span>在复杂信息里，找到今天的重点。</span><span>交互演示 · 示例数据</span></div></div></section>
+<div class="sprint-demo-heading" id="live-demo"><p class="sprint-kicker">02 / Live Demo</p><h3>可交互系统体验</h3></div>
+<section class="agent-feature reveal" aria-label="任务管理 Agent 交互演示"><div class="feature-stage sage agent-demo"><div class="stage-title"><span>任务管理 Agent</span><a class="agent-demo-open" href="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" target="_blank" rel="noopener">展开体验 ${arrow}</a></div><div class="agent-demo-viewport"><iframe src="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" title="任务管理 Agent 交互演示" width="1440" height="904" loading="lazy"></iframe></div><a class="agent-demo-mobile" href="${base}demos/task-agent/index.html?v=f2bb8f5ff2#/bd-task" target="_blank" rel="noopener" aria-label="打开任务管理 Agent 交互演示"><span class="home-image-frame home-image agent-preview-frame media-pending" aria-busy="true">${portfolioImagePlaceholder(`<img src="${base}assets/task-agent-preview.png?v=6954e567a4" alt="任务管理 Agent 工作台预览" width="1440" height="960" loading="lazy" decoding="async">`)}</span><span>打开交互演示 ${arrow}</span></a><div class="stage-bottom"><span>在复杂信息里，找到今天的重点。</span><span>交互演示 · 示例数据</span></div></div></section>
 
 ${sprintGoals()}
 
@@ -56,7 +56,9 @@ document.querySelector('#main').innerHTML=isVisual?visual():home();
 document.body.classList.toggle('is-visual-page',isVisual);
 const demoViewport=document.querySelector('.agent-demo-viewport');
 if(demoViewport){
- const sizeDemo=()=>demoViewport.style.setProperty('--agent-demo-scale',String(demoViewport.clientWidth/1440));
+ const sizeDemo=()=>{
+  if(demoViewport.clientWidth)demoViewport.style.setProperty('--agent-demo-scale',String(demoViewport.clientWidth/1440));
+ };
  new ResizeObserver(sizeDemo).observe(demoViewport);
  sizeDemo();
 }
@@ -65,6 +67,7 @@ const footerContact=document.createElement('span');footerContact.className='foot
 if(isVisual){document.querySelectorAll('a[href="./"]').forEach(a=>a.href='../');document.querySelectorAll('nav a').forEach(a=>{const key=a.dataset.nav;a.href=key==='visual'?'./':`../#${key==='work'?'work':'about'}`;});document.querySelector('[data-nav="visual"]').setAttribute('aria-current','page');}
 const dialog=document.querySelector('#image-dialog'); let lastFocus;
 const dialogTitle=dialog.querySelector('#dialog-title');
+dialogTitle.tabIndex=-1;
 const dialogHeading=document.createElement('div');
 dialogHeading.className='dialog-heading';
 dialogTitle.before(dialogHeading);
@@ -83,8 +86,15 @@ const viewToggle=document.createElement('button');
 viewToggle.type='button';
 viewToggle.className='dialog-view-toggle';
 dialog.querySelector('.dialog-close').before(viewToggle);
+function labelImageView(view){
+ viewToggle.textContent=view==='scroll'?'适应窗口':'按宽度浏览';
+ viewToggle.setAttribute('aria-label',view==='scroll'?'切换至适应窗口':'切换至按宽度上下滚动浏览');
+ delete viewToggle.dataset.textActionReady;
+ window.portfolioTextActions?.decorate(viewToggle);
+}
 let imageZoom=1;
 let imageCaption='';
+let isGalleryArtwork=false;
 let imageDrag=null;
 let imageViewChosen=false;
 function renderImageZoom(){
@@ -112,10 +122,9 @@ function setImageView(view){
  delete dialog.dataset.zoomed;
  dialogBody.querySelector('img')?.removeAttribute('style');
  dialogBody.querySelector('.dialog-image-stage')?.removeAttribute('style');
- viewToggle.textContent=view==='scroll'?'适应窗口':'按宽度浏览';
- viewToggle.setAttribute('aria-label',view==='scroll'?'切换至适应窗口':'切换至按宽度上下滚动浏览');
+ labelImageView(view);
  dialogBody.setAttribute('aria-label',view==='fit'?'作品大图，滚轮缩放，放大后可拖动查看':'作品大图，可上下滚动浏览');
- document.querySelector('#dialog-caption').textContent=[imageCaption,view==='fit'?'滚轮缩放，放大后可拖动查看':''].filter(Boolean).join(' · ');
+ document.querySelector('#dialog-caption').textContent=[imageCaption,view==='fit'?'滚轮缩放，放大后可拖动查看':isGalleryArtwork?'上下滚动浏览':''].filter(Boolean).join(' · ');
  renderImageZoom();
  dialogBody.scrollTop=0;
  dialogBody.scrollLeft=0;
@@ -154,47 +163,98 @@ dialogBody.addEventListener('pointerup',endImageDrag);
 dialogBody.addEventListener('pointercancel',endImageDrag);
 dialogBody.addEventListener('lostpointercapture',endImageDrag);
 new ResizeObserver(()=>{if(dialog.open)renderImageZoom();}).observe(dialogBody);
+let artworkTask=null;
+let artworkVersion=0;
+function cancelArtwork(){
+ artworkVersion++;
+ artworkTask?.controller.abort();
+ artworkTask?.dispose?.();
+ artworkTask=null;
+ dialogBody.replaceChildren();
+}
+async function openArtwork(source){
+ cancelArtwork();
+ const version=artworkVersion;
+ const controller=new AbortController();
+ artworkTask={controller};
+ lastFocus=source;
+ isGalleryArtwork=Boolean(source.closest('.gallery-card'));
+ imageCaption=isGalleryArtwork?'完整项目长图':source.dataset.caption||'';
+ imageViewChosen=false;
+ imageDrag=null;
+ imageZoom=1;
+ delete dialog.dataset.zoomed;
+ delete dialog.dataset.dragging;
+ dialog.dataset.view=source.dataset.view||'scroll';
+ dialog.dataset.imageState='loading';
+ dialogTitle.textContent=source.dataset.title||'作品';
+ document.querySelector('#dialog-caption').textContent=[imageCaption,isGalleryArtwork?'上下滚动浏览':''].filter(Boolean).join(' · ');
+ viewToggle.disabled=true;
+ labelImageView(dialog.dataset.view);
+ resumeDownload.hidden=true;
+ if(source.dataset.download){
+  resumeDownload.href=source.dataset.image;
+  resumeDownload.download=source.dataset.download;
+ }else{
+  resumeDownload.removeAttribute('href');resumeDownload.removeAttribute('download');
+ }
+ const status=document.createElement('div');status.className='image-load-state';
+ status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+ const spinner=document.createElement('span');spinner.className='image-load-spinner';spinner.setAttribute('aria-hidden','true');
+ // Swirling from Loading UI, adapted to plain SVG/CSS (see vendor license).
+ // Match rendered strokes: 33.333333 × 64/800 ≈ 2 × 32/24 CSS pixels.
+ spinner.innerHTML='<svg class="image-load-swirl" viewBox="0 0 800 800"><circle class="image-load-swirl-circle" cx="400" cy="400" r="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="33.333333"/></svg><svg class="image-load-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6" pathLength="1"/></svg>';
+ let downloadedAt=0;
+ const message=document.createElement('p');message.className='image-load-message';message.textContent='正在加载高清原图…';
+ status.append(spinner,message);dialogBody.replaceChildren(status);
+ dialogBody.setAttribute('aria-busy','true');
+ dialogBody.setAttribute('aria-label','正在加载作品高清原图');
+ if(!dialog.open){dialog.showModal();dialogTitle.focus({preventScroll:true});}
+ document.body.classList.add('dialog-open');
+ dialogBody.scrollTop=0;dialogBody.scrollLeft=0;
+ try{
+  const loaded=await loadPortfolioOriginal(source.dataset.image,{
+   signal:controller.signal,
+   onPhase:phase=>{
+    if(version!==artworkVersion)return;
+    status.dataset.phase=phase;
+    if(phase==='decoding')downloadedAt=performance.now();
+    message.textContent=phase==='decoding'?'原图已下载，正在准备显示…':'正在加载高清原图…';
+   }
+  });
+  if(version!==artworkVersion||!dialog.open){loaded.dispose();return;}
+  artworkTask.dispose=loaded.dispose;
+  // Complete the requested checkmark transition even when decoding is immediate.
+  if(downloadedAt&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+   await new Promise(resolve=>setTimeout(resolve,Math.max(0,680-(performance.now()-downloadedAt))));
+  }
+  if(version!==artworkVersion||controller.signal.aborted||!dialog.open){loaded.dispose();return;}
+  const img=loaded.image;img.alt=source.dataset.title||'作品大图';
+  const stage=document.createElement('div');stage.className='dialog-image-stage';stage.append(img);
+  dialogBody.replaceChildren(stage);
+  dialog.dataset.imageState='ready';dialogBody.setAttribute('aria-busy','false');
+  viewToggle.disabled=false;resumeDownload.hidden=!source.dataset.download;
+  setImageView(source.dataset.view||(img.naturalHeight>img.naturalWidth*1.2?'scroll':'fit'));
+ }catch(error){
+  if(version!==artworkVersion||controller.signal.aborted)return;
+  console.warn('Unable to prepare original artwork',error);
+  dialog.dataset.imageState='error';dialogBody.setAttribute('aria-busy','false');
+  spinner.remove();message.textContent='原图加载失败，请重试。';
+  const retry=document.createElement('button');retry.type='button';retry.className='image-load-retry';
+  retry.textContent='重新加载';retry.setAttribute('aria-label','重新加载高清原图');
+  retry.addEventListener('click',()=>openArtwork(source));status.append(retry);
+ }
+}
 document.addEventListener('click',e=>{
  const image=e.target.closest('[data-image]');
- if(image){
-  lastFocus=image;
-  dialogTitle.textContent=image.dataset.title||'作品';
-  imageCaption=image.dataset.caption||'';
-  imageViewChosen=false;
-  resumeDownload.hidden=!image.dataset.download;
-  if(image.dataset.download){
-   resumeDownload.href=image.dataset.image;
-   resumeDownload.download=image.dataset.download;
-  }else{
-   resumeDownload.removeAttribute('href');
-   resumeDownload.removeAttribute('download');
-  }
-  const img=document.createElement('img');
-  img.alt=image.dataset.title||'作品大图';
-  img.addEventListener('load',()=>{
-   if(!dialogBody.contains(img))return;
-   if(imageViewChosen)renderImageZoom();
-   else setImageView(image.dataset.view||(img.naturalHeight>img.naturalWidth*1.2?'scroll':'fit'));
-  },{once:true});
-  img.src=image.dataset.image;
-  img.draggable=false;
-  const stage=document.createElement('div');
-  stage.className='dialog-image-stage';
-  stage.append(img);
-  dialogBody.replaceChildren(stage);
-  dialog.showModal();
-  setImageView(image.dataset.view||'scroll');
-  document.body.classList.add('dialog-open');
-  dialogBody.scrollTop=0;
-  return;
- }
+ if(image){openArtwork(image);return;}
  const state=e.target.closest('[data-state]');if(state){document.querySelector('#task-render').innerHTML=taskCard(state.dataset.state);document.querySelectorAll('[data-state]').forEach(b=>{const on=b===state;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on));});}
  const compare=e.target.closest('[data-compare]');if(compare){document.querySelector('#comparison-current').hidden=compare.dataset.compare!=='current';document.querySelector('#comparison-original').hidden=compare.dataset.compare!=='original';document.querySelectorAll('[data-compare]').forEach(b=>{const on=b===compare;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on));});}
  const filter=e.target.closest('[data-filter]');if(filter){document.querySelectorAll('[data-filter]').forEach(b=>{const on=b===filter;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on));});document.querySelectorAll('.gallery-grid .gallery-card').forEach(c=>{c.hidden=filter.dataset.filter!=='all'&&c.dataset.type!==filter.dataset.filter;});}
 });
 document.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
-dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');lastFocus?.focus({preventScroll:true});});
+dialog.addEventListener('close',()=>{cancelArtwork();delete dialog.dataset.imageState;dialogBody.setAttribute('aria-busy','false');document.body.classList.remove('dialog-open');lastFocus?.focus({preventScroll:true});});
 const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if('IntersectionObserver'in window&&!prefersReduced){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-visible'));
 const progressLine=document.querySelector('.progress-line');

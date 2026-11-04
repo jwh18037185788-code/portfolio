@@ -1,0 +1,368 @@
+[
+  {
+    "id": "food",
+    "title": "浣熊经营分",
+    "original": "assets/food-score-long.png?v=38a48414d3",
+    "compressed": "assets/food-score-long-web.jpg?v=ae552a1349",
+    "originalBytes": 23281817,
+    "compressedBytes": 13897430,
+    "width": 3840,
+    "height": 20858,
+    "quality": 98,
+    "chromaSubsampling": "4:4:4",
+    "progressive": true,
+    "regions": {
+      "text": [
+        450,
+        15350
+      ],
+      "detail": [
+        2450,
+        17800
+      ]
+    }
+  },
+  {
+    "id": "kangaroo",
+    "title": "袋鼠参谋",
+    "original": "assets/kangaroo-long-513c5d7d6a.jpg?v=513c5d7d6a",
+    "compressed": "assets/kangaroo-long-web.jpg?v=9d3c9be6ee",
+    "originalBytes": 16472341,
+    "compressedBytes": 9812804,
+    "width": 3840,
+    "height": 30584,
+    "quality": 98,
+    "chromaSubsampling": "4:4:4",
+    "progressive": true,
+    "originalSHA256": "513c5d7d6a40980b69b2948d897e6915b487ea506baf4d4bebce3c1869b2343e",
+    "compressedSHA256": "9d3c9be6ee08a91248980eed7308930b166e578a1dcd0ff86228ee157275185d",
+    "regions": {
+      "text": [
+        300,
+        11000
+      ],
+      "detail": [
+        2400,
+        500
+      ]
+    },
+    "cropMetrics": [
+      {
+        "region": "text",
+        "rect": {
+          "left": 300,
+          "top": 11000,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 52.70207311457266,
+        "mae": 0.2210925925925926
+      },
+      {
+        "region": "detail",
+        "rect": {
+          "left": 2400,
+          "top": 500,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 53.903405987258274,
+        "mae": 0.179479012345679
+      }
+    ]
+  },
+  {
+    "id": "compliance",
+    "title": "时空轨迹共现分析",
+    "original": "assets/compliance-long.jpg?v=2281831677",
+    "compressed": "assets/compliance-long-web.jpg?v=59bdee4645",
+    "originalBytes": 21850218,
+    "compressedBytes": 12791858,
+    "width": 3840,
+    "height": 25512,
+    "quality": 96,
+    "chromaSubsampling": "4:4:4",
+    "progressive": true,
+    "originalSHA256": "228183167774c2c98bdea7896006a276e79194fb4f28e7c2c2568d01764814dd",
+    "compressedSHA256": "59bdee464541465999a508cf299c53d30bf047dea2437d7cbbe8d4de3f522be4",
+    "regions": {
+      "text": [
+        500,
+        8200
+      ],
+      "detail": [
+        1100,
+        15600
+      ]
+    },
+    "cropMetrics": [
+      {
+        "region": "text",
+        "rect": {
+          "left": 500,
+          "top": 8200,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 52.66030768113793,
+        "mae": 0.15140864197530865
+      },
+      {
+        "region": "detail",
+        "rect": {
+          "left": 1100,
+          "top": 15600,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 48.444296766306316,
+        "mae": 0.26790987654320986
+      }
+    ]
+  },
+  {
+    "id": "camera",
+    "title": "摄像头绑定及基础操作",
+    "original": "assets/camera-long.jpg?v=57e19e3689",
+    "compressed": "assets/camera-long-web.jpg?v=efbd481dc3",
+    "originalBytes": 23616906,
+    "compressedBytes": 14564664,
+    "width": 3840,
+    "height": 29376,
+    "quality": 98,
+    "chromaSubsampling": "4:4:4",
+    "progressive": true,
+    "originalSHA256": "57e19e368960caf61f6ad37cfca5a6e7810554fccdd5aa79fe9b9e509ea0d2ca",
+    "compressedSHA256": "efbd481dc363d1a70fdd39113f53cfe844c48e0aafa19e8463fb9f351c5836ec",
+    "regions": {
+      "text": [
+        1000,
+        4400
+      ],
+      "detail": [
+        1200,
+        17800
+      ]
+    },
+    "cropMetrics": [
+      {
+        "region": "text",
+        "rect": {
+          "left": 1000,
+          "top": 4400,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 50.755392518841006,
+        "mae": 0.34180864197530864
+      },
+      {
+        "region": "detail",
+        "rect": {
+          "left": 1200,
+          "top": 17800,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 48.99061244642831,
+        "mae": 0.4624839506172839
+      }
+    ]
+  },
+  {
+    "id": "traffic",
+    "title": "交通信号控制平台",
+    "original": "assets/traffic-long.jpg?v=3330829f55",
+    "compressed": "assets/traffic-long-web.jpg?v=a4155fd7b2",
+    "originalBytes": 25306572,
+    "compressedBytes": 16101752,
+    "width": 3840,
+    "height": 21708,
+    "quality": 98,
+    "chromaSubsampling": "4:4:4",
+    "progressive": true,
+    "originalSHA256": "3330829f55d931affc15f497e72d23735d23cb3d7f328de3800ce8b9660b8b61",
+    "compressedSHA256": "a4155fd7b267b6b69894a19bbcde7634e6b4e7c48d2ad18e94366644799a49c2",
+    "regions": {
+      "text": [
+        1000,
+        13900
+      ],
+      "detail": [
+        1900,
+        17800
+      ]
+    },
+    "cropMetrics": [
+      {
+        "region": "text",
+        "rect": {
+          "left": 1000,
+          "top": 13900,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 53.87624640237977,
+        "mae": 0.13298395061728396
+      },
+      {
+        "region": "detail",
+        "rect": {
+          "left": 1900,
+          "top": 17800,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 58.95912112022251,
+        "mae": 0.04652716049382716
+      }
+    ]
+  },
+  {
+    "id": "nearby",
+    "title": "附近在吃",
+    "original": "assets/nearby-long.jpg?v=7b4add38c2",
+    "compressed": "assets/nearby-long-web.jpg?v=ab2667855b",
+    "originalBytes": 22516194,
+    "compressedBytes": 13985567,
+    "width": 3840,
+    "height": 14926,
+    "quality": 97,
+    "chromaSubsampling": "4:4:4",
+    "progressive": true,
+    "originalSHA256": "7b4add38c22d7b65a7f5fd10a116449de305bae4620ed68374e6874ebda07cd3",
+    "compressedSHA256": "ab2667855b513496afde1e2b4b9a0a1daa95a9729054f93683a9a422919159c9",
+    "regions": {
+      "text": [
+        1200,
+        9500
+      ],
+      "detail": [
+        2200,
+        5300
+      ]
+    },
+    "cropMetrics": [
+      {
+        "region": "text",
+        "rect": {
+          "left": 1200,
+          "top": 9500,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 47.420452305486265,
+        "mae": 0.562879012345679
+      },
+      {
+        "region": "detail",
+        "rect": {
+          "left": 2200,
+          "top": 5300,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 48.22589125704213,
+        "mae": 0.4664888888888889
+      }
+    ]
+  },
+  {
+    "id": "anxin",
+    "title": "安心严选频道页",
+    "original": "assets/anxin-long.jpg?v=ddf0cbaf2a",
+    "compressed": "assets/anxin-long-web.jpg?v=d9f1cb90c3",
+    "originalBytes": 12808613,
+    "compressedBytes": 7931900,
+    "width": 3840,
+    "height": 16031,
+    "quality": 98,
+    "chromaSubsampling": "4:4:4",
+    "progressive": true,
+    "originalSHA256": "ddf0cbaf2a7550a805c5f8b6df04712b867e0b7eb0c07c8141b20f1a6817790c",
+    "compressedSHA256": "d9f1cb90c315a5e375fa5057190334f4ed0b38a019b6506ed7e72a5309123c55",
+    "regions": {
+      "text": [
+        1200,
+        7800
+      ],
+      "detail": [
+        2300,
+        11000
+      ]
+    },
+    "cropMetrics": [
+      {
+        "region": "text",
+        "rect": {
+          "left": 1200,
+          "top": 7800,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 51.557352636545616,
+        "mae": 0.27822592592592593
+      },
+      {
+        "region": "detail",
+        "rect": {
+          "left": 2300,
+          "top": 11000,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 59.69140450384677,
+        "mae": 0.05257160493827161
+      }
+    ]
+  },
+  {
+    "id": "wechat",
+    "title": "微信 AI 日程管理助手",
+    "original": "assets/wechat-long.jpg?v=a3dcec993f",
+    "compressed": "assets/wechat-long-web.jpg?v=7a9388e78b",
+    "originalBytes": 5670911,
+    "compressedBytes": 3442223,
+    "width": 3840,
+    "height": 10246,
+    "quality": 98,
+    "chromaSubsampling": "4:4:4",
+    "progressive": true,
+    "originalSHA256": "a3dcec993f594f6e61ab0d94b29776887403941f19d89be6995a4b80d3325b26",
+    "compressedSHA256": "7a9388e78b09231cb933a2d627bbae13bf7db9f276ffbe713da7781d7cdd4007",
+    "regions": {
+      "text": [
+        500,
+        5600
+      ],
+      "detail": [
+        1700,
+        7600
+      ]
+    },
+    "cropMetrics": [
+      {
+        "region": "text",
+        "rect": {
+          "left": 500,
+          "top": 5600,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 56.25608385133009,
+        "mae": 0.0797925925925926
+      },
+      {
+        "region": "detail",
+        "rect": {
+          "left": 1700,
+          "top": 7600,
+          "width": 600,
+          "height": 450
+        },
+        "psnr": 55.75893592846869,
+        "mae": 0.1118604938271605
+      }
+    ]
+  }
+]

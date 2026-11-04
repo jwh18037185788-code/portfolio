@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>项目长图 · 原图与压缩图对比</title>
+<style>
+@font-face{font-family:Douyin;src:url('../assets/PortfolioDisplay-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+*{box-sizing:border-box}body{margin:0;background:#181818;color:#fff;font:700 14px/1.6 Douyin,sans-serif}header{padding:20px 24px}h1{font-size:22px;margin:0 0 6px}p{margin:6px 0;color:#bbb}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:14px}button,select,a{font:inherit}button,select{padding:8px 16px;border:1px solid #666;border-radius:24px;background:#181818;color:#fff}button{cursor:pointer}button[aria-pressed=true],button:focus-visible,select:focus-visible{color:#c4ff67;border-color:#c4ff67}button:disabled{opacity:.4;cursor:wait}a{color:#c4ff67}.viewport{height:65dvh;min-height:360px;overflow:auto;border-top:1px solid #444;position:relative;overscroll-behavior:contain}.stage{position:relative;width:100%}.stage img{position:absolute;inset:0;width:100%;height:100%;display:block;visibility:hidden}.stage img.active{visibility:visible}.stage[hidden]{display:none}.status{padding:40px 24px;text-align:center}.status[hidden]{display:none}@media(max-width:600px){header{padding:16px}h1{font-size:19px}button,select{padding:7px 12px;font-size:12px}}
+</style>
+<script src="../image-loading.js?v=3ec671ce0b" defer></script>
+</head>
+<body>
+<header>
+<h1>项目长图 · 画质对比</h1>
+<div class="controls"><label for="project">选择项目</label><select id="project" disabled></select><a href="../visual/">返回作品选集</a></div>
+<p id="stats">正在读取图片记录…</p>
+<p>高质量有损压缩，保留原分辨率。对比页会加载两版，供检查画质；作品集只加载压缩版。</p>
+<div class="controls" aria-label="图片版本">
+<button data-version="original" aria-pressed="false" disabled>原图</button>
+<button data-version="compressed" aria-pressed="true" disabled>压缩图</button>
+<button id="zoom" aria-pressed="false" disabled>100% 原始像素</button>
+</div>
+<div class="controls" aria-label="检查区域">
+<button data-region="top" disabled>首屏</button>
+<button data-region="text" disabled>细小文字</button>
+<button data-region="detail" disabled>界面与色彩</button>
+</div>
+</header>
+<div class="viewport" role="region" aria-label="可滚动的长图对比区" tabindex="0" aria-busy="true">
+<p class="status" role="status">正在准备对比…</p><div class="stage" hidden></div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const viewport=document.querySelector('.viewport'),stage=document.querySelector('.stage'),status=document.querySelector('.status'),zoom=document.querySelector('#zoom'),project=document.querySelector('#project');
+  const buttons=[...document.querySelectorAll('button')],versionButtons=[...document.querySelectorAll('[data-version]')];
+  let selected='compressed',nativeSize=false,images={},variants=[],current,controller,job=0,loaded=[];
+  const mib=bytes=>(bytes/1048576).toFixed(2);
+  function setZoom(native){
+    const oldWidth=stage.getBoundingClientRect().width,x=viewport.scrollLeft/oldWidth,y=viewport.scrollTop/oldWidth;
+    nativeSize=native;stage.style.width=native?`${current.width}px`:'100%';
+    zoom.setAttribute('aria-pressed',String(native));zoom.textContent=native?'适应宽度':'100% 原始像素';
+    const width=stage.getBoundingClientRect().width;viewport.scrollLeft=x*width;viewport.scrollTop=y*width;
+  }
+  versionButtons.forEach(button=>button.addEventListener('click',()=>{
+    selected=button.dataset.version;
+    versionButtons.forEach(item=>item.setAttribute('aria-pressed',String(item.dataset.version===selected)));
+    Object.entries(images).forEach(([key,image])=>{image.classList.toggle('active',key===selected);image.setAttribute('aria-hidden',String(key!==selected));});
+  }));
+  zoom.addEventListener('click',()=>setZoom(!nativeSize));
+  document.querySelectorAll('[data-region]').forEach(button=>button.addEventListener('click',()=>{
+    setZoom(true);const [x,y]=button.dataset.region==='top'?[0,0]:current.regions[button.dataset.region];viewport.scrollLeft=x;viewport.scrollTop=y;
+  }));
+  async function showProject(){
+    const task=++job;controller?.abort();loaded.forEach(item=>item.dispose());loaded=[];images={};stage.replaceChildren();
+    controller=new AbortController();current=variants.find(item=>item.id===project.value);
+    document.querySelector('#stats').textContent=`${current.title}：${mib(current.originalBytes)} → ${mib(current.compressedBytes)} MiB，减少 ${(100*(1-current.compressedBytes/current.originalBytes)).toFixed(1)}%。${current.width} × ${current.height}。`;
+    buttons.forEach(button=>button.disabled=true);stage.hidden=true;status.hidden=false;status.textContent='正在加载两张完整长图，准备完成后统一显示…';viewport.setAttribute('aria-busy','true');
+    nativeSize=false;stage.style.width='100%';stage.style.aspectRatio=`${current.width}/${current.height}`;zoom.textContent='100% 原始像素';zoom.setAttribute('aria-pressed','false');viewport.scrollLeft=0;viewport.scrollTop=0;
+    try{
+      const requests=[current.original,current.compressed].map(async url=>{const item=await loadPortfolioOriginal('../'+url,{signal:controller.signal});if(task!==job){item.dispose();throw new DOMException('Cancelled','AbortError');}loaded.push(item);return item;});
+      const [original,compressed]=await Promise.all(requests);if(task!==job)return;
+      images={original:original.image,compressed:compressed.image};
+      Object.entries(images).forEach(([key,image])=>{image.alt=current.title+(key==='original'?'原图':'压缩图');image.classList.toggle('active',key===selected);image.setAttribute('aria-hidden',String(key!==selected));stage.append(image);});
+      stage.hidden=false;status.hidden=true;viewport.setAttribute('aria-busy','false');buttons.forEach(button=>button.disabled=false);
+    }catch(error){if(task!==job)return;controller.abort();loaded.forEach(item=>item.dispose());loaded=[];status.textContent='长图加载失败，请重新选择项目或刷新重试。';viewport.setAttribute('aria-busy','false');console.warn('Image comparison failed',error);}
+  }
+  project.addEventListener('change',showProject);
+  try{
+    const response=await fetch('./long-image-compression-2026-11-04.json');if(!response.ok)throw Error('Missing compression record');variants=await response.json();
+    variants.forEach(item=>{const option=document.createElement('option');option.value=item.id;option.textContent=item.title;project.append(option);});
+    project.value=variants.some(item=>item.id===location.hash.slice(1))?location.hash.slice(1):'traffic';project.disabled=false;await showProject();
+  }catch(error){status.textContent='对比记录加载失败，请刷新重试。';console.warn('Image comparison setup failed',error);}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>浣熊经营分 · 原图与压缩图对比</title>
+<style>
+@font-face{font-family:Douyin;src:url('../assets/PortfolioDisplay-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+*{box-sizing:border-box}body{margin:0;background:#181818;color:#fff;font:700 14px/1.6 Douyin,sans-serif}header{padding:20px 24px}h1{font-size:22px;margin:0 0 6px}p{margin:6px 0;color:#bbb}.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}button,a{font:inherit}button{padding:8px 16px;border:1px solid #666;border-radius:24px;background:transparent;color:#fff;cursor:pointer}button[aria-pressed=true],button:focus-visible{color:#c4ff67;border-color:#c4ff67}button:disabled{opacity:.4;cursor:wait}a{color:#c4ff67}.viewport{height:calc(100dvh - 260px);min-height:360px;overflow:auto;border-top:1px solid #444;position:relative;overscroll-behavior:contain}.stage{position:relative;width:100%;aspect-ratio:3840/20858}.stage img{position:absolute;inset:0;width:100%;height:100%;display:block;visibility:hidden}.stage img.active{visibility:visible}.stage[hidden]{display:none}.status{padding:40px 24px;text-align:center}.status[hidden]{display:none}@media(max-width:600px){header{padding:16px}h1{font-size:19px}.viewport{height:65dvh}button{padding:7px 12px;font-size:12px}}
+</style>
+<script src="../image-loading.js?v=3ec671ce0b" defer></script>
+</head>
+<body>
+<header>
+<h1>浣熊经营分 · 画质对比</h1>
+<p>原图 22.20 MiB → 压缩图 13.25 MiB，减少 40.3%。两张均为 3840 × 20858，未缩小像素尺寸。</p>
+<p>这是高质量有损编码试验。切换时保留同一位置；建议选择“细小文字”，在 100% 下判断是否接受。</p>
+<div class="controls" aria-label="图片版本">
+<button data-version="original" aria-pressed="false" disabled>原图 PNG</button>
+<button data-version="compressed" aria-pressed="true" disabled>压缩图 JPEG</button>
+<button id="zoom" aria-pressed="false" disabled>100% 原始像素</button>
+<a href="../visual/">返回作品选集</a>
+</div>
+<div class="controls" aria-label="检查区域">
+<button data-region="0,0" disabled>首屏</button>
+<button data-region="950,9200" disabled>界面文字</button>
+<button data-region="450,15350" disabled>细小文字</button>
+<button data-region="2450,17800" disabled>AIGC 渐变</button>
+</div>
+</header>
+<div class="viewport" role="region" aria-label="可滚动的长图对比区" tabindex="0" aria-busy="true">
+<p class="status" role="status">正在加载两张完整长图，准备完成后统一显示…</p>
+<div class="stage" hidden></div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const viewport=document.querySelector('.viewport'),stage=document.querySelector('.stage'),status=document.querySelector('.status'),zoom=document.querySelector('#zoom');
+  const versionButtons=[...document.querySelectorAll('[data-version]')];
+  let selected='compressed',nativeSize=false,images;
+  function setZoom(native){
+    const oldWidth=stage.getBoundingClientRect().width;
+    const x=viewport.scrollLeft/oldWidth,y=viewport.scrollTop/oldWidth;
+    nativeSize=native;stage.style.width=native?'3840px':'100%';
+    zoom.setAttribute('aria-pressed',String(native));zoom.textContent=native?'适应宽度':'100% 原始像素';
+    const newWidth=stage.getBoundingClientRect().width;
+    viewport.scrollLeft=x*newWidth;viewport.scrollTop=y*newWidth;
+  }
+  versionButtons.forEach(button=>button.addEventListener('click',()=>{
+    selected=button.dataset.version;
+    versionButtons.forEach(item=>item.setAttribute('aria-pressed',String(item.dataset.version===selected)));
+    Object.entries(images).forEach(([key,image])=>{image.classList.toggle('active',key===selected);image.setAttribute('aria-hidden',String(key!==selected));});
+  }));
+  zoom.addEventListener('click',()=>setZoom(!nativeSize));
+  document.querySelectorAll('[data-region]').forEach(button=>button.addEventListener('click',()=>{
+    setZoom(true);const [x,y]=button.dataset.region.split(',').map(Number);viewport.scrollLeft=x;viewport.scrollTop=y;
+  }));
+  try{
+    const [original,compressed]=await Promise.all([
+      loadPortfolioOriginal('../assets/food-score-long.png?v=38a48414d3'),
+      loadPortfolioOriginal('../assets/food-score-long-web.jpg?v=ae552a1349')
+    ]);
+    images={original:original.image,compressed:compressed.image};
+    Object.entries(images).forEach(([key,image])=>{image.alt=key==='original'?'浣熊经营分原图':'浣熊经营分压缩图';image.classList.toggle('active',key===selected);image.setAttribute('aria-hidden',String(key!==selected));stage.append(image);});
+    stage.hidden=false;status.hidden=true;viewport.setAttribute('aria-busy','false');
+    document.querySelectorAll('button').forEach(button=>button.disabled=false);
+  }catch(error){status.textContent='长图加载失败，请刷新重试。';viewport.setAttribute('aria-busy','false');console.warn('Image comparison failed',error);}
+});
+</script>
+</body>
+</html>
