@@ -233,7 +233,9 @@ body:not(.is-visual-page) .site-header .wordmark,body:not(.is-visual-page) .site
 
 /* Keep the demo action and its rolling glyphs in one color. */
 .agent-demo .stage-title .agent-demo-open,.agent-demo-open .action-words,.agent-demo-open .action-character,.agent-demo-open .action-track,.agent-demo-open .action-glyph,.agent-demo-open .action-symbol{color:inherit}
-.agent-demo .stage-title .agent-demo-open{color:var(--ink)}
+/* Match the larger demo label with a centered arrow and a little more breathing room. */
+.agent-demo .stage-title .agent-demo-open{color:var(--ink);align-items:center;justify-content:center;gap:1em}
+.agent-demo-open.text-action .action-symbol{font-size:1.5em;align-self:center;line-height:1;top:1px}
 .agent-demo .stage-title .agent-demo-open:hover,.agent-demo .stage-title .agent-demo-open:focus-visible{color:var(--accent)}
 
 /* Match the footer snowflake interaction without rotating its layout frame. */
