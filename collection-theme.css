@@ -30,7 +30,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline-color:var(--a
 .sprint-overview h3{font-size:22px}
 .sprint-intro-points li+li{margin-top:8px}
 .sprint-phase-grid{gap:16px}
-.sprint-evidence{top:30px;padding-top:0;margin-top:56px}
+.sprint-evidence{top:30px;padding-top:0;margin-top:60px}
 .sprint-phase{padding:24px 20px;border:0;border-radius:20px;background:var(--surface)}
 .sprint-phase-number{font-size:12px;color:var(--accent);margin-bottom:24px}
 .sprint-phase h4{font-size:19px;margin-bottom:18px}
@@ -42,8 +42,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline-color:var(--a
 .sprint-asset-link:hover,.sprint-asset-link[aria-pressed="true"]{color:var(--accent);border-bottom-color:var(--accent);text-decoration-color:var(--accent)}
 .sprint-section figcaption{font-size:12px;line-height:1.8;color:#aaa}
 .sprint-gallery-controls{gap:22px}
-.sprint-gallery-controls button{font-size:13px}
-.sprint-gallery-controls button[aria-pressed="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.sprint-gallery-controls button{position:relative;font-size:13px;min-height:calc(1.6em + 13px);text-decoration:none}
+.sprint-gallery-controls button[aria-pressed="true"]{color:var(--accent);border-bottom-color:transparent;text-decoration:none}
+/* Keep the selected underline 2px above the original bottom border. */
+.sprint-gallery-controls button[aria-pressed="true"]::after{content:"";position:absolute;left:0;right:0;bottom:1px;height:1px;background:var(--accent);pointer-events:none}
+.sprint-gallery-controls button[aria-pressed="false"]:is(:hover,:focus-visible){color:#e5e5e5;border-bottom-color:transparent}
+.sprint-gallery-controls button[aria-pressed="true"] .action-track{transform:translateY(0)}
 .sprint-challenge-head>span,.sprint-thought>span{font-size:12px;color:#aaa}
 .sprint-challenge-head h3{font-size:clamp(28px,3vw,40px)}
 .sprint-story-copy p,.sprint-story-copy li{color:#b5b5b5}
@@ -240,3 +244,17 @@ body:not(.is-visual-page) .site-header .wordmark,body:not(.is-visual-page) .site
 .is-visual-page .gallery-return>.text-link .action-symbol{align-self:center;top:0;line-height:1}
 .is-visual-page .gallery-return>span{line-height:1.4}
 @media(prefers-reduced-motion:reduce){.about-mark>span{transition:none}.about-mark:hover>span{transform:none}}
+
+/* Share a grid row with the body so wrapped exploration titles retain alignment. */
+.sprint-exploration{row-gap:20px}
+.sprint-exploration>h4{margin:0}
+@media(min-width:701px){
+ .sprint-exploration>h4{grid-column:1;grid-row:1}
+ .sprint-exploration>.sprint-story-copy{grid-column:1;grid-row:2}
+ .sprint-exploration>:last-child{grid-column:2;grid-row:2}
+ .sprint-exploration>div:last-child{margin-top:-6px}
+ .sprint-card-solution>.case-gallery{margin-top:-5px}
+ .ai-case .case-source-visual{margin-top:8px}
+}
+@media(min-width:1001px){.sprint-reflection-layout>figure{margin-top:8px}}
+@media(max-width:700px){.sprint-exploration>:last-child{margin-top:8px}}

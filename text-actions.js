@@ -1,5 +1,5 @@
 (()=>{
-  const selector='.site-header nav a,.text-link,.agent-demo-open,.case-media-toolbar button,.case-media-toolbar a,.to-top,.dialog-close,.dialog-view-toggle,.image-load-retry,.sprint-document-link,.agent-demo-mobile>span:not(.home-image-frame),summary';
+  const selector='.site-header nav a,.text-link,.agent-demo-open,.case-media-toolbar button,.case-media-toolbar a,.sprint-gallery-controls button,.to-top,.dialog-close,.dialog-view-toggle,.image-load-retry,.sprint-document-link,.agent-demo-mobile>span:not(.home-image-frame),summary';
   const symbolPattern=/^[↗↖↘↙↑↓←→×＋+]+$/;
   const suffixPattern=/\s*([↗↖↘↙↑↓←→×＋+]+)\s*$/;
   const prefixPattern=/^\s*([↗↖↘↙↑↓←→×＋+]+)\s*/;
