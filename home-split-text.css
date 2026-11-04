@@ -1,0 +1,4 @@
+/* Vue Bits Split Text clips the 40px character entry inside its text parent. */
+.home-split-title{overflow:hidden;overflow-wrap:break-word}
+.home-split-title .split-char{will-change:transform,opacity}
+@media(prefers-reduced-motion:reduce){.home-split-title .split-char{opacity:1!important;transform:none!important;will-change:auto}}

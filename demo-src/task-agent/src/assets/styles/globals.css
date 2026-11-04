@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局样式重置 */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 自定义表格样式 */
+.custom-table .ant-table-thead > tr > th {
+  background-color: #fafafa;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.custom-table .ant-table-tbody > tr:hover > td {
+  background-color: #f5f5f5;
+}
+
+/* 卡片样式优化：对齐 Codex V4 视觉稿（12px 大圆角、无阴影、浅描边） */
+.ant-card {
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #E9EBF2;
+  font-weight: 600;
+}
+
+/* 任务管理内的语义标签统一使用常规字重，避免不同卡片出现 400/600/700 混用。 */
+.bd-task-app .ant-tag {
+  font-weight: 400;
+}
+
+/* 任务管理内未选中多选框使用更清晰的中性描边。 */
+.bd-task-app
+  .ant-checkbox:not(.ant-checkbox-checked):not(.ant-checkbox-indeterminate)
+  .ant-checkbox-inner {
+  border-color: #D9DCE3;
+}
+
+/* 未选中态 hover 仍沿用任务管理品牌主色。 */
+.bd-task-app
+  .ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
+  .ant-checkbox:not(.ant-checkbox-checked):not(.ant-checkbox-indeterminate)
+  .ant-checkbox-inner,
+.bd-task-app
+  .ant-checkbox:not(.ant-checkbox-disabled):not(.ant-checkbox-checked):not(.ant-checkbox-indeterminate):hover
+  .ant-checkbox-inner {
+  border-color: #482AF7;
+}
+
+/* 多选控件的已选标签统一使用中性灰底，覆盖组织架构及复用同类样式的筛选标签。 */
+.bd-task-app .ant-select-multiple .ant-select-selection-item {
+  background-color: #F0F1F5;
+}
+
+/* 任务工作台：仅未选中、可用且非按压/键盘聚焦状态使用统一中性 hover。 */
+.bd-task-app .bd-task-outline-hover {
+  transition: background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.25s ease, transform 0.25s ease !important;
+}
+
+.bd-task-app .bd-task-outline-hover:not([data-selected='true']):not([aria-disabled='true']):not(:active):not(:focus-visible):hover {
+  background-color: #F9FAFB !important;
+  border-color: #EDEFF2 !important;
+}
+
+.bd-task-app .bd-task-sort-tabs .ant-radio-button-wrapper:not(.ant-radio-button-wrapper-checked):not(.ant-radio-button-wrapper-disabled):not(:active):not(:focus-visible):hover {
+  background-color: #F9FAFB;
+  border-color: #EDEFF2;
+  color: inherit;
+}
+
+.bd-task-app .bd-task-sort-tabs .ant-radio-button-wrapper:not(.ant-radio-button-wrapper-checked):not(.ant-radio-button-wrapper-disabled):not(:active):not(:focus-visible):hover::before {
+  background-color: #EDEFF2;
+}
+
+.bd-task-app .bd-task-sort-segmented .ant-segmented-item:not(.ant-segmented-item-selected):not(.ant-segmented-item-disabled):not(:active):not(:focus-visible):hover {
+  color: inherit;
+}
+
+/* 表单样式优化 */
+.ant-form-item-label > label {
+  font-weight: 500;
+}
+
+/* 响应式布局优化 */
+@media (max-width: 768px) {
+  .ant-layout-content {
+    margin: 16px 8px !important;
+    padding: 16px !important;
+  }
+
+  /* 任务管理的五类页面各自控制顶部间距，避免通用窄屏留白叠加。 */
+  .bd-task-app > .ant-layout > .ant-layout-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .ant-card {
+    margin-bottom: 16px;
+  }
+}
+
+/* 滚动条样式：对齐 Codex V4 --scroll-thumb */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E5E8EF;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D1D5E0;
+}

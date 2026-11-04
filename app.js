@@ -15,78 +15,179 @@ const imageButton = (src,alt,cls='') => `<button class="image-expand ${cls}" dat
 const sectionLabel=(num,text)=>`<div class="section-kicker"><span>(${num})</span><span>${text}</span></div>`;
 
 const galleryItems=[
-{id:'agent',type:'product',title:'天衡任务管理',description:'让复杂信息有秩序，让任务进展可理解。',tag:'PC / 信息与交互',asset:'agent-workbench.jpg',surface:'sage',note:'按当前结构重绘 · 示例数据'},
-{id:'food',type:'visual',title:'浣熊经营分',description:'将等级、权益与整改提示，组织成可感知的规则。',tag:'移动端 / 视觉表达',asset:'food-score.jpg',surface:'brown',note:'项目设计稿 · 既有品牌形象延展'},
-{id:'kangaroo',type:'product',title:'袋鼠参谋',description:'常用条件直接选择，复杂选项分层展开。',tag:'AI 产品 / 场景输入',asset:'kangaroo-panel.jpg',surface:'lavender',note:'终稿设计页面'},
-{id:'traffic',type:'product',title:'交通信号控制平台',description:'在地图、参数与多路口信息之间建立清楚的关系。',tag:'PC / 复杂系统',asset:'traffic.jpg',surface:'blue',note:'校企合作 · 核心模块设计'},
-{id:'levels',type:'visual',title:'等级与状态的表达',description:'同一套品牌语言，承载不同等级与使用状态。',tag:'组件 / 品牌延展',asset:'food-levels.jpg',surface:'brown',note:'基于既有形象的 AI 辅助延展与加工'},
-{id:'anxin',type:'visual',title:'安心严选',description:'用内容层级与细节，建立频道的识别与浏览节奏。',tag:'移动端 / 界面探索',asset:'anxin.jpg',surface:'peach',note:'个人改版探索'}
+{id:'food',type:'visual',title:'浣熊经营分',description:'围绕食安管控，梳理经营等级、权益与整改路径，并以 AIGC 延展品牌形象。',tag:'移动端 / 食安管控',asset:'food-score.jpg',cover:'cover1.png?v=8445e3cb66',detail:'food-score-long.png?v=15ae4ffa00',surface:'brown',note:'完整项目长图 · 上下滚动浏览'},
+{id:'kangaroo',type:'product',title:'袋鼠参谋',description:'通过意图厘清、场景输入与 GUI 卡片规范，优化 AI 经营咨询的对话体验。',tag:'AI 产品 / 对话体验',asset:'kangaroo-panel.jpg',cover:'cover5.png',detail:'kangaroo-long-513c5d7d6a.jpg',surface:'lavender',note:'袋鼠参谋 · AI 对话体验优化 / 完整项目长图 · 上下滚动浏览'},
+{id:'compliance',type:'product',title:'时空轨迹共现分析',description:'面向 CLC 业务合规服务台，组织查询条件、共现结果与轨迹明细。',tag:'PC / 风控分析',asset:'cover3.png',cover:'cover3.png',detail:'compliance-long.jpg',surface:'sage',note:'美团 · CLC 业务合规服务台 / 完整项目长图 · 上下滚动浏览'},
+{id:'camera',type:'product',title:'摄像头绑定及基础操作',description:'从设备绑定到实时查看与录像回放，建设商家端后厨监控操作链路。',tag:'移动端 / 硬件接入',asset:'cover2.png',cover:'cover2.png',detail:'camera-long.jpg',surface:'brown',note:'美团 · 摄像头 / 完整项目长图 · 上下滚动浏览'},
+{id:'traffic',type:'product',title:'交通信号控制平台',description:'围绕地图、路口与信号参数，完成复杂交通控制系统的设计改版。',tag:'PC / 复杂系统',asset:'traffic.jpg',cover:'cover4.png',detail:'traffic-long.jpg',surface:'blue',note:'航天大为 × 江南大学 · 2.0 设计改版 / 完整项目长图 · 上下滚动浏览'},
+{id:'nearby',type:'visual',title:'附近在吃',description:'升级社区内容与交互链路，强化美食发现的场景感知并衔接转化路径。',tag:'移动端 / 社区体验',asset:'cover6.png',cover:'cover6.png',detail:'nearby-long.jpg',surface:'sage',note:'美团 · 附近在吃 / 完整项目长图 · 上下滚动浏览'},
+{id:'anxin',type:'visual',title:'安心严选频道页',description:'重构频道页的信息秩序，通过内容层级与视觉表达传达差异化心智。',tag:'移动端 / 界面探索',asset:'anxin.jpg',cover:'cover7.png',detail:'anxin-long.jpg',surface:'peach',note:'个人探索 · 源自字节跳动抖音校招笔试题 / 完整项目长图 · 上下滚动浏览'},
+{id:'wechat',type:'product',title:'微信 AI 日程管理助手',description:'探索从聊天内容中识别并创建日程，以 AI 建议衔接日常行程管理。',tag:'AI 产品 / 日程探索',asset:'cover8.png',cover:'cover8.png',detail:'wechat-long.jpg',surface:'sage',note:'个人探索 · 源自腾讯 WXG 校招笔试题 / 完整项目长图 · 上下滚动浏览'}
 ];
-const galleryCard=(item,index)=>`<article class="gallery-card reveal" data-type="${item.type}"><button class="gallery-image ${item.surface}" data-image="${base}assets/${item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="放大查看${item.title}"><img src="${base}assets/${item.asset}" alt="${item.title}设计画面" loading="lazy"><span class="gallery-no">0${index+1}</span><span class="gallery-open">查看大图 ↗</span></button><div class="gallery-card-title"><h3>${item.title}</h3><span>${item.tag}</span></div><p>${item.description}</p></article>`;
+const galleryCard=(item,index)=>`<article class="gallery-card reveal" data-type="${item.type}"><button class="gallery-image ${item.surface} has-cover" data-image="${base}assets/${item.detail||item.cover||item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="放大查看${item.title}"><span class="gallery-tilt-frame"><img src="${base}assets/${item.cover||item.asset}" alt="${item.title}设计画面" loading="lazy" decoding="async" draggable="false"></span><span class="gallery-no">${String(index+1).padStart(2,'0')}</span></button><div class="gallery-card-title"><h3>${item.title}</h3><span>${item.tag}</span></div><p>${item.description}</p></article>`;
+const orbitGallery=()=>`<div class="orbit-gallery" aria-label="8 个作品的环形画廊"><div class="orbit-stage" role="region" aria-label="旋转作品环，可左右拖动，点击封面查看完整项目" tabindex="0"><div class="orbit-core"><div class="orbit-current"><span class="orbit-current-index" aria-label="第 01 个作品，共 08 个"><span class="orbit-index-flip" aria-hidden="true"><span class="orbit-index-value">01</span></span><span class="orbit-index-total" aria-hidden="true"> / 08</span></span><span class="orbit-current-title orbit-title-flip"><span class="orbit-title-value">${galleryItems[0].title}</span></span></div><div class="orbit-controls"><button type="button" data-orbit-step="-1" aria-label="上一个作品">←</button><button type="button" data-orbit-play aria-label="暂停自动旋转" aria-pressed="false">Ⅱ</button><button type="button" data-orbit-step="1" aria-label="下一个作品">→</button></div></div><div class="orbit-rotor">${galleryItems.map((item,i)=>`<button type="button" class="orbit-tile" data-image="${base}assets/${item.detail||item.cover||item.asset}" data-title="${item.title}" data-caption="${item.note}" aria-label="查看完整项目：${item.title}" style="--orbit-index:${i}"><img src="${base}assets/orbit/${item.cover.split('?')[0].replace('.png','.jpg')}" alt="${item.title}作品封面" loading="lazy" decoding="async" draggable="false"><span class="orbit-tile-label">${item.title}<i aria-hidden="true">↗</i></span></button>`).join('')}</div></div></div>`;
 
 function home(){return `<section class="hero" id="top"><div class="hero-main"><h1 class="hero-brand"><span>Jhuen.</span> <span>Design</span></h1><p class="hero-subtitle">把复杂业务，做成清晰好用的体验</p></div><div class="hero-bottom"><a href="#work" class="text-link">往下看，了解我的设计思考 <span>↓</span></a><p>目前在美团从事B端AI产品体验设计<br>从信息与交互出发也走进代码里<br>让设计在真实产品中发生</p></div></section>
 
-<section id="work" class="work-intro reveal">${sectionLabel('01','从复杂任务，到明确行动')}<div class="section-intro"><h2>先看清，<br>再行动。</h2><div><p>任务管理 Agent 将分散的任务集中，支持人与 AI 协同执行。</p><p>我参与业务梳理与平台架构，负责关键页面的信息、交互与界面优化，并借助 AI coding 推进实现。</p><div class="project-meta"><span>美团 · 任务管理 Agent</span><span>PC 线上版本 / 移动端探索</span></div></div></div></section>
+${sprintOverview()}
 
-<section class="agent-feature reveal"><div class="feature-stage sage"><div class="stage-title"><span>任务管理 Agent</span><span>信息架构 / 交互 / 界面落地</span></div><div class="hero-dashboard">${dash()}</div><div class="stage-bottom"><span>在复杂信息里，找到今天的重点。</span><span>界面结构示意 · 示例数据</span></div></div></section>
+<div class="sprint-demo-heading"><p class="sprint-kicker">02 / Live Demo</p><h3>可交互系统体验</h3></div>
+<section class="agent-feature reveal" aria-label="任务管理 Agent 交互演示"><div class="feature-stage sage agent-demo"><div class="stage-title"><span>任务管理 Agent</span><a class="agent-demo-open" href="${base}demos/task-agent/index.html?v=093244f680#/bd-task" target="_blank" rel="noopener">展开体验 ${arrow}</a></div><div class="agent-demo-viewport"><iframe src="${base}demos/task-agent/index.html?v=093244f680#/bd-task" title="任务管理 Agent 交互演示" width="1440" height="960" loading="lazy"></iframe></div><a class="agent-demo-mobile" href="${base}demos/task-agent/index.html?v=093244f680#/bd-task" target="_blank" rel="noopener" aria-label="打开任务管理 Agent 交互演示"><img src="${base}assets/task-agent-preview.png?v=6954e567a4" alt="任务管理 Agent 工作台预览" loading="lazy"><span>打开交互演示 ${arrow}</span></a><div class="stage-bottom"><span>在复杂信息里，找到今天的重点。</span><span>交互演示 · 示例数据</span></div></div></section>
 
-<section class="case-section reveal" id="judgement"><div class="case-heading"><span class="case-index">01—A</span><h3>管理者今天<br>该关注什么？</h3><p>从数据罗列，走向有顺序的判断。先感知任务盘面，再定位风险与需要跟进的人。</p></div><div class="case-body"><div class="decision-flow"><div><span>01</span><b>感知整体状态</b><p>风险等级与原因</p></div><i>→</i><div><span>02</span><b>定位关注对象</b><p>任务、到期与人员</p></div><i>→</i><div><span>03</span><b>进入具体处理</b><p>查看明细与后续行动</p></div></div><div class="before-after"><div class="compare-heading"><span>方案对照</span><div class="segmented" role="group" aria-label="选择工作台方案"><button data-compare="current" class="is-active" aria-pressed="true">当前界面</button><button data-compare="original" aria-pressed="false">产品原型</button></div></div><div id="comparison-current">${imageButton('./assets/agent-workbench.jpg','任务管理 Agent 工作台结构重绘：风险、推进与人员信息')}<p class="figure-caption">按当前结构重绘 · 示例数据</p></div><div id="comparison-original" hidden>${imageButton('./assets/agent-original.jpg','产品原型参考：工作台信息组织')}<p class="figure-caption">可变产品原型参考 · 数据与当前版本无直接可比性</p></div></div><div class="three-notes"><div><h4>重排优先级</h4><p>整体状态先于详细统计，帮助用户找到阅读起点。</p></div><div><h4>让关系可见</h4><p>用图表表达构成、风险与负荷，支持进一步判断。</p></div><div><h4>连接后续动作</h4><p>从关注的信息进入具体任务，让概览有下一步。</p></div></div></div></section>
+${sprintGoals()}
 
-<section class="case-section reveal" id="task-states"><div class="case-heading"><span class="case-index">01—B</span><h3>任务到了哪一步，<br>接下来做什么？</h3><p>将相对稳定的对象信息，与随执行变化的状态、反馈分区。让当前操作跟随任务进展。</p></div><div class="case-body"><div class="task-state-stage"><div class="task-state-tabs" role="group" aria-label="查看不同任务状态"><button data-state="pending" class="is-active" aria-pressed="true">待处理</button><button data-state="running" aria-pressed="false">AI 执行中</button><button data-state="done" aria-pressed="false">AI 已完成</button></div><div id="task-render">${taskCard()}</div><div class="info-labels"><span><i></i>对象信息：持续提供背景</span><span><i></i>执行信息：随进展变化</span></div></div><div class="two-notes"><div><h4>把信息放回它的位置</h4><p>基础信息保持稳定，执行结果与检核反馈集中表达，减少寻找与辨别。</p></div><div><h4>让当前状态对应当前操作</h4><p>围绕下一步处理组织操作，而非让所有动作拥有同样的优先级。</p></div></div><p class="figure-caption">交互结构演示 · 三个状态用于说明信息分区，不代表完整业务状态机</p></div></section>
+${sprintChallenges()}
 
-<section class="coding-section reveal"><div class="coding-heading">${sectionLabel('方法','设计如何持续生效')}<h2>设计，<br>也发生在代码里。</h2><p>参与实际界面实现与检查，将反复出现的要求沉淀成规则，让下一次迭代有据可依。</p></div><div class="coding-art"><div class="code-sheet"><div class="code-sheet-top"><span>DESIGN → CODE</span><span>↗</span></div><div class="token-line"><span>color</span><i style="background:#c4d655"></i><i style="background:#e7e8df"></i><i style="background:#1d201b"></i></div><div class="token-line"><span>spacing</span><div class="spacing-demo"><i></i><i></i><i></i><i></i></div></div><div class="code-rule"><small>界面问题</small><b>明确规则</b><small>修改与检查</small><b>下一次复用 ↗</b></div><span class="sheet-caption">颜色、间距与规则组织示意</span></div></div><div class="coding-bottom"><span>设计 token</span><span>组件与页面规则</span><span>AI 协作规范</span></div><details class="mobile-details"><summary>移动端迁移探索 <span>换一种场景，重新组织信息 ＋</span></summary><div class="mobile-detail-content"><div><h3>延续判断逻辑，<br>调整阅读与操作方式。</h3><p>筛选、风险提示与人员分类，在更小的空间里重新组织。当前为迁移探索，使用演示数据。</p></div>${imageButton('./assets/agent-mobile.jpg','任务管理 Agent 移动端迁移探索，演示数据')}</div></details></section>
+${sprintReflection()}
 
 <section class="ai-intro reveal" id="ai">${sectionLabel('02','降低 AI 能力的使用与表达门槛')}<h2>找到能力。<br>说清需求。</h2><p>从能力入口，到场景化输入。<br>用小蜜与袋鼠参谋的两个设计片段，<br>探索人如何更容易地使用 AI。</p></section>
 
-<section class="ai-case reveal"><div class="ai-visual honey-stage"><div class="float-label label-top">个性化意图 ↘</div>${phone('honey')}<div class="float-label label-bottom">稳定高频意图 ↗<br>场景化意图 ↗</div><span class="visual-footnote">入口结构示意</span></div><div class="ai-copy"><div class="mini-meta"><span>小蜜助手</span><span>信息架构 / 设计方案</span></div><h3>让增长中的能力，<br>有清楚的入口。</h3><p>技能与 Agent 增加，原首页的模块职责逐渐混杂。我结合使用行为，重新划分输入栏、技能栏和场景推荐的职责。</p><div class="intent-list"><div><span>输入栏</span><b>表达个性化意图</b></div><div><span>技能栏</span><b>调用稳定高频能力</b></div><div><span>场景推荐</span><b>承接当下具体需求</b></div></div><details><summary>查看设计依据 <span>＋</span></summary><p>输入框承担主要意图表达；工具栏的使用与其页面露出不匹配；“高频问”混合多种职责。因此重新分工，并为独立 Agent 保留承接空间。</p><p class="figure-caption">依据项目行为分析与方案讨论稿；未将设计前数据表述为改版成效。</p></details></div></section>
+<section class="ai-case reveal"><div class="ai-visual case-source-visual">${sprintMedia('honey','小蜜 / 首页信息架构优化')}</div><div class="ai-copy"><h3>让增长中的能力，<br>有清楚的入口。</h3><p>重组首页入口，让个性化提问、高频技能与场景推荐各司其职。</p><ol class="plain-list"><li>用户意图前置确认，快速进入会话态</li><li>双行技能聚合展示，场景推荐灵活配置</li><li>划分独立空间，承接平行功能</li></ol></div></section>
 
-<section class="ai-case reverse reveal"><div class="ai-visual kangaroo-stage">${phone('kangaroo')}<div class="float-label label-top">常用条件，直接点选。</div><div class="float-label label-bottom">复杂选项，分层展开。</div><span class="visual-footnote">咨询面板结构示意</span></div><div class="ai-copy"><div class="mini-meta"><span>袋鼠参谋</span><span>场景输入 / 终稿设计</span></div><h3>把复杂条件，<br>变成清楚的输入。</h3><p>分析方向、意向区域、品类与补充信息，被组织进同一咨询面板。用户可以先选常用条件，再补充自己的问题。</p><ol class="plain-list"><li>热门条件便捷选择，完整选项另有入口。</li><li>品类与区域分层，控制一次呈现的信息量。</li><li>已选项持续回显，支持修改与删除。</li></ol><button class="text-link" data-image="./assets/kangaroo-panel.jpg" data-title="袋鼠参谋：咨询面板终稿设计">查看原始设计片段 ${arrow}</button></div></section>
+<section class="ai-case reverse reveal"><div class="ai-visual case-source-visual">${sprintKangarooMedia()}</div><div class="ai-copy"><h3>把复杂条件，<br>变成清楚的输入。</h3><p>用热门问带出问题，再通过结构化选项补全经营咨询条件。</p><ol class="plain-list"><li>热门问一键填入，可继续编辑问题。</li><li>常用条件轻量选择，完整选项分层展开。</li><li>结构化条件回填，问题可编辑补充。</li></ol></div></section>
 
-<section class="visual-preview reveal">${sectionLabel('选集','一些界面与视觉表达')}<div class="visual-preview-heading"><h2>清楚之外，<br>也有细节。</h2><a href="./visual/" class="text-link">浏览完整视觉选集 ${arrow}</a></div><div class="preview-grid">${[galleryItems[1],galleryItems[0],galleryItems[5]].map((item,i)=>galleryCard(item,i)).join('')}</div></section>
+<section class="visual-preview visual-orbit-preview reveal" id="selected-work">${sectionLabel('选集','一些界面与视觉表达')}<div class="visual-preview-heading"><h2>清楚之外，<br>也有细节。</h2><a href="./visual/" class="text-link">浏览完整作品选集 ${arrow}</a></div>${orbitGallery()}</section>
 
-<section class="about-section reveal" id="about"><div class="about-mark" aria-hidden="true">✳</div><div class="about-content">${sectionLabel('关于','蒋雯蕙')}<h2>在复杂问题里，<br>寻找清楚的解法。</h2><p>我毕业于江南大学，从交互研究与复杂系统设计出发，目前在美团参与商家端与 AI 产品体验设计。</p><p>我关注信息如何被理解、流程如何被推进，以及设计如何在真实协作中落地。保持好奇，认真对待每一次细节。</p><div class="about-facts"><div><span>工作</span><b>美团 · 体验设计</b></div><div><span>教育</span><b>江南大学 · 本科 / 硕士</b></div><div><span>荣誉</span><b>国家奖学金等</b></div></div></div></section>`;}
+<section class="about-section reveal" id="about"><div class="about-mark" aria-hidden="true"><span>✳</span></div><div class="about-content">${sectionLabel('关于','蒋雯蕙')}<h2>在复杂问题里，<br>寻找清楚的解法。</h2><p>我毕业于江南大学，从交互研究与复杂系统设计出发，目前在美团参与商家端相关 AI 产品体验设计。</p><p>我关注信息如何被理解、流程如何被推进，以及设计如何在真实协作中落地。保持好奇，认真对待每一次细节。</p><div class="about-facts"><div><span>工作</span><b>美团 · 体验设计</b></div><div><span>教育</span><b>江南大学 · 本科 / 硕士</b></div><div><span>荣誉</span><b>国家奖学金等</b></div><div><span>邮箱</span><b>1466918516@qq.com</b></div></div><div class="resume-actions" aria-label="个人简历"><button class="text-link resume-action" type="button" data-image="${base}assets/resume-jiang-wenhui-hd.png" data-title="蒋雯蕙简历" data-caption="简历原图 · 默认适应窗口，可切换为按宽度浏览" data-view="fit" data-download="蒋雯蕙简历.png" aria-label="查看蒋雯蕙简历">查看简历 ${arrow}</button></div></div></section>`;}
 
-function visual(){document.title='视觉选集 — 蒋雯蕙';return `<section class="visual-page-header" id="top"><div class="hero-meta"><span>精选界面 / VISUAL INDEX</span><span>产品中的秩序、状态与细节</span></div><h1>视觉选集<span class="gallery-count">(06)</span></h1><div class="visual-page-bottom"><p>一些界面与视觉表达。<br>点击画面，看看细节。</p><div class="gallery-filters" role="group" aria-label="筛选作品"><button data-filter="all" class="is-active" aria-pressed="true">全部 <small>06</small></button><button data-filter="product" aria-pressed="false">产品界面</button><button data-filter="visual" aria-pressed="false">视觉表达</button></div></div></section><section class="gallery-grid" aria-label="视觉作品">${galleryItems.map(galleryCard).join('')}</section><div class="gallery-return"><a href="../#work" class="text-link">← 回到设计思考</a><span>更多细节，存在于每一次具体判断里。</span></div>`;}
+function visual(){document.title='作品选集 — 蒋雯蕙';return `<section class="visual-page-header" id="top"><h1><span>作品选集</span><span class="gallery-count">${String(galleryItems.length).padStart(2,'0')}</span></h1><div class="visual-page-bottom"><div class="gallery-filters" role="group" aria-label="筛选作品"><button data-filter="all" class="is-active" aria-pressed="true">全部 <small>${String(galleryItems.length).padStart(2,'0')}</small></button><button data-filter="product" aria-pressed="false">交互设计</button><button data-filter="visual" aria-pressed="false">视觉表达</button></div><p>一些界面与视觉表达。点击画面，看看细节。</p></div></section><section class="gallery-grid" aria-label="视觉作品">${galleryItems.map(galleryCard).join('')}</section><div class="gallery-return"><a href="../#work" class="text-link">← 回到设计思考</a><span>更多细节，存在于每一次具体判断里。</span></div>`;}
 
 document.querySelector('#main').innerHTML=isVisual?visual():home();
-const contact=document.createElement('div');contact.className='contact-links';contact.innerHTML='<a href="mailto:1466918516@qq.com" class="text-link">1466918516@qq.com ↗</a><button class="copy-email" type="button" aria-label="复制联系邮箱">复制邮箱</button><span class="copy-status" role="status" aria-live="polite"></span>';document.querySelector('.about-content')?.append(contact);
-const footerContact=document.createElement('a');footerContact.className='footer-email';footerContact.href='mailto:1466918516@qq.com';footerContact.textContent='1466918516@qq.com ↗';document.querySelector('.site-footer>p').after(footerContact);
-document.querySelector('.copy-email')?.addEventListener('click',async()=>{const status=document.querySelector('.copy-status');try{await navigator.clipboard.writeText('1466918516@qq.com');status.textContent='已复制';}catch{status.textContent='请长按或选中邮箱地址复制';}});
-if(isVisual){document.querySelectorAll('a[href="./"]').forEach(a=>a.href='../');document.querySelectorAll('nav a').forEach(a=>{const key=a.dataset.nav;a.href=key==='visual'?'./':`../#${key==='work'?'work':'about'}`;});document.querySelector('[data-nav="visual"]').setAttribute('aria-current','page');}
-// Duplicate only the visual glyphs; each link keeps one readable accessible name.
-document.querySelectorAll('.site-header nav a, .hero-bottom .text-link').forEach(link => {
-  const label = Array.from(link.childNodes)
-    .filter(node => node.nodeType === Node.TEXT_NODE)
-    .map(node => node.textContent).join('').trim();
-  if (!label) return;
-  const decorations = Array.from(link.children);
-  const text = document.createElement('span');
-  text.className = 'roll-text';
-  text.setAttribute('aria-hidden', 'true');
-  Array.from(label).forEach((letter, index) => {
-    const character = document.createElement('span');
-    character.className = 'roll-char';
-    character.style.setProperty('--letter-index', index);
-    const track = document.createElement('span');
-    track.className = 'roll-track';
-    for (let copy = 0; copy < 2; copy += 1) {
-      const glyph = document.createElement('span');
-      glyph.className = 'roll-glyph';
-      glyph.textContent = letter === ' ' ? '\u00a0' : letter;
-      track.append(glyph);
-    }
-    character.append(track);
-    text.append(character);
-  });
-  link.classList.add('rolling-link');
-  link.setAttribute('aria-label', label);
-  link.replaceChildren(text, ...decorations);
-});
+document.body.classList.toggle('is-visual-page',isVisual);
+const demoViewport=document.querySelector('.agent-demo-viewport');
+if(demoViewport){
+ const sizeDemo=()=>demoViewport.style.setProperty('--agent-demo-scale',String(demoViewport.clientWidth/1440));
+ new ResizeObserver(sizeDemo).observe(demoViewport);
+ sizeDemo();
+}
 
+const footerContact=document.createElement('span');footerContact.className='footer-email';footerContact.textContent='联系方式 - 18037185788';document.querySelector('.site-footer .footer-name').after(footerContact);
+if(isVisual){document.querySelectorAll('a[href="./"]').forEach(a=>a.href='../');document.querySelectorAll('nav a').forEach(a=>{const key=a.dataset.nav;a.href=key==='visual'?'./':`../#${key==='work'?'work':'about'}`;});document.querySelector('[data-nav="visual"]').setAttribute('aria-current','page');}
 const dialog=document.querySelector('#image-dialog'); let lastFocus;
+const dialogTitle=dialog.querySelector('#dialog-title');
+const dialogHeading=document.createElement('div');
+dialogHeading.className='dialog-heading';
+dialogTitle.before(dialogHeading);
+const resumeDownload=document.createElement('a');
+resumeDownload.className='dialog-download';
+resumeDownload.hidden=true;
+resumeDownload.setAttribute('aria-label','下载蒋雯蕙简历（PNG）');
+resumeDownload.title='下载简历';
+resumeDownload.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>';
+dialogHeading.append(dialogTitle,resumeDownload);
+const dialogBody=dialog.querySelector('.dialog-body');
+dialogBody.tabIndex=0;
+dialogBody.setAttribute('role','region');
+dialogBody.setAttribute('aria-label','作品大图，可上下滚动浏览');
+const viewToggle=document.createElement('button');
+viewToggle.type='button';
+viewToggle.className='dialog-view-toggle';
+dialog.querySelector('.dialog-close').before(viewToggle);
+let imageZoom=1;
+let imageCaption='';
+let imageDrag=null;
+let imageViewChosen=false;
+function renderImageZoom(){
+ const img=dialogBody.querySelector('img');
+ if(dialog.dataset.view!=='fit'||!img?.naturalWidth)return;
+ const width=dialogBody.clientWidth;
+ const height=dialogBody.clientHeight;
+ const fit=Math.min(1,width/img.naturalWidth,height/img.naturalHeight);
+ const imageWidth=img.naturalWidth*fit*imageZoom;
+ const imageHeight=img.naturalHeight*fit*imageZoom;
+ const stage=img.parentElement;
+ stage.style.width=`${Math.max(width,imageWidth)}px`;
+ stage.style.height=`${Math.max(height,imageHeight)}px`;
+ img.style.width=`${imageWidth}px`;
+ img.style.height=`${imageHeight}px`;
+ img.style.left=`${Math.max(0,(width-imageWidth)/2)}px`;
+ img.style.top=`${Math.max(0,(height-imageHeight)/2)}px`;
+ dialog.dataset.zoomed=String(imageZoom>1);
+}
+function setImageView(view){
+ imageZoom=1;
+ imageDrag=null;
+ dialog.dataset.view=view;
+ delete dialog.dataset.dragging;
+ delete dialog.dataset.zoomed;
+ dialogBody.querySelector('img')?.removeAttribute('style');
+ dialogBody.querySelector('.dialog-image-stage')?.removeAttribute('style');
+ viewToggle.textContent=view==='scroll'?'适应窗口':'按宽度浏览';
+ viewToggle.setAttribute('aria-label',view==='scroll'?'切换至适应窗口':'切换至按宽度上下滚动浏览');
+ dialogBody.setAttribute('aria-label',view==='fit'?'作品大图，滚轮缩放，放大后可拖动查看':'作品大图，可上下滚动浏览');
+ document.querySelector('#dialog-caption').textContent=[imageCaption,view==='fit'?'滚轮缩放，放大后可拖动查看':''].filter(Boolean).join(' · ');
+ renderImageZoom();
+ dialogBody.scrollTop=0;
+ dialogBody.scrollLeft=0;
+}
+viewToggle.addEventListener('click',()=>{imageViewChosen=true;setImageView(dialog.dataset.view==='scroll'?'fit':'scroll');});
+dialogBody.addEventListener('wheel',e=>{
+ if(dialog.dataset.view!=='fit'||!dialog.open)return;
+ const img=dialogBody.querySelector('img');
+ if(!img?.naturalWidth)return;
+ e.preventDefault();
+ imageViewChosen=true;
+ const rect=img.getBoundingClientRect();
+ const x=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));
+ const y=Math.max(0,Math.min(1,(e.clientY-rect.top)/rect.height));
+ const delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?dialogBody.clientHeight:1);
+ imageZoom=Math.max(.25,Math.min(64,imageZoom*Math.exp(-Math.max(-240,Math.min(240,delta))*.0025)));
+ renderImageZoom();
+ const next=img.getBoundingClientRect();
+ dialogBody.scrollLeft+=next.left+x*next.width-e.clientX;
+ dialogBody.scrollTop+=next.top+y*next.height-e.clientY;
+},{passive:false});
+dialogBody.addEventListener('pointerdown',e=>{
+ if(dialog.dataset.view!=='fit'||imageZoom<=1||e.button!==0||!e.target.closest('.dialog-image-stage'))return;
+ e.preventDefault();
+ imageDrag={id:e.pointerId,x:e.clientX,y:e.clientY,left:dialogBody.scrollLeft,top:dialogBody.scrollTop};
+ dialogBody.setPointerCapture(e.pointerId);
+ dialog.dataset.dragging='true';
+});
+dialogBody.addEventListener('pointermove',e=>{
+ if(!imageDrag||imageDrag.id!==e.pointerId)return;
+ dialogBody.scrollLeft=imageDrag.left+imageDrag.x-e.clientX;
+ dialogBody.scrollTop=imageDrag.top+imageDrag.y-e.clientY;
+});
+function endImageDrag(){imageDrag=null;delete dialog.dataset.dragging;}
+dialogBody.addEventListener('pointerup',endImageDrag);
+dialogBody.addEventListener('pointercancel',endImageDrag);
+dialogBody.addEventListener('lostpointercapture',endImageDrag);
+new ResizeObserver(()=>{if(dialog.open)renderImageZoom();}).observe(dialogBody);
 document.addEventListener('click',e=>{
  const image=e.target.closest('[data-image]');
- if(image){lastFocus=image;document.querySelector('#dialog-title').textContent=image.dataset.title||'作品';document.querySelector('#dialog-caption').textContent=image.dataset.caption||'';const img=document.createElement('img');img.src=image.dataset.image;img.alt=image.dataset.title||'作品大图';document.querySelector('.dialog-body').replaceChildren(img);dialog.showModal();document.body.classList.add('dialog-open');return;}
+ if(image){
+  lastFocus=image;
+  dialogTitle.textContent=image.dataset.title||'作品';
+  imageCaption=image.dataset.caption||'';
+  imageViewChosen=false;
+  resumeDownload.hidden=!image.dataset.download;
+  if(image.dataset.download){
+   resumeDownload.href=image.dataset.image;
+   resumeDownload.download=image.dataset.download;
+  }else{
+   resumeDownload.removeAttribute('href');
+   resumeDownload.removeAttribute('download');
+  }
+  const img=document.createElement('img');
+  img.alt=image.dataset.title||'作品大图';
+  img.addEventListener('load',()=>{
+   if(!dialogBody.contains(img))return;
+   if(imageViewChosen)renderImageZoom();
+   else setImageView(image.dataset.view||(img.naturalHeight>img.naturalWidth*1.2?'scroll':'fit'));
+  },{once:true});
+  img.src=image.dataset.image;
+  img.draggable=false;
+  const stage=document.createElement('div');
+  stage.className='dialog-image-stage';
+  stage.append(img);
+  dialogBody.replaceChildren(stage);
+  dialog.showModal();
+  setImageView(image.dataset.view||'scroll');
+  document.body.classList.add('dialog-open');
+  dialogBody.scrollTop=0;
+  return;
+ }
  const state=e.target.closest('[data-state]');if(state){document.querySelector('#task-render').innerHTML=taskCard(state.dataset.state);document.querySelectorAll('[data-state]').forEach(b=>{const on=b===state;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on));});}
  const compare=e.target.closest('[data-compare]');if(compare){document.querySelector('#comparison-current').hidden=compare.dataset.compare!=='current';document.querySelector('#comparison-original').hidden=compare.dataset.compare!=='original';document.querySelectorAll('[data-compare]').forEach(b=>{const on=b===compare;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on));});}
  const filter=e.target.closest('[data-filter]');if(filter){document.querySelectorAll('[data-filter]').forEach(b=>{const on=b===filter;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on));});document.querySelectorAll('.gallery-grid .gallery-card').forEach(c=>{c.hidden=filter.dataset.filter!=='all'&&c.dataset.type!==filter.dataset.filter;});}

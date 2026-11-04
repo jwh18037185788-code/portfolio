@@ -1,0 +1,29 @@
+/* Homepage work index: the same eight projects, arranged in a spatial ring. */
+.orbit-gallery{overflow:hidden;border:0;border-radius:12px;background:transparent;color:var(--ink)}
+.orbit-stage{position:relative;height:clamp(440px,47vw,620px);perspective:1400px;perspective-origin:50% 50%;touch-action:pan-y;user-select:none;cursor:grab;isolation:isolate}
+.orbit-stage.is-dragging{cursor:grabbing}
+.orbit-stage:focus-visible{outline:1px solid #c9fe6e;outline-offset:-5px}
+.orbit-rotor{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.orbit-tile{position:absolute;left:50%;top:50%;width:var(--orbit-card-width,260px);aspect-ratio:16/9;margin-left:calc(var(--orbit-card-width,260px)/-2);margin-top:calc(var(--orbit-card-width,260px)*-.28125);padding:0;border:0;border-radius:16px;background:transparent;cursor:pointer;will-change:transform;transform-style:preserve-3d;outline-offset:6px;-webkit-tap-highlight-color:transparent}
+.orbit-tile>img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit;pointer-events:none;transition:filter .25s}
+.orbit-tile:hover>img,.orbit-tile:focus-visible>img{filter:brightness(1.1)}
+.orbit-tile:focus-visible{outline:2px solid #e8e8e8}
+.orbit-tile-label{position:absolute;inset:auto 0 0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 13px 11px;border-radius:0 0 16px 16px;background:linear-gradient(transparent,#000c);color:#fff;font-size:11px;line-height:1.5;text-align:left;opacity:0;transition:opacity .2s;pointer-events:none}
+.orbit-tile-label i{font-size:16px;font-style:normal}
+.orbit-tile:hover .orbit-tile-label,.orbit-tile:focus-visible .orbit-tile-label{opacity:1}
+.orbit-core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;pointer-events:none;color:#626262}
+.orbit-core>span{font-size:clamp(42px,6vw,76px);line-height:1;font-weight:400;letter-spacing:-.05em}
+.orbit-core>small{font-size:9px;letter-spacing:.18em;color:#8b8b8b}
+.orbit-footer{position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:84px;padding:14px 30px 24px;background:transparent}
+.orbit-current{display:flex;align-items:center;gap:20px;min-width:0;flex:1}
+.orbit-current-index{font-size:10px;font-variant-numeric:tabular-nums;color:#9c9c9c;white-space:nowrap}
+.orbit-current-title{font-size:13px;line-height:1.7;color:#ededed}
+.orbit-footer .orbit-hint{margin:0;font-size:10px;color:#9c9c9c;white-space:nowrap}
+.orbit-controls{display:flex;align-items:center;gap:6px}
+.orbit-controls>button{display:grid;place-items:center;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:none;color:#cccccc;font-size:16px;line-height:1;cursor:pointer;transition:color .2s,background .2s}
+.orbit-controls>button:hover{color:#fff;background:#333}
+.orbit-controls>button[data-orbit-play]{font-size:12px}
+.orbit-controls>button:focus-visible{outline:1px solid #c9fe6e;outline-offset:2px}
+.orbit-transition-cover{position:fixed;z-index:5;max-width:none!important;max-height:none!important;object-fit:cover;pointer-events:none;border-radius:16px;will-change:transform}
+@media(max-width:700px){.orbit-stage{height:460px}.orbit-footer{padding:12px 18px 20px;gap:12px;flex-wrap:wrap}.orbit-current{gap:12px}.orbit-current-title{font-size:11px}.orbit-controls{gap:2px}.orbit-controls>button{width:32px;height:32px}.orbit-footer .orbit-hint{order:3;width:100%;font-size:9px}.orbit-tile-label{font-size:9px;padding:18px 9px 8px}.orbit-core>small{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.orbit-tile>img,.orbit-tile-label,.orbit-controls>button{transition:none}}

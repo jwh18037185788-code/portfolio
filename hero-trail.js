@@ -44,7 +44,6 @@
   }
   const motion = createTimeline();
   const spacing = 200 - (27 - 1) * 198 / 49;
-  const imageVersions = {5: '4ded5057fb', 6: '72c4cc4f6a'};
   const assets = [];
   const active = new Map();
   let next = 0;
@@ -62,9 +61,10 @@
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = 16;
     const context = canvas.getContext('2d', {willReadFrequently: true});
-    for (let number = 1; number <= 9; number += 1) {
+    for (let number = 1; number <= 12; number += 1) {
       const image = new Image();
-      const url = `./assets/hero-trail/${number}.jpg${imageVersions[number] ? `?v=${imageVersions[number]}` : ''}`;
+      const version = {6: '00d000a1b4', 9: 'dbfeb3e11f'}[number];
+      const url = `./assets/hero-trail/${number}.png${version ? `?v=${version}` : ''}`;
       const asset = {image, url, ready: false, failed: false, tone: '#777777', number};
       assets.push(asset);
       image.decoding = 'async';

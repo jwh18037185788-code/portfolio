@@ -1,0 +1,18 @@
+/* 保留更多按钮显示时的行高，防止页签数量减少或宽度增加后整行收缩。 */
+.bd-task-app .bd-task-type-tabs > .ant-tabs-nav { margin: 0 0 24px; min-height: 40px; }
+.bd-task-app .bd-task-type-tabs > .ant-tabs-nav::before { border-bottom-color: #E8EAF0; }
+.bd-task-app .bd-task-type-tabs .ant-tabs-tab { padding: 3px 2px 8px; font-size: 13px; font-weight: 600; color: #666666; }
+.bd-task-app .bd-task-type-tabs .ant-tabs-tab + .ant-tabs-tab { margin-left: 24px; }
+.bd-task-app .bd-task-type-tabs .ant-tabs-tab-active .ant-tabs-tab-btn { color: #482AF7; }
+.bd-task-app .bd-task-type-tabs .ant-tabs-ink-bar { height: 2px; border-radius: 3px 3px 0 0; background: #482AF7; }
+.bd-task-app .bd-task-type-tabs .ant-tabs-content-holder { display: none; }
+/* 溢出入口随页签压缩上下留白，并让图标与页签文字保持垂直居中。 */
+.bd-task-app .bd-task-type-tabs .ant-tabs-nav-more { display: flex; align-items: center; justify-content: center; padding-block: 9px; }
+.bd-task-app .bd-task-type-tabs-count { margin-left: 6px; font-variant-numeric: tabular-nums; }
+
+/* 批次列表保留独立的文字到横线间距，行高与实体详情页统一为40px。 */
+.bd-task-app .bd-task-batch-filter-card .bd-task-type-tabs .ant-tabs-tab { padding-bottom: 6px; }
+
+/* 仅校正文字中心与更多按钮中心的偏差，不改变页签行高、横线及下方布局。 */
+.bd-task-app .bd-task-type-tabs .ant-tabs-tab-btn { transform: translateY(2.5px); }
+.bd-task-app .bd-task-batch-filter-card .bd-task-type-tabs .ant-tabs-tab-btn { transform: translateY(1.5px); }
