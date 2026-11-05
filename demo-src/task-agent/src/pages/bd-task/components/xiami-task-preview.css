@@ -1,6 +1,6 @@
 .xiami-task-preview .ant-drawer-header{height:56px;min-height:56px;box-sizing:border-box;flex-shrink:0}
 .xiami-task-preview .ant-drawer-body{display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:0}
-.xiami-task-preview .xiami-preview-image{position:relative;width:100%;aspect-ratio:5636/7492;background:#fff;flex-shrink:0}
+.xiami-task-preview .xiami-preview-image{position:relative;isolation:isolate;width:100%;aspect-ratio:5636/7492;background:#fff;flex-shrink:0}
 .xiami-task-preview .xiami-preview-image>img{display:block;width:100%;height:100%;user-select:none;-webkit-user-select:none}
 .xiami-task-preview .xiami-preview-close{position:absolute;left:96.2651%;top:3.00988%;transform:translate(-50%,-50%);width:5%;min-width:20px;max-width:32px;aspect-ratio:1;border:0;border-radius:4px;background:transparent;cursor:pointer;padding:0;box-sizing:border-box}
 /* Follow the recent session row as the screenshot scales with the drawer. */
@@ -17,5 +17,6 @@
   padding: 0;
 }
 .xiami-task-preview .xiami-preview-close:is(:hover,:focus-visible){background:rgba(72,42,247,.08)}
-.xiami-task-preview .xiami-preview-session:is(:hover,:focus-visible){background:#EEF0F6}
+/* The label is baked into the image. Darken changes the light row without painting over the dark glyphs. */
+.xiami-task-preview .xiami-preview-session:is(:hover,:focus-visible){background:#EEF0F6;mix-blend-mode:darken}
 .xiami-task-preview :is(.xiami-preview-close,.xiami-preview-session):focus-visible{outline:2px solid #482AF7;outline-offset:1px}

@@ -55,10 +55,6 @@ const menuItems = [
 const SIDER_WIDTH_EXPANDED = 224;
 const SIDER_WIDTH_COLLAPSED = 76;
 
-// bd-task 系列页面独立的浏览器页签标题，与左侧导航顶部标题保持一致
-// 仅在进入 /bd-task/* 路由时生效，离开时恢复为全局默认标题（index.html 中的 <title>）
-const BD_TASK_PAGE_TITLE = '任务管理系统';
-
 const ENVIRONMENTS = [
   { key: 'test', label: '测试环境', shortLabel: 'Test' },
   { key: 'st', label: '预发环境', shortLabel: 'Staging' },
@@ -107,15 +103,6 @@ const BdTaskLayout: React.FC<BdTaskLayoutProps> = ({ children }) => {
 
   const [currentEnv, setCurrentEnv] = useState<typeof ENVIRONMENTS[number]>(() =>
     ENVIRONMENTS.find(item => item.key === localStorage.getItem('portfolio-task-agent-demo-env')) ?? ENVIRONMENTS[2]);
-
-  // 单独设置 bd-task 系列页面的浏览器页签标题，任务批次列表与页面命名保持一致。
-  useEffect(() => {
-    const originalTitle = document.title;
-    document.title = location.pathname === '/bd-task/batch-list' ? '任务批次列表' : BD_TASK_PAGE_TITLE;
-    return () => {
-      document.title = originalTitle;
-    };
-  }, [location.pathname]);
 
   // 注入 bd-task 模块专属字体（作用域限定在 .bd-task-app 容器内，不影响其他模块）
   useEffect(() => {
