@@ -123,9 +123,9 @@ const portfolioPreviewDimensions = {
     2400,
     1863
   ],
-  "assets/sprint/honey.jpg": [
-    2400,
-    911
+  "assets/sprint/honey.png": [
+    12970,
+    4926
   ],
   "assets/sprint/kangaroo-1.png": [
     1256,

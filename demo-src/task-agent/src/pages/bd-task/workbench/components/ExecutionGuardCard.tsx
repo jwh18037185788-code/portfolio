@@ -101,9 +101,9 @@ const ExecutionGuardCard: React.FC<ExecutionGuardCardProps> = ({ card, orgSelect
                       trailColor="#F0F1F5"
                       size={132}
                       format={() => (
-                        <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>
-                          <b style={{ color: MT.brandPrimary, fontSize: 25, fontWeight: 600, lineHeight: 1, transform: 'translateY(-4px)' }}>{data.aiUsageRate?.toFixed?.(0)}%</b>
-                          <small style={{ marginTop: 6, color: MT.textTertiary, fontSize: 12, fontWeight: 600, lineHeight: 1 }}>任务项使用率</small>
+                        <span className="wb-ai-ring-label">
+                          <b style={{ color: MT.brandPrimary }}>{data.aiUsageRate?.toFixed?.(0)}%</b>
+                          <small style={{ color: MT.textTertiary }}>任务项使用率</small>
                         </span>
                       )}
                     />
@@ -148,9 +148,9 @@ const ExecutionGuardCard: React.FC<ExecutionGuardCardProps> = ({ card, orgSelect
                       trailColor="#F0F1F5"
                       size={132}
                       format={() => (
-                        <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>
-                          <b style={{ color: MT.brandSecondary, fontSize: 25, fontWeight: 600, lineHeight: 1, transform: 'translateY(-4px)' }}>{data.aiCoverageRate?.toFixed?.(0)}%</b>
-                          <small style={{ marginTop: 6, color: MT.textTertiary, fontSize: 12, fontWeight: 600, lineHeight: 1 }}>任务批次覆盖率</small>
+                        <span className="wb-ai-ring-label">
+                          <b style={{ color: MT.brandSecondary }}>{data.aiCoverageRate?.toFixed?.(0)}%</b>
+                          <small style={{ color: MT.textTertiary }}>任务批次覆盖率</small>
                         </span>
                       )}
                     />

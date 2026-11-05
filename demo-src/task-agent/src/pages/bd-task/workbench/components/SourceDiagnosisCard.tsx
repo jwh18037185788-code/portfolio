@@ -64,18 +64,19 @@ const SourceDiagnosisCard: React.FC<SourceDiagnosisCardProps> = ({ card, orgSele
         {
           type: 'text',
           left: 'center',
-          top: '39%',
-          style: { text: `${data?.sourceList.reduce((sum, s) => sum + s.parentTaskCount, 0) ?? 0}`, textAlign: 'center', fill: MT.brandPrimary, fontSize: 25, fontWeight: 700 },
+          // Anchor the number at its lower edge so it grows away from the label.
+          bottom: '49.64%',
+          style: { text: String(sourceList.length), textAlign: 'center', fill: MT.brandPrimary, fontSize: 26, fontWeight: 700 },
         },
         {
           type: 'text',
           left: 'center',
-          top: '54%',
-          style: { text: '父任务总量', textAlign: 'center', fill: MT.textTertiary, fontSize: 12, fontWeight: 600 },
+          top: '53.55%',
+          style: { text: '任务来源', textAlign: 'center', fill: MT.textTertiary, fontSize: 12, fontWeight: 600 },
         },
       ],
     }),
-    [sourceList, data],
+    [sourceList],
   );
 
   const handleClick = (taskSourceCode: number, label: string) => {

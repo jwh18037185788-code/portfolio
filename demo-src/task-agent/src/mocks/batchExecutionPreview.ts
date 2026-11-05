@@ -17,13 +17,13 @@ const definitions = [
   ['低单量门店经营诊断与复访', 2, '自主创建', 0.75],
   ['新商家首次经营沟通', 2, '自主创建', 1],
   ['配送体验提升专项', 3, '系统策略', 0.5],
-  ['重点连锁品牌门店服务质量与履约改善跟进专项', 3, '系统策略', null],
+  ['重点连锁品牌门店服务质量与履约改善跟进专项', 3, '系统策略', 0.8],
 ] as const;
-const baseColumns: BatchColumn[] = definitions.map(([name, group, groupName, rate], index) => ({
+const baseColumns = definitions.map(([name, group, groupName, rate], index) => ({
   parentTaskId: 202610290101 + index, parentTaskName: name,
   taskSource: group, taskSourceName: groupName, sourceGroup: group, sourceGroupName: groupName,
   contactObjectType: -3, contactObjectTypeName: '外卖门店', targetRate: rate,
-}));
+})) satisfies BatchColumn[];
 
 function makeCell(person: number, column: number): BatchMatrixCell {
   const noTasks = person % 7 === 6 && column % 3 === 1;
@@ -47,7 +47,7 @@ const bdRows: BatchMatrixRow[] = people.map((name, index) => ({
 }));
 const columns = baseColumns.map((column, index) => {
   const total = bdRows.reduce((sum, row) => sum + (row.cells[index].totalTaskCount ?? 0), 0);
-  return { ...column, totalTaskCount: total, targetCount: column.targetRate == null ? null : Math.ceil(total * column.targetRate) };
+  return { ...column, totalTaskCount: total, targetCount: Math.ceil(total * column.targetRate) };
 });
 
 function aggregateCells(rows: BatchMatrixRow[], ids: number[]): BatchMatrixCell[] {

@@ -6,19 +6,45 @@
 .analysis-detail-page .analysis-chart-card .ant-card-head,.analysis-detail-page .analysis-bd-card .ant-card-head{min-height:0;margin-bottom:0;padding:18px 18px 0;border-bottom:0}
 .analysis-detail-page .analysis-chart-card .ant-card-head-title,.analysis-detail-page .analysis-bd-card .ant-card-head-title{padding:0}
 .analysis-detail-page .analysis-chart-card .ant-card-body,.analysis-detail-page .analysis-bd-card .ant-card-body{padding:var(--analysis-heading-gap) 18px 18px}
-.analysis-detail-page .analysis-business-layout{grid-template-columns:minmax(180px,.85fr) minmax(0,1.15fr);gap:24px;min-height:280px;padding-right:12px}
+.analysis-detail-page .analysis-business-layout {
+  --analysis-ring-fill: .78;
+  grid-template-columns: calc(min(36%, 220px) * var(--analysis-ring-fill) / .84) minmax(0, max-content);
+  justify-content: space-evenly;
+  gap: 18px;
+  min-height: 280px;
+}
 .analysis-detail-page .analysis-business-layout>div{min-width:0}
-.analysis-detail-page .v4-business-legend.compact{gap:16px 32px}
+/* Match the grid column to the visible ring and keep the chart canvas at its original size. */
+.analysis-detail-page .analysis-business-ring {
+  width: calc(100% / var(--analysis-ring-fill));
+  margin-inline: calc((100% - 100% / var(--analysis-ring-fill)) / 2);
+}
+.analysis-detail-page .v4-business-legend.compact {
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 16px 42px;
+}
 .analysis-detail-page .v4-business-legend.compact>button{display:grid;grid-template-columns:8px minmax(0,max-content) max-content;justify-content:start;align-items:center;gap:6px;min-width:0;padding:8px 0;border:0;border-radius:4px;background:transparent;text-align:left;cursor:pointer;font:inherit}
 .analysis-detail-page .v4-business-legend.compact>button i{width:8px;height:8px;border-radius:3px}
 .analysis-detail-page .v4-business-legend.compact>button span{color:#777;font-size:var(--analysis-note-font-size);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .analysis-detail-page .v4-business-legend.compact>button b{font-size:var(--analysis-note-font-size);color:#222;font-variant-numeric:tabular-nums}
 .analysis-detail-page .v4-business-legend.compact>button:hover{background:#FAF9FF}
 .analysis-detail-page .v4-business-legend.compact>button:focus-visible{outline:2px solid #482AF7;outline-offset:4px}
-.analysis-detail-page .analysis-bd-card .ant-table-thead th{background:#FAFAFB;color:#333;font-size:13px}
-.analysis-detail-page .analysis-bd-card .ant-table-thead th::before{display:none!important}
+.analysis-detail-page .analysis-data-table .ant-table-thead > tr > th {
+  background: #FAFAFA !important;
+  color: #333;
+  font-size: 13px;
+}
+.analysis-detail-page .analysis-data-table .ant-table-cell{text-align:left}
+.analysis-detail-page .analysis-data-table .ant-table-cell:not(:last-child){border-inline-end:1px solid #EEF0F5}
+.analysis-detail-page .analysis-data-table .ant-table-thead th::before{display:none!important}
+.analysis-detail-page .analysis-parent-table .ant-table-cell{white-space:nowrap}
 .analysis-detail-page .analysis-bd-card .ant-table-tbody td{padding-block:12px;font-size:13px;font-variant-numeric:tabular-nums}
+.analysis-detail-page .analysis-bd-card .ant-table-tbody td.ant-table-column-sort:not(.ant-table-cell-row-hover){background:#fff}
 .analysis-detail-page .analysis-bd-card .ant-table-container{border-radius:10px;overflow:hidden}
-.analysis-bd-rank{display:inline-flex;min-width:24px;justify-content:center;color:#999;font-weight:600}
-@media(max-width:1100px){.analysis-detail-page .analysis-chart-grid{grid-template-columns:1fr}.analysis-detail-page .analysis-business-layout{grid-template-columns:minmax(180px,.8fr) minmax(260px,1.2fr)}}
-@media(max-width:650px){.analysis-detail-page .analysis-business-layout{grid-template-columns:1fr;padding-right:8px}.analysis-detail-page .v4-business-legend.compact{gap:6px 24px}}
+.analysis-bd-rank{color:#999;font-weight:600}
+@media(max-width:1100px){.analysis-detail-page .analysis-chart-grid{grid-template-columns:1fr}}
+@media(max-width:650px){
+  .analysis-detail-page .analysis-business-layout{grid-template-columns:minmax(0,1fr)}
+  .analysis-detail-page .analysis-business-ring{width:min(100%,260px);margin-inline:auto}
+  .analysis-detail-page .v4-business-legend.compact{justify-content:center;row-gap:6px}
+}

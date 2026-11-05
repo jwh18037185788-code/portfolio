@@ -7,7 +7,7 @@ import { bdTaskApi } from '@/services/bdTaskApi';
 import { batchExecutionApi } from '@/services/batchExecutionApi';
 import { useTenantStore } from '@/stores/tenantStore';
 import type { BatchColumn, BatchMatrixReq, BatchMatrixRow, BatchPeriod, BatchScope, MatrixOrgType } from '@/types/batchExecution';
-import { MT } from '../../theme';
+import { BATCH_ACTION_BUTTON_STYLE, MT } from '../../theme';
 import PersonName from '../../components/PersonName';
 import SortTabs from '../../components/SortTabs';
 import InfoTooltip from './InfoTooltip';
@@ -18,8 +18,9 @@ import { BATCH_PERIODS, buildMatrixCsv, describeMatrixMetric, describeBatchTarge
 
 const { Text } = Typography;
 const MAX_BATCHES = 50;
+const MATRIX_ROW_LABEL_WIDTH = 160;
+const MATRIX_BATCH_MIN_WIDTH = 230;
 const BATCH_FILTER_FONT_SIZE = 14;
-const BATCH_ACTION_BUTTON_STYLE: React.CSSProperties = { height: 32, paddingInline: 12, fontSize: 13 };
 const BATCH_FILTER_LABEL_STYLE: React.CSSProperties = { color: MT.textMuted, fontSize: BATCH_FILTER_FONT_SIZE, whiteSpace: 'nowrap' };
 
 interface Props {
@@ -201,7 +202,8 @@ function BatchMatrixContent({ scope, orgId, dimension, orgTypeList, rowLabel, ro
   };
   const columns = useMemo<ColumnsType<BatchMatrixRow>>(() => {
     const groups = new Map<number, { title: string; className: string; children: ColumnsType<BatchMatrixRow> }>();
-    (matrix.data?.columns ?? []).forEach((column) => {
+    const batchColumns = matrix.data?.columns ?? [];
+    batchColumns.forEach((column) => {
       if (!groups.has(column.sourceGroup)) {
         const tone = groups.size % 2 === 0 ? 'light' : 'dark';
         groups.set(column.sourceGroup, {
@@ -214,7 +216,7 @@ function BatchMatrixContent({ scope, orgId, dimension, orgTypeList, rowLabel, ro
       group.children.push({
         key: column.parentTaskId,
         className: group.className,
-        width: 230,
+        width: `calc((100% - ${MATRIX_ROW_LABEL_WIDTH}px) / ${batchColumns.length})`,
         align: 'left',
         onHeaderCell: () => ({
           'aria-sort': sort?.id !== column.parentTaskId ? 'none' : sort.order === 'ascend' ? 'ascending' : 'descending',
@@ -268,7 +270,7 @@ function BatchMatrixContent({ scope, orgId, dimension, orgTypeList, rowLabel, ro
       });
     });
     return [{
-      title: rowControl, key: 'name', fixed: 'left', width: 160,
+      title: rowControl, key: 'name', fixed: 'left', width: MATRIX_ROW_LABEL_WIDTH,
       render: (_, row) => <Text strong>{row.bdMis ? <PersonName name={row.displayName} mis={row.bdMis} /> : row.displayName}</Text>,
     }, ...Array.from(groups.entries()).map(([key, group]) => ({
       key: `source-${key}`,
@@ -404,14 +406,18 @@ function BatchMatrixContent({ scope, orgId, dimension, orgTypeList, rowLabel, ro
           <>
             <Table<BatchMatrixRow>
               className="wb-batch-matrix-table wb-soft-scrollbar"
-              style={{ '--wb-batch-target-success-bg': MT.successBg, '--wb-batch-target-pending-bg': MT.dangerBg } as React.CSSProperties}
+              style={{
+                '--wb-batch-row-label-width': `${MATRIX_ROW_LABEL_WIDTH}px`,
+                '--wb-batch-target-success-bg': MT.successBg,
+                '--wb-batch-target-pending-bg': MT.dangerBg,
+              } as React.CSSProperties}
               bordered
               rowKey="rowKey"
               columns={columns}
               dataSource={sortedRows}
               loading={matrix.loading}
               size="small"
-              scroll={{ x: Math.max(620, 160 + validIds.length * 230) }}
+              scroll={{ x: Math.max(620, MATRIX_ROW_LABEL_WIDTH + validIds.length * MATRIX_BATCH_MIN_WIDTH) }}
               locale={{ emptyText: <Empty description={!candidates.data?.length ? '当前组织及创建日期范围内暂无未过期任务批次' : validIds.length === 0 ? '请选择任务批次' : '当前范围暂无执行明细'} /> }}
               pagination={{ current: Math.min(page, Math.max(1, Math.ceil(sortedRows.length / pageSize))), pageSize, onChange: (nextPage, size) => { trackTaskAction('matrix.page'); setPage(size === pageSize ? nextPage : 1); setPageSize(size); }, showSizeChanger: true, showTotal: (total) => `共 ${total} 条` }}
             />

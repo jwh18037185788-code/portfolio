@@ -39,7 +39,7 @@ const SUB_TASK_GROUPS: { mainKey: keyof ExpireRiskPageDto; p0Key: keyof ExpireRi
   { mainKey: 'achievedSubTaskCount', p0Key: 'p0AchievedSubTaskCount', name: '已完成', color: MT.chart.riskColors.completed },
 ];
 
-function createRiskDonutOption(data: Array<{ name: string; value: number; color: string }>, total: number, totalLabel: string, unit: string) {
+function createRiskDonutOption(data: Array<{ name: string; value: number; color: string }>, total: number, totalLabel: string, unit: string, raiseGroupingComma = false) {
   return {
     animationDuration: 520,
     aria: { enabled: true, description: `${totalLabel}状态分布` },
@@ -66,7 +66,7 @@ function createRiskDonutOption(data: Array<{ name: string; value: number; color:
         data: data.map((item) => ({ value: item.value, name: item.name, itemStyle: { color: item.color } })),
       },
     ],
-    graphic: donutCenterGraphic(total.toLocaleString(), totalLabel, 220),
+    graphic: donutCenterGraphic(total.toLocaleString(), totalLabel, 220, raiseGroupingComma),
   };
 }
 
@@ -86,7 +86,7 @@ const ExpireRiskCard: React.FC<ExpireRiskCardProps> = ({ card, orgSelected, scop
       createRiskDonutOption(
         GROUPS.map((g) => ({ name: g.name, value: (data?.[g.mainKey] as number) ?? 0, color: g.color })),
         parentTotal,
-        '任务批次总量',
+        '任务批次',
         '个任务批次',
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -98,8 +98,9 @@ const ExpireRiskCard: React.FC<ExpireRiskCardProps> = ({ card, orgSelected, scop
       createRiskDonutOption(
         SUB_TASK_GROUPS.map((g) => ({ name: g.name, value: (data?.[g.mainKey] as number) ?? 0, color: g.color })),
         subTaskTotal,
-        '任务项总量',
+        '任务项',
         '个任务项',
+        true,
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [JSON.stringify(data), subTaskTotal],

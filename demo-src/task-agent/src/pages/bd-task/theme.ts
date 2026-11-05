@@ -136,6 +136,8 @@ export const SHOP_DETAIL_HEADER_AVATAR_SIZE = 55;
 /** 任务批次详情的任务项头像：底部对齐第一行元信息的顶部。 */
 export const TASK_DETAIL_ITEM_AVATAR_SIZE = 36;
 
+export const BATCH_ACTION_BUTTON_STYLE: CSSProperties = { height: 32, paddingInline: 12, fontSize: 13 };
+
 // 简洁无边框实色按钮样式预设：贴合视觉稿的克制企业风格（纯色背景，不使用渐变）
 // 使用方式：在 antd <Button style={{ ...MT_BTN.primary }} /> 等直接展开
 export const MT_BTN = {

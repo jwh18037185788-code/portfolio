@@ -30,6 +30,15 @@ function XiamiImageDrawer({ open, title, onClose }: XiamiTaskDrawerProps) {
     <div className="xiami-preview-image" data-screen={screen}>
       <img src={screen === 'session' ? sessionImage : homeImage} alt={screen === 'session' ? '虾蜜新建任务会话截图' : '虾蜜首页截图'} draggable={false} />
       <button type="button" className="xiami-preview-close" aria-label={screen === 'session' ? '返回虾蜜首页' : '关闭虾蜜预览'} title={screen === 'session' ? '返回虾蜜首页' : '关闭虾蜜预览'} onClick={() => screen === 'session' ? setScreen('home') : close()} />
+      {screen === 'home' && (
+        <button
+          type="button"
+          className="xiami-preview-session"
+          aria-label="最近会话：新建任务"
+          title="新建任务"
+          onClick={() => setScreen('session')}
+        />
+      )}
     </div>
   </Drawer>;
 }

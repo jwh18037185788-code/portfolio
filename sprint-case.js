@@ -170,7 +170,7 @@ const sprintImages = {
     "title": "第一轮 Figma Make 方案"
   },
   "honey": {
-    "file": "honey.jpg",
+    "file": "honey.png",
     "scroll": false,
     "title": "小蜜 · 首页信息架构优化"
   },

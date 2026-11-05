@@ -3,5 +3,19 @@
 .xiami-task-preview .xiami-preview-image{position:relative;width:100%;aspect-ratio:5636/7492;background:#fff;flex-shrink:0}
 .xiami-task-preview .xiami-preview-image>img{display:block;width:100%;height:100%;user-select:none;-webkit-user-select:none}
 .xiami-task-preview .xiami-preview-close{position:absolute;left:96.2651%;top:3.00988%;transform:translate(-50%,-50%);width:5%;min-width:20px;max-width:32px;aspect-ratio:1;border:0;border-radius:4px;background:transparent;cursor:pointer;padding:0;box-sizing:border-box}
-.xiami-task-preview .xiami-preview-close:hover,.xiami-task-preview .xiami-preview-close:focus-visible{background:rgba(72,42,247,.08)}
-.xiami-task-preview .xiami-preview-close:focus-visible{outline:2px solid #482AF7;outline-offset:1px}
+/* Follow the recent session row as the screenshot scales with the drawer. */
+.xiami-task-preview .xiami-preview-session {
+  position: absolute;
+  left: 2%;
+  top: 42.8%;
+  width: 27.4%;
+  height: 3.5%;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.xiami-task-preview .xiami-preview-close:is(:hover,:focus-visible){background:rgba(72,42,247,.08)}
+.xiami-task-preview .xiami-preview-session:is(:hover,:focus-visible){background:#EEF0F6}
+.xiami-task-preview :is(.xiami-preview-close,.xiami-preview-session):focus-visible{outline:2px solid #482AF7;outline-offset:1px}

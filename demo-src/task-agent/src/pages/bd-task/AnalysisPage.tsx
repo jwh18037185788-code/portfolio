@@ -1,5 +1,5 @@
 import { trackTaskAction } from '@/lib/taskAnalytics';
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useMemo, useRef, useCallback } from 'react';
 import {
   Card,
   Alert,
@@ -26,14 +26,13 @@ import ReactECharts from 'echarts-for-react';
 import type { ColumnsType } from 'antd/es/table';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
-import { useNavigate } from 'react-router-dom';
 import { useTaskTypeDictionary } from './hooks/useTaskTypeDictionary';
 import { bdTaskApi } from '@/services/bdTaskApi';
 import type {
   BdStatsDto,
   ParentTaskOverviewDto,
 } from '@/types/bdTask';
-import { MT, MT_FILLED_TAG_STYLE } from './theme';
+import { BATCH_ACTION_BUTTON_STYLE, MT, MT_FILLED_TAG_STYLE } from './theme';
 import PersonName from './components/PersonName';
 import { PRIORITY_CONFIG } from './components/TaskCard';
 import BatchExecutionDetail from './workbench/components/BatchExecutionDetail';
@@ -52,6 +51,7 @@ const { RangePicker } = DatePicker;
 const { Text } = Typography;
 
 const BUSINESS_COLORS = MT.chart.businessColors;
+const PARENT_TABLE_MIN_WIDTH = 1040;
 
 // ==================== ModuleTitle（对齐 Codex V4 .v2-module-icon / .v2-module-title） ====================
 function ModuleTitle({ icon, title, tooltip }: { icon: React.ReactNode; title: string; tooltip: string }) {
@@ -68,7 +68,6 @@ function ModuleTitle({ icon, title, tooltip }: { icon: React.ReactNode; title: s
 
 // ==================== 主页面 ====================
 const AnalysisPage: React.FC = () => {
-  const navigate = useNavigate();
   const { getTaskTypeName } = useTaskTypeDictionary();
   const tenantId = Number(useTenantStore((state) => state.currentTenantId));
   const { fetchOrgChildren: loadOrgChildren, fetchOrgNodeById, getNodePath } = useOrgTree();
@@ -113,6 +112,44 @@ const AnalysisPage: React.FC = () => {
   const aiCompletedCount = summary?.aiCompletedCount;
   const bdStats = bdResult.data ?? [];
   const parentTasks = parentResult.data?.data ?? [];
+  const parentCardRef = useRef<HTMLDivElement>(null);
+  const [parentColumnWidths, setParentColumnWidths] = useState<number[]>([]);
+  useLayoutEffect(() => {
+    const content = parentCardRef.current?.querySelector<HTMLElement>('.ant-table-content');
+    const table = content?.querySelector('table');
+    const header = table?.tHead?.rows[0];
+    if (!content || !table || !header) return;
+
+    const measure = () => {
+      const viewportWidth = content.clientWidth;
+      if (!viewportWidth) return;
+      const bodyRows = Array.from(table.querySelectorAll<HTMLTableRowElement>('tbody tr[data-row-key]'));
+      if (!bodyRows.length) return;
+      const range = document.createRange();
+      const contentWidths = Array.from(header.cells, (cell, index) => {
+        const cells = [cell, ...bodyRows.map(row => row.cells[index])];
+        return Math.max(...cells.map(columnCell => {
+          range.selectNodeContents(columnCell);
+          return range.getBoundingClientRect().right - columnCell.getBoundingClientRect().left;
+        }));
+      });
+      const totalWidth = Math.max(PARENT_TABLE_MIN_WIDTH, viewportWidth);
+      // Add the same right-side space to the widest displayed content in each column.
+      const rightSpace = Math.max(8, (totalWidth - contentWidths.reduce((sum, width) => sum + width, 0)) / contentWidths.length);
+      const widths = contentWidths.map(width => width + rightSpace);
+      setParentColumnWidths(previous => widths.length === previous.length &&
+        widths.every((width, index) => Math.abs(width - previous[index]) < 0.1) ? previous : widths);
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(content);
+    document.fonts.addEventListener('loadingdone', measure);
+    return () => {
+      observer.disconnect();
+      document.fonts.removeEventListener('loadingdone', measure);
+    };
+  }, [parentTasks, parentResult.loading, getTaskTypeName]);
   const errors = [summaryResult, bdResult, parentResult].flatMap((item, index) => item.error
     ? [`${['概览统计', 'BD 统计', '任务批次列表'][index]}：${item.error}`] : []);
   const refreshing = [summaryResult, bdResult, parentResult].some((item) => item.loading);
@@ -162,7 +199,7 @@ const AnalysisPage: React.FC = () => {
       formatter: (p: any) => `${p.data.name}<br/><b>${p.data.percent}%</b> · ${p.data.count.toLocaleString()} 个任务项`,
     },
     series: [{
-      type: 'pie', radius: ['64%', '84%'], center: ['50%', '50%'], startAngle: 90,
+      type: 'pie', radius: ['58%', '78%'], center: ['50%', '50%'], startAngle: 90,
       label: { show: false }, labelLine: { show: false }, selectedMode: false,
       emphasis: { scale: true, scaleSize: 6 },
       itemStyle: { borderColor: '#FFFFFF', borderWidth: 3, borderRadius: 4 },
@@ -204,17 +241,17 @@ const AnalysisPage: React.FC = () => {
     .sort((a, b) => rateOf(b) - rateOf(a) || b.completedCount - a.completedCount)
     .map((row, index) => ({ ...row, rank: index + 1 })), [bdStats]);
   const bdColumns: ColumnsType<BdStatsDto & { rank: number }> = [
-    { title: '排名', dataIndex: 'rank', width: '14.285714%', align: 'center',
+    { title: '排名', dataIndex: 'rank',
       render: (rank: number) => <span className="analysis-bd-rank" aria-label={`第${rank}名`}>{rank <= 3 ? ['🥇', '🥈', '🥉'][rank - 1] : rank}</span> },
-    { title: 'BD', dataIndex: 'bdMis', width: '14.285714%', align: 'right',
+    { title: 'BD', dataIndex: 'bdMis',
       render: (bdMis: string, record: BdStatsDto) => <PersonName name={record.bdName} mis={bdMis} /> },
-    { title: '完成率', key: 'completionRate', width: '14.285714%', align: 'right',
+    { title: '任务项完成率', key: 'completionRate',
       sorter: (a, b) => rateOf(a) - rateOf(b), defaultSortOrder: 'descend', sortDirections: ['descend', 'ascend', 'descend'],
       render: (_, row) => <span style={{ color: rateOf(row) >= 80 ? MT.success : rateOf(row) >= 60 ? MT.warning : MT.danger, fontWeight: 600 }}>{rateOf(row).toFixed(1)}%</span> },
-    { title: '总数', dataIndex: 'totalCount', width: '14.285714%', align: 'right' },
-    { title: '已完成', dataIndex: 'completedCount', width: '14.285714%', align: 'right' },
-    { title: '在途', dataIndex: 'inProgressCount', width: '14.285714%', align: 'right' },
-    { title: '超时', dataIndex: 'expiredCount', width: '14.285714%', align: 'right',
+    { title: '总数', dataIndex: 'totalCount' },
+    { title: '已完成', dataIndex: 'completedCount' },
+    { title: '在途', dataIndex: 'inProgressCount' },
+    { title: '超时', dataIndex: 'expiredCount',
       render: (value: number) => <span style={{ color: value > 0 ? MT.danger : MT.textTertiary }}>{value}</span> },
   ];
 
@@ -223,7 +260,6 @@ const AnalysisPage: React.FC = () => {
     {
       title: '任务批次名称',
       dataIndex: 'name',
-      width: 250,
       render: (value: string, row: ParentTaskOverviewDto) => {
         const priority = PRIORITY_CONFIG[row.priority] ?? PRIORITY_CONFIG[3];
         return (
@@ -239,7 +275,7 @@ const AnalysisPage: React.FC = () => {
     {
       title: '业务类型',
       dataIndex: 'taskType',
-      width: 130,
+      width: 104,
       render: (taskType: number) => getTaskTypeName(taskType),
     },
     {
@@ -251,25 +287,24 @@ const AnalysisPage: React.FC = () => {
     {
       title: '关联任务项数',
       dataIndex: 'totalCount',
-      width: 110,
+      width: 106,
       render: (v: number) => `${v} 个`,
     },
     {
       title: '已完成',
       dataIndex: 'completedCount',
-      width: 90,
+      width: 76,
       render: (v: number) => <Text style={{ color: v > 0 ? MT.success : 'inherit' }}>{v}</Text>,
     },
     {
       title: '目标量',
       dataIndex: 'targetCount',
-      width: 90,
+      width: 76,
     },
     {
       title: '达标率',
       dataIndex: 'targetCompletionRate',
-      width: 100,
-      align: 'right' as const,
+      width: 78,
       render: (v: number) => {
         const n = Number(v);
         return (
@@ -282,13 +317,13 @@ const AnalysisPage: React.FC = () => {
     {
       title: '截止时间',
       dataIndex: 'expireDate',
-      width: 150,
+      width: 148,
       render: (v: string) => (v ? dayjs(v).format('YYYY-MM-DD HH:mm') : '-'),
     },
     {
       title: '状态',
       dataIndex: 'achieved',
-      width: 100,
+      width: 92,
       render: (achieved: boolean, row: ParentTaskOverviewDto) => {
         const isExpired = row.expireDate && dayjs(row.expireDate).isBefore(dayjs(), 'day');
         if (achieved) return <Badge status="success" text="已完成" />;
@@ -436,7 +471,7 @@ const AnalysisPage: React.FC = () => {
                 <Empty description="暂无数据" style={{ padding: '60px 0' }} />
               ) : (
                 <div className="v4-detail-business analysis-business-layout">
-                  <div role="img" aria-label={`业务类型结构，共${taskTypeTotal}个任务项`}>
+                  <div className="analysis-business-ring" role="img" aria-label={`业务类型结构，共${taskTypeTotal}个任务项`}>
                     <ReactECharts ref={businessChart} option={businessOption} style={{ height: 280 }} opts={{ renderer: 'svg' }} notMerge />
                   </div>
                   <div className="v4-business-legend compact">
@@ -459,6 +494,7 @@ const AnalysisPage: React.FC = () => {
 
           {/* 父任务详细数据表（对齐 Codex V4 detailColumns 区域） */}
           <Card
+            ref={parentCardRef}
             className="v2-card"
             loading={parentResult.loading}
             title={
@@ -468,24 +504,22 @@ const AnalysisPage: React.FC = () => {
                 tooltip="展示任务批次的业务类型、任务进度、截止时间与创建人。"
               />
             }
-            extra={
-              <Space>
-                <Button>导出</Button>
-                <Button type="primary" onClick={() => { trackTaskAction('detail.open_batch_list'); navigate('/bd-task/batch-list'); }} style={{ background: MT.brandPrimary, borderColor: MT.brandPrimary }}>
-                  查看任务批次列表
-                </Button>
-              </Space>
-            }
+            extra={<Button style={BATCH_ACTION_BUTTON_STYLE}>导出</Button>}
           >
             {parentTasks.length === 0 ? (
               <Empty description="暂无数据" style={{ padding: '40px 0' }} />
             ) : (
               <Table
+                className="analysis-data-table analysis-parent-table"
                 rowKey="parentTaskId"
-                columns={parentTaskColumns}
+                columns={parentTaskColumns.map((column, index) => ({
+                  ...column,
+                  width: parentColumnWidths[index] ?? column.width,
+                }))}
                 dataSource={parentTasks}
                 pagination={{ current: parentPage, pageSize: 5, total: parentResult.data?.total ?? 0, onChange: page => { trackTaskAction('detail.parent_page'); setParentPagination({ key: requestKey, page }); }, showSizeChanger: false, showTotal: (total) => `共 ${total} 条` }}
-                scroll={{ x: 980 }}
+                tableLayout="fixed"
+                scroll={{ x: PARENT_TABLE_MIN_WIDTH }}
                 size="small"
               />
             )}
@@ -497,8 +531,8 @@ const AnalysisPage: React.FC = () => {
             title={
               <ModuleTitle
                 icon={<UnorderedListOutlined />}
-                title="BD 完成率排名及负载量"
-                tooltip="按 BD 完成率从高到低排名；总数 = 已完成 + 在途 + 超时。点击完成率列可切换排序。"
+                title="BD 任务项完成率排名及负载量"
+                tooltip="按 BD 任务项完成率从高到低排名。总数 = 已完成 + 在途 + 超时。点击任务项完成率列可切换排序。"
               />
             }
           >
@@ -506,6 +540,7 @@ const AnalysisPage: React.FC = () => {
               <Empty description="暂无数据" style={{ padding: '40px 0' }} />
             ) : (
               <Table
+                className="analysis-data-table"
                 dataSource={rankedBdStats}
                 columns={bdColumns}
                 rowKey="bdMis"
