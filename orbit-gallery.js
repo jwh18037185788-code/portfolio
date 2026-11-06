@@ -16,7 +16,7 @@
   let phase=0,target=null,playing=!reduced.matches,visible=false,hovered=false,focused=false;
   let width=0,height=0,cardWidth=0,raf=0,lastTime=0,holdUntil=0,impulse=0;
   let resumeTimer=0;
-  let tiltX=-3,tiltY=0,aimX=-3,aimY=0,drag=null,suppressUntil=0,opening=null,resumeAfterDrag=false;
+  let tiltX=-3,tiltY=0,aimX=-3,aimY=0,drag=null,suppressUntil=0,resumeAfterDrag=false;
   const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
   function syncPlay(){
     play.textContent=playing?'Ⅱ':'▷';
@@ -168,37 +168,9 @@
     impulse+=clamp(delta,-240,240)*.006;holdUntil=performance.now()+800;wake();
   },{passive:true});
   stage.addEventListener('click',event=>{
-    if(performance.now()<suppressUntil){event.preventDefault();event.stopPropagation();return;}
-    const tile=event.target.closest('.orbit-tile');
-    if(tile)opening={tile,rect:tile.getBoundingClientRect()};
+    if(performance.now()<suppressUntil){event.preventDefault();event.stopPropagation();}
   },true);
-  // The existing image viewer handles the project; only its cover transition is added here.
-  document.addEventListener('click',event=>{
-    const tile=event.target.closest('.orbit-tile');
-    if(!tile||!opening||opening.tile!==tile||!viewer.open||reduced.matches)return;
-    const body=viewer.querySelector('.dialog-body'),box=body.getBoundingClientRect();
-    const start=opening.rect;opening=null;
-    if(tile.classList.contains('media-pending')||tile.classList.contains('media-failed'))return;
-    const ghost=tile.querySelector('img').cloneNode();
-    const finalWidth=Math.min(box.width,box.height*16/9);
-    const finalHeight=finalWidth*9/16;
-    ghost.className='orbit-transition-cover';ghost.setAttribute('aria-hidden','true');
-    Object.assign(ghost.style,{left:`${box.left+(box.width-finalWidth)/2}px`,top:`${box.top+(box.height-finalHeight)/2}px`,width:`${finalWidth}px`,height:`${finalHeight}px`});
-    viewer.append(ghost);body.style.opacity='0';
-    const animation=ghost.animate([
-      {transform:`translate(${start.left-(box.left+(box.width-finalWidth)/2)}px,${start.top-(box.top+(box.height-finalHeight)/2)}px) scale(${start.width/finalWidth},${start.height/finalHeight})`,transformOrigin:'0 0',opacity:1},
-      {transform:'translate(0,0) scale(1)',transformOrigin:'0 0',opacity:1}
-    ],{duration:480,easing:'cubic-bezier(.22,.75,.2,1)',fill:'both'});
-    animation.finished.then(()=>{
-      if(!viewer.open)return;
-      body.style.opacity='';body.animate([{opacity:0},{opacity:1}],{duration:220});
-      return ghost.animate([{opacity:1},{opacity:0}],{duration:180,fill:'forwards'}).finished;
-    }).catch(()=>{}).finally(()=>{ghost.remove();body.style.opacity='';});
-  });
-  viewer.addEventListener('close',()=>{
-    viewer.querySelectorAll('.orbit-transition-cover').forEach(el=>{el.getAnimations().forEach(animation=>animation.cancel());el.remove();});
-    viewer.querySelector('.dialog-body').style.opacity='';holdUntil=performance.now()+1600;wake();
-  });
+  viewer.addEventListener('close',()=>{holdUntil=performance.now()+1600;wake();});
   reduced.addEventListener('change',()=>{playing=!reduced.matches;aimX=-3;aimY=0;flipText(indexFlip,indexValue,indexValue.textContent);flipText(title,titleValue,titleValue.textContent);syncPlay();wake();});
   syncPlay();resize();
 })();

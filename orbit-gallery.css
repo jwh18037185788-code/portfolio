@@ -24,6 +24,5 @@
 .orbit-controls>button:hover{color:#fff;background:#333}
 .orbit-controls>button[data-orbit-play]{font-size:12px}
 .orbit-controls>button:focus-visible{outline:1px solid #c9fe6e;outline-offset:2px}
-.orbit-transition-cover{position:fixed;z-index:5;max-width:none!important;max-height:none!important;object-fit:cover;pointer-events:none;border-radius:16px;will-change:transform}
 @media(max-width:700px){.orbit-stage{height:460px}.orbit-footer{padding:12px 18px 20px;gap:12px;flex-wrap:wrap}.orbit-current{gap:12px}.orbit-current-title{font-size:11px}.orbit-controls{gap:2px}.orbit-controls>button{width:32px;height:32px}.orbit-footer .orbit-hint{order:3;width:100%;font-size:9px}.orbit-tile-label{font-size:9px;padding:18px 9px 8px}.orbit-core>small{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.orbit-tile>img,.orbit-tile-label,.orbit-controls>button{transition:none}}
