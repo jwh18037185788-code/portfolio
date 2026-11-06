@@ -20,7 +20,7 @@
 .dialog-download:hover{color:var(--ink)}
 .dialog-view-toggle{font-size:12px;white-space:nowrap;padding:7px;border-bottom:1px solid var(--line)}
 #image-dialog .dialog-close{flex-shrink:0}
-#image-dialog .dialog-body{height:auto;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:0;display:block}
+#image-dialog .dialog-body{height:auto;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-color:#6b6b6b transparent;padding:0;display:block}
 #image-dialog .dialog-body:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
 #image-dialog .dialog-body img{display:block;width:100%;height:auto;max-width:100%;max-height:none;margin:0 auto;object-fit:contain}
 #image-dialog[data-view="fit"] .dialog-image-stage{position:relative;touch-action:none;cursor:zoom-in}

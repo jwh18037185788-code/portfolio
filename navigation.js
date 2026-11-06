@@ -25,6 +25,12 @@
     for (let node = element; node; node = node.offsetParent) top += node.offsetTop;
     return top;
   };
+  const fragmentTop = target => {
+    const top = layoutTop(target);
+    if (target.id === 'work') return top + target.clientTop; // Start below the cover divider.
+    const inset = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+    return Math.max(0, top - inset);
+  };
   const release = () => {
     delete root.dataset.navigationPending;
     root.dataset.navigationReady = 'true';
@@ -50,9 +56,8 @@
       pending = false; // Exactly one initial positioning operation per document.
       restoreURL(); // replaceState restores the fragment without native scrolling.
       if (restorePosition || target) {
-        const inset = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
         window.scrollTo({left: restorePosition?.x || 0,
-          top: restorePosition ? restorePosition.y : Math.max(0, layoutTop(target) - inset), behavior: 'instant'});
+          top: restorePosition ? restorePosition.y : fragmentTop(target), behavior: 'instant'});
         window.ScrollTrigger?.update();
       }
       await frame(); // Let reveal/visibility observers see the final viewport.
@@ -66,7 +71,7 @@
     if (pending) return;
     const position = history.state?.__jhuenScroll;
     const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-    const top = position?.hash === location.hash ? position.y : target ? Math.max(0, layoutTop(target) - (parseFloat(getComputedStyle(root).scrollPaddingTop) || 0)) : 0;
+    const top = position?.hash === location.hash ? position.y : target ? fragmentTop(target) : 0;
     if (Math.abs(scrollY - top) > 1 || Math.abs(scrollX - (position?.x || 0)) > 1) {
       window.scrollTo({left: position?.x || 0, top, behavior: 'instant'});
     }
@@ -92,7 +97,7 @@
     }
     // Keep intentional same-page smooth navigation. CSS scrolling stays instant
     // so GSAP refresh and native history restoration cannot start smooth scrolls.
-    window.scrollTo({top: Math.max(0, layoutTop(target) - (parseFloat(getComputedStyle(root).scrollPaddingTop) || 0)),
+    window.scrollTo({top: fragmentTop(target),
       behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   });
 })();

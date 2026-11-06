@@ -31,7 +31,7 @@ const sprintContent = {
       ],
       "month": "9月任务：",
       "tasks": [
-        "任务批次列表与任务项列表体验优化，统一视觉风格+交互优化",
+        "存量页面体验优化",
         "UI一致性协作开发规范包",
         "新增批次执行明细卡片",
         "兼容多维度实体",
@@ -47,7 +47,7 @@ const sprintContent = {
       ],
       "month": "10月任务：",
       "tasks": [
-        "移动端迁移探索（放进蜜蜂app）",
+        "移动端迁移探索",
         "增加智能IM执行结果展示",
         "解决走查问题",
         "审核新需求设计效果"
@@ -62,7 +62,7 @@ const sprintContent = {
       "month": "后续任务：",
       "tasks": [
         "完成移动端迁移",
-        "探索GUI+CUI深度融合方案（比如在对话框里输入要查询的任务，能够自动在GUI页面上把相应任务打开；或者是在页面上圈选或点击某个任务，自动把这些被选中的参数同步给对话框跟AI做交互沟通。）",
+        "探索GUI+CUI深度融合方案",
         "任务工作台-详细数据tab页重构"
       ]
     }
@@ -331,7 +331,7 @@ function sprintFlow(name) {
   return `<section class="sprint-flow-lane"><h4>${name}</h4><ol class="sprint-flow-nodes">${sprintContent.flows[name].map((label,i)=>{
     let extra='';
     if(traditional&&i===3)extra='<p class="sprint-flow-secondary sprint-owner-design">视觉方案</p>';
-    if(traditional&&i===5)extra='<p class="sprint-flow-secondary"><span class="sprint-owner-design">走查</span>+<span class="sprint-owner-development">复原设计稿</span></p>';
+    if(traditional&&i===5)extra='<p class="sprint-flow-secondary"><span class="sprint-owner-design">走查</span> <span class="sprint-owner-product">+</span> <span class="sprint-owner-development">复原设计稿</span></p>';
     if(!traditional&&i===3)extra=`<div class="sprint-flow-conditions"><p>${sprintContent.conditions[0]}</p><ol>${sprintContent.conditions.slice(1).map(c=>`<li>${sprintEsc(c)}</li>`).join('')}</ol></div>`;
     return `<li><div class="sprint-owner-bars" role="img" aria-label="${owners[i].map(k=>ownerLabels[k]).join('、')}主导">${owners[i].map(k=>`<i class="sprint-band-${k}"></i>`).join('')}</div><h5 class="sprint-owner-${owners[i][0]}">${label==='demo'?sprintAssetButton('demo','demo'):sprintEsc(label)}</h5>${extra}</li>`;
   }).join('')}</ol></section>`;

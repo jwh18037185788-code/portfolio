@@ -5,10 +5,9 @@
  * The scroll lifecycle is adapted to play only on downward entry.
  */
 (() => {
-  if (document.body.classList.contains('is-visual-page')) return;
   if (!window.gsap || !window.SplitText || !window.ScrollTrigger) return;
 
-  // Explicit allowlist: only the eleven titles marked in the supplied screenshots.
+  const collectionTitle = document.querySelector('.is-visual-page .visual-page-header h1');
   const selectors = [
     '.sprint-lead h2',
     '#sprint-goals .sprint-chapter-head h2',
@@ -68,9 +67,8 @@
       });
     };
 
-    selectors.forEach(selector => {
-      const el = document.querySelector(selector);
-      if (!el) return;
+    const titles = collectionTitle ? [collectionTitle] : selectors.map(selector => document.querySelector(selector)).filter(Boolean);
+    titles.forEach(el => {
       const originalClass = el.className;
       el.classList.add('home-split-title');
       const split = new SplitText(el, {
@@ -81,6 +79,11 @@
       const state = { el, split, chars: split.chars, tween: null, visual: 'shown',
         armed: el.getBoundingClientRect().top >= window.innerHeight };
       states.push(state);
+      state.restore = () => { state.trigger?.kill(); state.tween?.kill(); split.revert(); el.className = originalClass; };
+      if (el === collectionTitle) {
+        play(state);
+        return;
+      }
       if (state.armed) hide(state);
       state.trigger = ScrollTrigger.create({
         trigger: el, start: 'top 90%-=100px', end: 'bottom top',
@@ -93,7 +96,6 @@
         onLeave: () => show(state),
         onLeaveBack: () => show(state)
       });
-      state.restore = () => { state.trigger.kill(); state.tween?.kill(); split.revert(); el.className = originalClass; };
     });
 
     // Returning upward always reveals the full title, including an in-flight tween.
@@ -116,13 +118,13 @@
     const onScroll = () => {
       if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScroll);
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
+    if (!collectionTitle) window.addEventListener('scroll', onScroll, { passive: true });
     dispose = () => {
       window.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(scrollFrame);
       states.forEach(state => state.restore());
     };
-    ScrollTrigger.refresh();
+    if (!collectionTitle) ScrollTrigger.refresh();
   }
 
   reducedMotion.addEventListener('change', init);
